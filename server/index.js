@@ -16,13 +16,18 @@ const seoRoutes = require("./routes/seo");
 const app = express();
 const basicAuth = require("express-basic-auth");
 
-app.use(basicAuth({
-  users: {
-    [process.env.SITE_USER || "admin"]: process.env.SITE_PASS || "demo"
-  },
-  challenge: true,
-  realm: "ARP Private Access"
-}));
+// Protect ONLY the public website, NOT the API
+app.use((req, res, next) => {
+  if (req.path.startsWith("/api")) return next();
+  if (req.path.startsWith("/admin")) return next(); // admin panel — open
+  return basicAuth({
+    users: { 
+      [process.env.SITE_USER || "admin"]: process.env.SITE_PASS || "demo"
+    },
+    challenge: true,
+    realm: "ARP Private Access"
+  })(req, res, next);
+});
 // Behind reverse-proxy (Nginx), trust first proxy for secure cookies and IPs
 app.set("trust proxy", 1);
 const PORT = process.env.PORT || 3000;

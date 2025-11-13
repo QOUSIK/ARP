@@ -9,7 +9,6 @@ router.post("/login", async (req, res) => {
     const { email, password } = req.body || {};
     const envEmail = process.env.ADMIN_EMAIL || "";
     const passHash = process.env.ADMIN_PASS_HASH || "";
-    const passPlain = process.env.ADMIN_PASS || "";
 
     if (!email || !password) return res.status(400).json({ error: "Missing credentials" });
     if (email !== envEmail) return res.status(401).json({ error: "Invalid credentials" });
