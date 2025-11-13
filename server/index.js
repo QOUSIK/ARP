@@ -14,6 +14,15 @@ const translationsRoutes = require("./routes/translations");
 const seoRoutes = require("./routes/seo");
 
 const app = express();
+const basicAuth = require("express-basic-auth");
+
+app.use(basicAuth({
+  users: {
+    [process.env.SITE_USER || "admin"]: process.env.SITE_PASS || "demo"
+  },
+  challenge: true,
+  realm: "ARP Private Access"
+}));
 // Behind reverse-proxy (Nginx), trust first proxy for secure cookies and IPs
 app.set("trust proxy", 1);
 const PORT = process.env.PORT || 3000;
