@@ -1,0 +1,80 @@
+
+/* Загрузочный экран */
+.loader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #F7F1E1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 2s ease;
+}
+
+.loader.fade-out {
+  opacity: 0;
+  transition: opacity 1.5s ease; /* плавное исчезновение */
+}
+
+/* Контент скрыт при загрузке */
+.content {
+  opacity: 0;
+  transition: opacity 1s ease; /* плавное проявление */
+}
+
+/* Звёзды дугой */
+.stars-arc {
+  position: relative;
+  width: 160px;
+  height: 60px;
+  margin-bottom: 8px;
+}
+
+.stars-arc span {
+  position: absolute;
+  font-size: 20px;
+  color: #9c7a4f;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Расположение звёзд по дуге */
+.stars-arc span:nth-child(1) { left: 0;   bottom: 0;   transform: rotate(-25deg); animation-delay: 0.2s; }
+.stars-arc span:nth-child(2) { left: 30px; bottom: 20px; transform: rotate(-12deg); animation-delay: 0.4s; }
+.stars-arc span:nth-child(3) { left: 70px; bottom: 30px; transform: rotate(0deg);   animation-delay: 0.6s; }
+.stars-arc span:nth-child(4) { left: 110px; bottom: 20px; transform: rotate(12deg); animation-delay: 0.8s; }
+.stars-arc span:nth-child(5) { left: 140px; bottom: 0;   transform: rotate(25deg); animation-delay: 1s; }
+
+/* Тексты */
+.main-text {
+  font-size: 36px;
+  font-weight: 700;
+  color: #800020;
+  letter-spacing: 2px;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 1.5s ease 0.5s forwards, glow 2s ease-in-out infinite alternate;
+}
+
+.sub-text {
+  font-family: 'Great Vibes', cursive;
+  font-size: 28px;
+  color: #333;
+  margin-top: 4px;
+  opacity: 0;
+  animation: fadeIn 2s ease 1s forwards;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 3px #F7F1E1; }
+  to   { text-shadow: 0 0 10px #F7F1E1; }
+}

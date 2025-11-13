@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comfort Room</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/Global.css">
+    <link rel="stylesheet" href="../../assets/css/RoomS.css">
+    <link rel="stylesheet" href="../../assets/css/header.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
+</head>
+<style>
+    .about-hero {
+        background: linear-gradient(
+            rgba(109, 26, 44, 0.85),
+            rgba(60, 10, 22, 0.9)
+          ),
+          url('../../assets/imgs/oda11.webp');
+        background-size: cover;
+        background-position: center;
+        padding: 200px 20px;
+        text-align: center;
+        color: white;
+        position: relative;
+    }
+</style>
+<body>
+
+    <div data-include="../includes/header.html"></div>
+        <section class="about-hero">
+            <h1 data-i18n="rooms.comfort.title">Comfort Room</h1>
+            <p data-i18n="rooms.comfort.description">
+                Stylish room designed for your ultimate relaxation. Enjoy modern amenities, plush bedding, and a balcony offering serene sea views — perfect for a comfortable and memorable stay.
+            </p>
+
+    </section>
+    <div class="container">    
+        
+        <div class="slider-container">
+            <div class="room-slider">
+                <div class="slide-container">
+                    <div class="slide active">
+                        <img src="../../assets/imgs/oda11.webp" alt="Room Image 1">
+                    </div>
+                    <div class="slide">
+                        <img src="../../assets/imgs/oda9.webp" alt="Room Image 2">
+                    </div>
+                    <div class="slide">
+                        <img src="../../assets/imgs/oda6.webp" alt="Room Image 3">
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button id="prev"><i class="fas fa-chevron-left"></i></button>
+                    <button id="next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="slide-indicators">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
+            </div>
+        </div>
+        
+        <div class="room-info">
+            <div class="info-section">
+                <h3 data-i18n="room.detail.descriptionTitle">Description</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <strong data-i18n="room.detail.labels.area">Area:</strong> <span data-room="area">22 m²</span>
+                    </div>
+                    <div class="info-item">
+                        <strong data-i18n="room.detail.labels.flooring">Flooring:</strong> <span data-room="flooring" data-i18n="room.detail.values.flooring_carpet">Carpet</span>
+                    </div>
+                    <div class="info-item">
+                        <strong data-i18n="room.detail.labels.view">View:</strong> <span data-room="view" data-i18n="room.detail.values.view_sea">Sea or garden view</span>
+                    </div>
+                    <div class="info-item">
+                        <strong data-i18n="room.detail.labels.tv">TV Channels:</strong> <span data-room="tv" data-i18n="room.detail.values.tv_channels">Multi-language / Satellite TV</span>
+                    </div>
+                    <div class="info-item">
+                        <strong data-i18n="room.detail.labels.bedType">Bed Type:</strong> <span data-room="bedType">1 double and 1 single bed or 3 single beds</span>
+                    </div>
+                    <div class="info-item">
+                        <strong data-i18n="room.detail.labels.capacity">Capacity:</strong> <span data-room="capacity">Maximum 3 people</span>
+                    </div>
+                    <div class="info-item">
+                        <strong data-i18n="room.detail.labels.smoking">Smoking:</strong> <span data-room="smoking" data-i18n="room.detail.values.not_allowed">Not allowed</span>
+                    </div>
+                    <div class="info-item">
+                        <strong data-i18n="room.detail.labels.balcony">Balcony:</strong> <span data-room="balcony" data-i18n="room.detail.values.yes">Yes</span>
+                    </div>
+                    <div class="info-item">
+                        <strong data-i18n="room.detail.labels.checkin">Check-in:</strong> <span data-room="checkin">14:00</span>
+                    </div>
+                    <div class="info-item">
+                        <strong data-i18n="room.detail.labels.checkout">Check-out:</strong> <span data-room="checkout">12:00</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h3 data-i18n="room.detail.featuresTitle">Room Features</h3>
+                <div class="features-section">
+                    <div class="features">
+                        <div class="feature" data-i18n="rooms.features.ac">Air Conditioning</div>
+                        <div class="feature" data-i18n="rooms.features.minibar">Mini Bar</div>
+                        <div class="feature" data-i18n="rooms.features.safe">Safe</div>
+                        <div class="feature" data-i18n="rooms.features.tv">TV</div>
+                        <div class="feature" data-i18n="rooms.features.phone">Telephone</div>
+                        <div class="feature" data-i18n="rooms.features.wifi">Wi-Fi</div>
+                        <div class="feature" data-i18n="rooms.features.hairdryer">Hair Dryer</div>
+                        <div class="feature" data-i18n="rooms.features.shower">Shower</div>
+                        <div class="feature" data-i18n="rooms.features.pillow">Pillow Menu</div>
+                        <div class="feature" data-i18n="rooms.features.bathrobe">Signature Bathrobe</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="decoration">
+            <i class="fas fa-bed"></i> 
+            <i class="fas fa-door-open"></i> 
+            <i class="fas fa-concierge-bell"></i>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <div class="lightbox-content">
+            <img src="" alt="Expanded Room View">
+        </div>
+        <div class="lightbox-nav">
+            <button id="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+            <button id="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <div data-include="../includes/footer.html"></div>
+    <script src="../../assets/js/i18n.js"></script>
+    <script src="../../assets/js/includes.js"></script>
+    <script src="../../assets/js/header.js"></script>
+    <script src="/assets/js/cms-main.js"></script>
+    <script src="../../assets/js/RoomS.js"></script>
+</body>
+</html>

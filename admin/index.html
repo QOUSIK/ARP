@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ARP Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <h1>ARP Admin</h1>
+    <nav>
+      <a href="index.html" class="active" data-admin-i18n="nav.dashboard">Dashboard</a>
+      <a href="main.html" data-admin-i18n="nav.main">Main Page</a>
+      <a href="about.html" data-admin-i18n="nav.about">About Page</a>
+      <a href="rest.html" data-admin-i18n="nav.rest">Rest-Bar Page</a>
+      <a href="gallery.html" data-admin-i18n="nav.gallery">Gallery Page</a>
+      <a href="roomslist.html" data-admin-i18n="nav.rooms">Rooms Page</a>
+      <a href="room-detail.html" data-admin-i18n="nav.room_detail">Room Detail</a>
+      <a href="settings.html" data-admin-i18n="nav.settings">Settings</a>
+      <a href="contact.html" data-admin-i18n="nav.contact">Contact Page</a>
+      <select id="adminLangSelect" style="margin-left:auto">
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+        <option value="tr">TR</option>
+        <option value="uk">UA</option>
+      </select>
+      <button id="logoutBtn" class="btn btn-logout" data-admin-i18n="auth.logout">Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 data-admin-i18n="guide.title">Guide</h2>
+      <p data-admin-i18n="guide.intro">This panel lets you edit site content without code.</p>
+
+      <h3 data-admin-i18n="guide.quick_start.title">Quick Start</h3>
+      <ol>
+        <li data-admin-i18n="guide.quick.1">Login at login.html</li>
+        <li data-admin-i18n="guide.quick.2">Open needed tab (Main, About, ...)</li>
+        <li data-admin-i18n="guide.quick.3">Choose admin UI language (RU/EN/...)</li>
+        <li data-admin-i18n="guide.quick.4">Choose content language on edit page</li>
+        <li data-admin-i18n="guide.quick.5">Load → Edit → Save</li>
+      </ol>
+
+      <h3 data-admin-i18n="guide.nav.title">Navigation</h3>
+      <ul>
+        <li>
+          <a href="main.html" data-admin-i18n="nav.main">Main Page</a>
+          <span data-admin-i18n="guide.nav.main.desc"> — main screen (Hero, Welcome, Comfort, Taste, Apartments)</span>
+        </li>
+        <li>
+          <a href="about.html" data-admin-i18n="nav.about">About Page</a>
+          <span data-admin-i18n="guide.nav.about.desc"> — history, features, team</span>
+        </li>
+        <li>
+          <a href="rest.html" data-admin-i18n="nav.rest">Rest-Bar Page</a>
+          <span data-admin-i18n="guide.nav.rest.desc"> — restaurants/bars and their blocks</span>
+        </li>
+        <li>
+          <a href="gallery.html" data-admin-i18n="nav.gallery">Gallery Page</a>
+          <span data-admin-i18n="guide.nav.gallery.desc"> — gallery categories and images</span>
+        </li>
+        <li>
+          <a href="roomslist.html" data-admin-i18n="nav.rooms">Rooms Page</a>
+          <span data-admin-i18n="guide.nav.rooms.desc"> — room types list and cards</span>
+        </li>
+        <li>
+          <a href="room-detail.html" data-admin-i18n="nav.room_detail">Room Detail</a>
+          <span data-admin-i18n="guide.nav.room_detail.desc"> — per‑room pages (by slug)</span>
+        </li>
+        <li>
+          <a href="contact.html" data-admin-i18n="nav.contact">Contact Page</a>
+          <span data-admin-i18n="guide.nav.contact.desc"> — contacts, map, form</span>
+        </li>
+        <li>
+          <a href="settings.html" data-admin-i18n="nav.settings">Settings</a>
+          <span data-admin-i18n="guide.nav.settings.desc"> — SEO codes (GSC, Yandex), analytics (GA4, GTM, Pixel)</span>
+        </li>
+      </ul>
+
+      <h3 data-admin-i18n="guide.edit.title">Editing</h3>
+      <ul>
+        <li data-admin-i18n="guide.edit.load">“Load” pulls values for the chosen language</li>
+        <li data-admin-i18n="guide.edit.save">“Save” writes changes to DB (by keys)</li>
+        <li data-admin-i18n="guide.edit.export">“Export JSON” downloads current language JSON</li>
+        <li data-admin-i18n="guide.edit.toggle">Show/Hide toggles control section visibility</li>
+      </ul>
+
+      <h3 data-admin-i18n="guide.upload.title">Images & Upload</h3>
+      <ul>
+        <li data-admin-i18n="guide.upload.how">Use the file button — URL fills automatically after upload</li>
+        <li data-admin-i18n="guide.upload.formats">Supported: jpg, png, webp, avif, gif. Limit 5 MB</li>
+        <li data-admin-i18n="guide.upload.delete">To remove, clear field or upload a new one</li>
+      </ul>
+
+      <h3 data-admin-i18n="guide.langs.title">Languages</h3>
+      <ul>
+        <li data-admin-i18n="guide.langs.ui">Top selector = admin UI language</li>
+        <li data-admin-i18n="guide.langs.content">“Content language” = language you edit</li>
+        <li><span data-admin-i18n="guide.langs.keys">Translations stored by flat keys</span> (<code>hero.greeting</code>).</li>
+      </ul>
+
+      <h3 data-admin-i18n="guide.preview.title">Preview</h3>
+      <ul>
+        <li><span data-admin-i18n="guide.preview.param">Open public page with parameters:</span> <code>?preview&amp;lang=ru</code></li>
+        <li><span data-admin-i18n="guide.preview.draft">Optionally add</span> <code>&amp;draft</code> <span data-admin-i18n="guide.preview.draft2">to overlay local draft if supported</span></li>
+        <li><span data-admin-i18n="guide.preview.examples">Examples:</span> <code>/index.html?preview&amp;lang=ru</code>, <code>/about.html?preview&amp;lang=en</code></li>
+      </ul>
+
+      <h3 data-admin-i18n="guide.security.title">Security</h3>
+      <ul>
+        <li data-admin-i18n="guide.security.cookie">Login uses HttpOnly cookie. Use “Logout” after work</li>
+        <li data-admin-i18n="guide.security.upload">Uploads accept only images and limited by size</li>
+      </ul>
+
+      <h3 data-admin-i18n="guide.faq.title">FAQ</h3>
+      <ul>
+        <li data-admin-i18n="guide.faq.not_seen">“Don’t see changes” — refresh with ?preview and right lang; ensure you saved the right language</li>
+        <li data-admin-i18n="guide.faq.save_fail">“Save doesn’t work” — re‑login if session expired</li>
+        <li><span data-admin-i18n="guide.faq.image">“Image not shown” — URL must start with</span> <code>/uploads/...</code> <span data-admin-i18n="guide.faq.image2">and format must be supported</span></li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/admin-i18n.js"></script>
+  <script>
+    const btn = document.getElementById("logoutBtn");
+    btn.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

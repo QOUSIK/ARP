@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Contact Page - ARP Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <h1>ARP Admin</h1>
+    <nav>
+      <a href="index.html" data-admin-i18n="nav.dashboard">Dashboard</a>
+      <a href="main.html" data-admin-i18n="nav.main">Main Page</a>
+      <a href="about.html" data-admin-i18n="nav.about">About Page</a>
+      <a href="rest.html" data-admin-i18n="nav.rest">Rest-Bar Page</a>
+      <a href="gallery.html" data-admin-i18n="nav.gallery">Gallery Page</a>
+      <a href="roomslist.html" data-admin-i18n="nav.rooms">Rooms Page</a>
+      <a href="room-detail.html" data-admin-i18n="nav.room_detail">Room Detail</a>
+      <a href="settings.html" data-admin-i18n="nav.settings">Settings</a>
+      <a href="contact.html" class="active" data-admin-i18n="nav.contact">Contact Page</a>
+      <select id="adminLangSelect" style="margin-left:auto">
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+        <option value="tr">TR</option>
+        <option value="uk">UA</option>
+      </select>
+      <button id="logoutBtn" class="btn btn-logout" data-admin-i18n="auth.logout">Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 data-admin-i18n="page.contact.title">Управление страницей Контакты</h2>
+
+      <div class="row">
+        <label><span data-admin-i18n="form.lang">Язык контента</span>
+          <select id="lang">
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="tr">Türkçe</option>
+            <option value="de">Deutsch</option>
+          </select>
+        </label>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="contact.section.hero">Hero</span>
+        <label class="toggle"><input type="checkbox" id="visible_contact_hero" checked> <span data-admin-i18n="toggle.show"></span></label>
+      </h3>
+      <div class="grid-3">
+        <label><span data-admin-i18n="contact.hero.title_label">Заголовок</span> <input id="contact_hero_title"></label>
+        <label><span data-admin-i18n="contact.hero.subtitle_label">Подзаголовок</span> <input id="contact_hero_subtitle"></label>
+      </div>
+      <div class="upload-group">
+        <h4 data-admin-i18n="contact.hero.image_heading">Изображение Hero</h4>
+        <div class="upload-card">
+          <img class="upload-preview" id="p_contact_hero" alt="preview">
+          <input id="contact_hero_image"><input type="file" id="f_contact_hero">
+        </div>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="contact.section.info">Информация</span>
+        <label class="toggle"><input type="checkbox" id="visible_contact_info" checked> <span data-admin-i18n="toggle.show"></span></label>
+      </h3>
+      <div class="grid-3">
+        <label><span data-admin-i18n="contact.info.title_label">Заголовок</span> <input id="contact_info_title"></label>
+        <label><span data-admin-i18n="contact.info.phone_title_label">Телефоны — заголовок</span> <input id="contact_phone_title"></label>
+        <label><span data-admin-i18n="contact.info.phone_text_label">Телефоны — текст</span> <textarea id="contact_phone_content" rows="3"></textarea></label>
+        <label><span data-admin-i18n="contact.info.email_title_label">Email — заголовок</span> <input id="contact_email_title"></label>
+        <label><span data-admin-i18n="contact.info.email_text_label">Email — текст</span> <textarea id="contact_email_content" rows="3"></textarea></label>
+        <label><span data-admin-i18n="contact.info.address_title_label">Адрес — заголовок</span> <input id="contact_address_title"></label>
+        <label><span data-admin-i18n="contact.info.address_text_label">Адрес — текст</span> <textarea id="contact_address_content" rows="3"></textarea></label>
+        <label><span data-admin-i18n="contact.info.hours_title_label">Часы работы — заголовок</span> <input id="contact_hours_title"></label>
+        <label><span data-admin-i18n="contact.info.hours_text_label">Часы работы — текст</span> <textarea id="contact_hours_content" rows="3"></textarea></label>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="contact.section.form">Форма</span>
+        <label class="toggle"><input type="checkbox" id="visible_contact_form" checked> <span data-admin-i18n="toggle.show"></span></label>
+      </h3>
+      <div class="grid-3">
+        <label><span data-admin-i18n="contact.form.title_label">Заголовок формы</span> <input id="contact_form_title"></label>
+        <label><span data-admin-i18n="contact.form.name_label">Имя — метка</span> <input id="contact_name_label"></label>
+        <label><span data-admin-i18n="contact.form.name_ph">Имя — placeholder</span> <input id="contact_name_ph"></label>
+        <label><span data-admin-i18n="contact.form.email_label">Email — метка</span> <input id="contact_email_label"></label>
+        <label><span data-admin-i18n="contact.form.email_ph">Email — placeholder</span> <input id="contact_email_ph"></label>
+        <label><span data-admin-i18n="contact.form.phone_label">Телефон — метка</span> <input id="contact_phone_label"></label>
+        <label><span data-admin-i18n="contact.form.phone_ph">Телефон — placeholder</span> <input id="contact_phone_ph"></label>
+        <label><span data-admin-i18n="contact.form.subject_label">Тема — метка</span> <input id="contact_subject_label"></label>
+        <label><span data-admin-i18n="contact.form.subject_default_label">Тема — вариант по умолчанию</span> <input id="contact_subject_default"></label>
+        <label><span data-admin-i18n="contact.form.subject_res_label">Тема — Reservation</span> <input id="contact_subject_res"></label>
+        <label><span data-admin-i18n="contact.form.subject_info_label">Тема — Information</span> <input id="contact_subject_info"></label>
+        <label><span data-admin-i18n="contact.form.subject_compl_label">Тема — Complaint</span> <input id="contact_subject_compl"></label>
+        <label><span data-admin-i18n="contact.form.subject_part_label">Тема — Partnership</span> <input id="contact_subject_part"></label>
+        <label><span data-admin-i18n="contact.form.subject_other_label">Тема — Other</span> <input id="contact_subject_other"></label>
+        <label><span data-admin-i18n="contact.form.message_label">Сообщение — метка</span> <input id="contact_message_label"></label>
+        <label><span data-admin-i18n="contact.form.message_ph">Сообщение — placeholder</span> <input id="contact_message_ph"></label>
+        <label><span data-admin-i18n="contact.form.submit_label">Кнопка отправки</span> <input id="contact_submit"></label>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="contact.section.map">Карта</span>
+        <label class="toggle"><input type="checkbox" id="visible_contact_map" checked> <span data-admin-i18n="toggle.show"></span></label>
+      </h3>
+      <div class="grid-3">
+        <label><span data-admin-i18n="contact.map.title_label">Заголовок</span> <input id="contact_map_title"></label>
+        <label><span data-admin-i18n="contact.map.open_label">Ссылка «Открыть в Google Maps»</span> <input id="contact_map_open"></label>
+        <label><span data-admin-i18n="contact.map.route_label">Ссылка «Построить маршрут»</span> <input id="contact_map_route"></label>
+      </div>
+
+      <div class="actions">
+        <button id="loadBtn" class="btn" data-admin-i18n="action.load">Загрузить</button>
+        <button id="saveBtn" class="btn btn-primary" data-admin-i18n="action.save">Сохранить</button>
+        <button id="exportBtn" class="btn btn-accent" data-admin-i18n="action.export">Экспорт JSON</button>
+        <button id="previewBtn" class="btn btn-secondary" data-admin-i18n="action.preview">Предпросмотр</button>
+      </div>
+      <p id="status" class="status"></p>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/admin-i18n.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

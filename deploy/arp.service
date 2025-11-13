@@ -1,0 +1,33 @@
+[Unit]
+Description=ARP Node.js Service
+After=network.target
+
+[Service]
+Type=simple
+# Run as a limited user (adjust if needed)
+User=www-data
+Group=www-data
+
+# Adjust to your deployment path
+WorkingDirectory=/var/www/arp/current
+EnvironmentFile=/etc/arp.env
+ExecStart=/usr/bin/node server/index.js
+Restart=always
+RestartSec=3
+
+# Security hardening
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+# Allow writes only where needed (adjust path)
+ReadWritePaths=/var/www/arp/current/public/uploads /var/www/arp/current/server
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Antique Roman Palace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/Global.css">
+    <link rel="stylesheet" href="../assets/css/Contact-Us.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+</head>
+<style>
+
+            .about-hero{
+background: linear-gradient(
+    rgba(109, 26, 44, 0.85),   /* #6d1a2c — тёмный бордо */
+    rgba(60, 10, 22, 0.9)     /* ещё темнее для глубины */
+  ),
+  url('../assets/img/lobby.jpg');
+background-size: cover;
+background-position: center;
+            background-size: cover;
+            background-position: center;
+            padding: 200px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+
+</style>
+<body>
+    <div data-include="includes/header.html"></div>
+    <!-- Hero Section -->
+    <section class="about-hero" data-block="contact.hero">
+        <h1 data-i18n="contact.hero.title">Contact Us</h1>
+        <p data-i18n="contact.hero.subtitle">Get in touch with Antique Roman Palace. We're here to make your stay unforgettable.</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" data-block="contact.info">
+        <div class="contact-container">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2 data-i18n="contact.info.title">Get In Touch</h2>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3 data-i18n="contact.info.phone.title">Phone</h3>
+                        <p data-i18n="contact.info.phone.content">+90 (0242) 514 05 06<br>+90 (0242) 514 05 07</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3 data-i18n="contact.info.email.title">Email</h3>
+                        <p data-i18n="contact.info.email.content">info@antiqueromanpalace.com<br>reservations@antiqueromanpalace.com</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3 data-i18n="contact.info.address.title">Address</h3>
+                        <p data-i18n="contact.info.address.content">Oba, Atatürk Cd. No:31<br>07460 Alanya/Antalya, Turkey</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3 data-i18n="contact.info.hours.title">Reception Hours</h3>
+                        <p data-i18n="contact.info.hours.content">24/7 Reception<br>Check-in: 2:00 PM<br>Check-out: 12:00 PM</p>
+                    </div>
+                </div>
+
+<div class="social-links">
+    <a href="https://www.instagram.com/antiqueromanpalace/" class="social-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.facebook.com/antiqueromanpalacehotel/" class="social-link" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i>
+    </a>
+</div>
+
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form" data-block="contact.form">
+                <h2 data-i18n="contact.form.title">Send Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name" data-i18n="contact.form.name.label">Full Name</label>
+                        <input type="text" id="name" class="form-control" data-i18n-placeholder="contact.form.name.placeholder" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" data-i18n="contact.form.email.label">Email Address</label>
+                        <input type="email" id="email" class="form-control" data-i18n-placeholder="contact.form.email.placeholder" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" data-i18n="contact.form.phone.label">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" data-i18n-placeholder="contact.form.phone.placeholder" placeholder="Enter your phone number">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject" data-i18n="contact.form.subject.label">Subject</label>
+                        <select id="subject" class="form-control" required>
+                            <option value="" data-i18n="contact.form.subject.default">Select a subject</option>
+                            <option value="reservation" data-i18n="contact.form.subject.reservation">Room Reservation</option>
+                            <option value="information" data-i18n="contact.form.subject.information">General Information</option>
+                            <option value="complaint" data-i18n="contact.form.subject.complaint">Complaint</option>
+                            <option value="partnership" data-i18n="contact.form.subject.partnership">Business Partnership</option>
+                            <option value="other" data-i18n="contact.form.subject.other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" data-i18n="contact.form.message.label">Message</label>
+                        <textarea id="message" class="form-control" data-i18n-placeholder="contact.form.message.placeholder" placeholder="Enter your message..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        <span data-i18n="contact.form.submit">Send Message</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+<!-- Map Section -->
+<section class="map-section" data-block="contact.map">
+    <h2 data-i18n="contact.map.title">Find Us</h2>
+    <div class="map-container">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1512.9940824248508!2d32.040518270204174!3d36.53185825554015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cabb2b877f0981%3A0x796aa755786bf527!2sAntique%20Roman%20Palace%20Museum%20Hotel%20Adults%20Only!5e0!3m2!1sru!2str!4v1762429768449!5m2!1sru!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="map-buttons">
+        <a href="https://www.google.com/maps/place/Antique+Roman+Palace+Museum+Hotel+Adults+Only/@36.5318417,32.0401754,17z/data=!4m9!3m8!1s0x14cabb2b877f0981:0x796aa755786bf527!5m2!4m1!1i2!8m2!3d36.5319444!4d32.0402778!16s%2Fg%2F1hc9spn0r?entry=ttu&g_ep=EgoyMDI1MTEwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="map-btn">
+            <i class="fas fa-map-marker-alt"></i> <span data-i18n="contact.map.openInMaps">Open in Google Maps</span>
+        </a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=36.5327462,32.0306371" target="_blank" class="map-btn">
+            <i class="fas fa-route"></i> <span data-i18n="contact.map.getDirections">Get Directions</span>
+        </a>
+    </div>
+</section>
+<div class="decoration">
+    <i class="fas fa-phone-alt"></i>
+    <i class="fas fa-envelope"></i>
+    <i class="fas fa-map-marker-alt"></i>
+</div>
+
+    <div data-include="includes/footer.html"></div>
+    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/includes.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="/assets/js/cms-main.js"></script>
+    <script src="../assets/js/Contact-us.js"></script>
+</body>
+</html>

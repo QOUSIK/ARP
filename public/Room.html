@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Selection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/Global.css">
+    <link rel="stylesheet" href="../assets/css/Room.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+</head>
+<style>
+    .about-hero {
+        background: linear-gradient(
+            rgba(109, 26, 44, 0.85),
+            rgba(60, 10, 22, 0.9)
+          ),
+          url('../assets/img/style.webp');
+        background-size: cover;
+        background-position: center;
+        padding: 200px 20px;
+        text-align: center;
+        color: white;
+        position: relative;
+    }
+</style>
+<body>
+    <div data-include="includes/header.html"></div>
+
+
+    <section class="about-hero" data-block="rooms.hero">
+        <h1 data-i18n="hero.title">Choose Your Stay</h1>
+        <p data-i18n="hero.subtitle">From refined simplicity to royal comfort вЂ” explore rooms designed for relaxation, elegance, and unforgettable moments.</p>
+    </section>
+
+    <div class="container">
+        <div class="rooms-grid">
+
+            <!-- Economy -->
+            <div class="room-card" data-block="rooms.economy">
+                <div class="room-image-container">
+                    <img src="../assets/img/econom.avif" data-img="rooms.image.economy" alt="Economy Room" class="room-image">
+                    <div class="room-badge" data-i18n="rooms.economy.badge">Economy</div>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title" data-i18n="rooms.economy.title">Economy</h3>
+                    <p class="room-description" data-i18n="rooms.economy.description">A cozy room with all the essentials for a comfortable stay. The perfect balance of price and quality.</p>
+                    <ul class="room-features">
+                        <li><i class="fas fa-snowflake feature-icon"></i> <span data-i18n="rooms.features.ac">Air Conditioner</span></li>
+                        <li><i class="fas fa-wine-bottle feature-icon"></i> <span data-i18n="rooms.features.minibar">Mini-bar</span></li>
+                        <li><i class="fas fa-lock feature-icon"></i> <span data-i18n="rooms.features.safe">Safe</span></li>
+                        <li><i class="fas fa-tv feature-icon"></i> <span data-i18n="rooms.features.tv">TV</span></li>
+                        <li><i class="fas fa-phone feature-icon"></i> <span data-i18n="rooms.features.phone">Telephone</span></li>
+                        <li><i class="fas fa-wifi feature-icon"></i> <span data-i18n="rooms.features.wifi">Wi-Fi</span></li>
+                        <li><i class="fas fa-wind feature-icon"></i> <span data-i18n="rooms.features.hairdryer">Hair Dryer</span></li>
+                        <li><i class="fas fa-shower feature-icon"></i> <span data-i18n="rooms.features.shower">Shower</span></li>
+                    </ul>
+                    <div class="room-actions">
+                        <button class="room-btn"><i class="fas fa-calendar-check"></i> <span data-i18n="rooms.buttons.book">Book Now</span></button>
+                        <a href="room/Economy.html"><button class="details-btn"><i class="fas fa-info-circle"></i> <span data-i18n="rooms.buttons.details">Details</span></button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Standart -->
+            <div class="room-card" data-block="rooms.standard">
+                <div class="room-image-container">
+                    <img src="../assets/img/Standart.avif" data-img="rooms.image.standard" alt="Standart Room" class="room-image">
+                    <div class="room-badge" data-i18n="rooms.standard.badge">Popular</div>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title" data-i18n="rooms.standard.title">Standard</h3>
+                    <p class="room-description" data-i18n="rooms.standard.description">A spacious room with modern design. A perfect choice for a business trip or leisure.</p>
+                    <ul class="room-features">
+                        <li><i class="fas fa-snowflake feature-icon"></i> <span data-i18n="rooms.features.ac">Air Conditioner</span></li>
+                        <li><i class="fas fa-wine-bottle feature-icon"></i> <span data-i18n="rooms.features.minibar">Mini-bar</span></li>
+                        <li><i class="fas fa-lock feature-icon"></i> <span data-i18n="rooms.features.safe">Safe</span></li>
+                        <li><i class="fas fa-tv feature-icon"></i> <span data-i18n="rooms.features.tv">TV</span></li>
+                        <li><i class="fas fa-phone feature-icon"></i> <span data-i18n="rooms.features.phone">Telephone</span></li>
+                        <li><i class="fas fa-wifi feature-icon"></i> <span data-i18n="rooms.features.wifi">Wi-Fi</span></li>
+                        <li><i class="fas fa-wind feature-icon"></i> <span data-i18n="rooms.features.hairdryer">Hair Dryer</span></li>
+                        <li><i class="fas fa-shower feature-icon"></i> <span data-i18n="rooms.features.shower">Shower</span></li>
+                        <li><i class="fas fa-door-open feature-icon"></i> <span data-i18n="rooms.features.balcony">With Balcony</span></li>
+                    </ul>
+                    <div class="room-actions">
+                        <button class="room-btn"><i class="fas fa-calendar-check"></i> <span data-i18n="rooms.buttons.book">Book Now</span></button>
+                       <a href="room/Standart.html"><button class="details-btn"><i class="fas fa-info-circle"></i> <span data-i18n="rooms.buttons.details">Details</span></button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comfort -->
+            <div class="room-card" data-block="rooms.comfort">
+                <div class="room-image-container">
+                    <img src="../assets/img/Standart_Plus.avif" data-img="rooms.image.comfort" alt="Comfort Room" class="room-image">
+                    <div class="room-badge" data-i18n="rooms.comfort.badge">Comfort</div>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title" data-i18n="rooms.comfort.title">Comfort</h3>
+                    <p class="room-description" data-i18n="rooms.comfort.description">A spacious room with increased comfort and a beautiful view. For those who value coziness and aesthetics.</p>
+                    <ul class="room-features">
+                        <li><i class="fas fa-snowflake feature-icon"></i> <span data-i18n="rooms.features.ac">Air Conditioner</span></li>
+                        <li><i class="fas fa-wine-bottle feature-icon"></i> <span data-i18n="rooms.features.minibar">Mini-bar</span></li>
+                        <li><i class="fas fa-lock feature-icon"></i> <span data-i18n="rooms.features.safe">Safe</span></li>
+                        <li><i class="fas fa-tv feature-icon"></i> <span data-i18n="rooms.features.tv">TV</span></li>
+                        <li><i class="fas fa-phone feature-icon"></i> <span data-i18n="rooms.features.phone">Telephone</span></li>
+                        <li><i class="fas fa-wifi feature-icon"></i> <span data-i18n="rooms.features.wifi">Wi-Fi</span></li>
+                        <li><i class="fas fa-wind feature-icon"></i> <span data-i18n="rooms.features.hairdryer">Hair Dryer</span></li>
+                        <li><i class="fas fa-door-open feature-icon"></i> <span data-i18n="rooms.features.balcony">With Balcony</span></li>
+                    </ul>
+                    <div class="room-actions">
+                        <button class="room-btn"><i class="fas fa-calendar-check"></i> <span data-i18n="rooms.buttons.book">Book Now</span></button>
+                       <a href="room/Comfort.html"><button class="details-btn"><i class="fas fa-info-circle"></i> <span data-i18n="rooms.buttons.details">Details</span></button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Queen Suit -->
+            <div class="room-card" data-block="rooms.queen">
+                <div class="room-image-container">
+                    <img src="../assets/img/Queen.avif" data-img="rooms.image.queen" alt="Queen Suit Room" class="room-image">
+                    <div class="room-badge" data-i18n="rooms.queen.badge">Luxury</div>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title" data-i18n="rooms.queen.title">Queen Suite</h3>
+                    <p class="room-description" data-i18n="rooms.queen.description">A luxurious suite with a separate living area. The perfect space for special moments.</p>
+                    <ul class="room-features">
+                        <li><i class="fas fa-snowflake feature-icon"></i> <span data-i18n="rooms.features.ac">Air Conditioner</span></li>
+                        <li><i class="fas fa-wine-bottle feature-icon"></i> <span data-i18n="rooms.features.minibar">Mini-bar</span></li>
+                        <li><i class="fas fa-lock feature-icon"></i> <span data-i18n="rooms.features.safe">Safe</span></li>
+                        <li><i class="fas fa-tv feature-icon"></i> <span data-i18n="rooms.features.tv">TV</span></li>
+                        <li><i class="fas fa-phone feature-icon"></i> <span data-i18n="rooms.features.phone">Telephone</span></li>
+                        <li><i class="fas fa-wifi feature-icon"></i> <span data-i18n="rooms.features.wifi">Wi-Fi</span></li>
+                        <li><i class="fas fa-wind feature-icon"></i> <span data-i18n="rooms.features.hairdryer">Hair Dryer</span></li>
+                        <li><i class="fas fa-hot-tub feature-icon"></i> <span data-i18n="rooms.features.jacuzzi">Jacuzzi</span></li>
+                        <li><i class="fas fa-door-open feature-icon"></i> <span data-i18n="rooms.features.balcony">With Balcony</span></li>
+                    </ul>
+                    <div class="room-actions">
+                        <button class="room-btn"><i class="fas fa-calendar-check"></i> <span data-i18n="rooms.buttons.book">Book Now</span></button>
+                       <a href="room/Queen.html"><button class="details-btn"><i class="fas fa-info-circle"></i> <span data-i18n="rooms.buttons.details">Details</span></button></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- King Suit -->
+            <div class="room-card" data-block="rooms.king">
+                <div class="room-image-container">
+                    <img src="../assets/img/king.jpg" data-img="rooms.image.king" alt="King Suit Room" class="room-image">
+                    <div class="room-badge" data-i18n="rooms.king.badge">Premium</div>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title" data-i18n="rooms.king.title">King Suite</h3>
+                    <p class="room-description" data-i18n="rooms.king.description">An exclusive presidential suite with maximum comfort and premium service.</p>
+                    <ul class="room-features">
+                        <li><i class="fas fa-snowflake feature-icon"></i> <span data-i18n="rooms.features.ac">Air Conditioner</span></li>
+                        <li><i class="fas fa-wine-bottle feature-icon"></i> <span data-i18n="rooms.features.minibar">Mini-bar</span></li>
+                        <li><i class="fas fa-lock feature-icon"></i> <span data-i18n="rooms.features.safe">Safe</span></li>
+                        <li><i class="fas fa-tv feature-icon"></i> <span data-i18n="rooms.features.tv">TV</span></li>
+                        <li><i class="fas fa-phone feature-icon"></i> <span data-i18n="rooms.features.phone">Telephone</span></li>
+                        <li><i class="fas fa-wifi feature-icon"></i> <span data-i18n="rooms.features.wifi">Wi-Fi</span></li>
+                        <li><i class="fas fa-wind feature-icon"></i> <span data-i18n="rooms.features.hairdryer">Hair Dryer</span></li>
+                        <li><i class="fas fa-shower feature-icon"></i> <span data-i18n="rooms.features.shower">Shower</span></li>
+                        <li><i class="fas fa-door-open feature-icon"></i> <span data-i18n="rooms.features.balcony">With Balcony</span></li>
+                    </ul>
+                    <div class="room-actions">
+                        <button class="room-btn"><i class="fas fa-calendar-check"></i> <span data-i18n="rooms.buttons.book">Book Now</span></button>
+                       <a href="room/King.html"><button class="details-btn"><i class="fas fa-info-circle"></i> <span data-i18n="rooms.buttons.details">Details</span></button></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+        <div class="decoration">
+    <i class="fas fa-bed"></i>
+    <i class="fas fa-bath"></i>
+    <i class="fas fa-door-open"></i>
+</div>
+
+
+    <div data-include="includes/footer.html"></div>
+    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/includes.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="/assets/js/cms-main.js"></script>
+    <script src="../assets/js/Room.js"></script>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,195 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About Page - ARP Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <style>
+    h3 { margin-top: 22px; }
+  </style>
+  </head>
+<body>
+  <header class="admin-header">
+    <h1>ARP Admin</h1>
+    <nav>
+      <a href="index.html" data-admin-i18n="nav.dashboard">Dashboard</a>
+      <a href="main.html" data-admin-i18n="nav.main">Main Page</a>
+      <a href="about.html" class="active" data-admin-i18n="nav.about">About Page</a>
+      <a href="rest.html" data-admin-i18n="nav.rest">Rest-Bar Page</a>
+      <a href="gallery.html" data-admin-i18n="nav.gallery">Gallery Page</a>
+      <a href="roomslist.html" data-admin-i18n="nav.rooms">Rooms Page</a>
+      <a href="room-detail.html" data-admin-i18n="nav.room_detail">Room Detail</a>
+      <a href="settings.html" data-admin-i18n="nav.settings">Settings</a>
+      <a href="contact.html" data-admin-i18n="nav.contact">Contact Page</a>
+      <select id="adminLangSelect" style="margin-left:auto">
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+        <option value="tr">TR</option>
+        <option value="uk">UA</option>
+      </select>
+      <button id="logoutBtn" class="btn btn-logout" data-admin-i18n="auth.logout">Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 data-admin-i18n="page.about.title">РЈРїСЂР°РІР»РµРЅРёРµ СЃС‚СЂР°РЅРёС†РµР№ В«Рћ РЅР°СЃВ»</h2>
+
+      <div class="row">
+        <label><span data-admin-i18n="form.lang">РЇР·С‹Рє РєРѕРЅС‚РµРЅС‚Р°
+          </span>
+          <select id="lang">
+            <option value="en">English</option>
+            <option value="ru">Р СѓСЃСЃРєРёР№</option>
+            <option value="tr">TГјrkГ§e</option>
+            <option value="de">Deutsch</option>
+          </select>
+        </label>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="about.section.hero">Hero</span>
+        <label class="toggle">
+          <input type="checkbox" id="visible_about_hero" checked> <span data-admin-i18n="toggle.show"></span>
+        </label>
+      </h3>
+      <div class="grid-3">
+        <label><span data-admin-i18n="about.hero.title_label">Title</span> <input id="hero_title"></label>
+        <label><span data-admin-i18n="about.hero.subtitle_label">Subtitle</span> <input id="hero_subtitle"></label>
+      </div>
+      <div class="upload-group">
+        <h4 data-admin-i18n="about.hero.image_heading">Hero Image</h4>
+        <div class="upload-card">
+          <img class="upload-preview" id="p_about_hero" alt="preview">
+          <input id="about_hero_image"><input type="file" id="f_about_hero">
+        </div>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="about.section.story">Story</span>
+        <label class="toggle">
+          <input type="checkbox" id="visible_about_story" checked> <span data-admin-i18n="toggle.show"></span>
+        </label>
+      </h3>
+      <div class="row">
+        <label><span data-admin-i18n="about.story.title_label">Title</span> <input id="story_title"></label>
+      </div>
+      <label><span data-admin-i18n="about.story.p1_label">Paragraph 1</span>
+        <textarea id="story_p1" rows="3"></textarea>
+      </label>
+      <label><span data-admin-i18n="about.story.p2_label">Paragraph 2</span>
+        <textarea id="story_p2" rows="3"></textarea>
+      </label>
+      <label><span data-admin-i18n="about.story.p3_label">Paragraph 3</span>
+        <textarea id="story_p3" rows="3"></textarea>
+      </label>
+      <label><span data-admin-i18n="about.story.image_caption_label">Image caption</span>
+        <input id="story_imageText">
+      </label>
+      <div class="upload-group">
+        <h4 data-admin-i18n="about.story.image_heading">Story Image</h4>
+        <div class="upload-card">
+          <img class="upload-preview" id="p_about_story" alt="preview">
+          <input id="about_story_image"><input type="file" id="f_about_story">
+        </div>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="about.section.features">Features</span>
+        <label class="toggle">
+          <input type="checkbox" id="visible_about_features" checked> <span data-admin-i18n="toggle.show"></span>
+        </label>
+      </h3>
+      <div class="row">
+        <label><span data-admin-i18n="about.features.title_label">Section title</span> <input id="features_title"></label>
+      </div>
+      <div class="grid-3">
+        <label><span data-admin-i18n="about.features.1.title_label">1. Title</span> <input id="f1_title"></label>
+        <label><span data-admin-i18n="about.features.1.text_label">1. Text</span> <textarea id="f1_text" rows="3"></textarea></label>
+        <label><span data-admin-i18n="about.features.2.title_label">2. Title</span> <input id="f2_title"></label>
+        <label><span data-admin-i18n="about.features.2.text_label">2. Text</span> <textarea id="f2_text" rows="3"></textarea></label>
+        <label><span data-admin-i18n="about.features.3.title_label">3. Title</span> <input id="f3_title"></label>
+        <label><span data-admin-i18n="about.features.3.text_label">3. Text</span> <textarea id="f3_text" rows="3"></textarea></label>
+        <label><span data-admin-i18n="about.features.4.title_label">4. Title</span> <input id="f4_title"></label>
+        <label><span data-admin-i18n="about.features.4.text_label">4. Text</span> <textarea id="f4_text" rows="3"></textarea></label>
+        <label><span data-admin-i18n="about.features.5.title_label">5. Title</span> <input id="f5_title"></label>
+        <label><span data-admin-i18n="about.features.5.text_label">5. Text</span> <textarea id="f5_text" rows="3"></textarea></label>
+        <label><span data-admin-i18n="about.features.6.title_label">6. Title</span> <input id="f6_title"></label>
+        <label><span data-admin-i18n="about.features.6.text_label">6. Text</span> <textarea id="f6_text" rows="3"></textarea></label>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="about.section.numbers">Numbers</span>
+        <label class="toggle">
+          <input type="checkbox" id="visible_about_numbers" checked> <span data-admin-i18n="toggle.show"></span>
+        </label>
+      </h3>
+      <div class="upload-group">
+        <h4 data-admin-i18n="about.numbers.image_heading">Numbers Image</h4>
+        <div class="upload-card">
+          <img class="upload-preview" id="p_about_numbers" alt="preview">
+          <input id="about_numbers_image"><input type="file" id="f_about_numbers">
+        </div>
+      </div>
+      <div class="grid-3">
+        <label><span data-admin-i18n="about.numbers.label1">Label #1</span> <input id="numbers_1"></label>
+        <label><span data-admin-i18n="about.numbers.label2">Label #2</span> <input id="numbers_2"></label>
+        <label><span data-admin-i18n="about.numbers.label3">Label #3</span> <input id="numbers_3"></label>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="about.section.team">Team</span>
+        <label class="toggle">
+          <input type="checkbox" id="visible_about_team" checked> <span data-admin-i18n="toggle.show"></span>
+        </label>
+      </h3>
+      <div class="row">
+        <label><span data-admin-i18n="about.team.title_label">Section title</span> <input id="team_title"></label>
+      </div>
+      <div class="grid-3">
+        <label><span data-admin-i18n="about.team.1.name_label">1. Name</span> <input id="t1_name"></label>
+        <label><span data-admin-i18n="about.team.1.position_label">1. Position</span> <input id="t1_pos"></label>
+        <label><span data-admin-i18n="about.team.1.desc_label">1. Description</span> <textarea id="t1_desc" rows="3"></textarea></label>
+
+        <label><span data-admin-i18n="about.team.2.name_label">2. Name</span> <input id="t2_name"></label>
+        <label><span data-admin-i18n="about.team.2.position_label">2. Position</span> <input id="t2_pos"></label>
+        <label><span data-admin-i18n="about.team.2.desc_label">2. Description</span> <textarea id="t2_desc" rows="3"></textarea></label>
+
+        <label><span data-admin-i18n="about.team.3.name_label">3. Name</span> <input id="t3_name"></label>
+        <label><span data-admin-i18n="about.team.3.position_label">3. Position</span> <input id="t3_pos"></label>
+        <label><span data-admin-i18n="about.team.3.desc_label">3. Description</span> <textarea id="t3_desc" rows="3"></textarea></label>
+
+        <label><span data-admin-i18n="about.team.4.name_label">4. Name</span> <input id="t4_name"></label>
+        <label><span data-admin-i18n="about.team.4.position_label">4. Position</span> <input id="t4_pos"></label>
+        <label><span data-admin-i18n="about.team.4.desc_label">4. Description</span> <textarea id="t4_desc" rows="3"></textarea></label>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="about.section.cta">CTA</span>
+        <label class="toggle">
+          <input type="checkbox" id="visible_about_cta" checked> <span data-admin-i18n="toggle.show"></span>
+        </label>
+      </h3>
+      <div class="grid-3">
+        <label><span data-admin-i18n="about.cta.title_label">Title</span> <input id="cta_title"></label>
+        <label><span data-admin-i18n="about.cta.description_label">Description</span> <textarea id="cta_description" rows="3"></textarea></label>
+        <label><span data-admin-i18n="about.cta.button_label">Button text</span> <input id="cta_button"></label>
+      </div>
+
+      <div class="actions">
+        <button id="loadBtn" class="btn" data-admin-i18n="action.load">Р—Р°РіСЂСѓР·РёС‚СЊ</button>
+        <button id="saveBtn" class="btn btn-primary" data-admin-i18n="action.save">РЎРѕС…СЂР°РЅРёС‚СЊ</button>
+        <button id="exportBtn" class="btn btn-accent" data-admin-i18n="action.export">Р­РєСЃРїРѕСЂС‚ JSON</button>
+        <button id="previewBtn" class="btn btn-secondary" data-admin-i18n="action.preview">РџСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ</button>
+      </div>
+      <p id="status" class="status"></p>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/admin-i18n.js"></script>
+  <script src="js/about.js"></script>
+</body>
+</html>
+

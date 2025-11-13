@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antique Roman Palace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/Global.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/Main-menu.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/loader.css">
+</head>
+<body>
+
+     <div class="loader">
+    <div class="stars-arc">
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+    </div>
+    <div class="main-text">ANTIQUE ROMAN</div>
+    <div class="sub-text">Palace</div>
+  </div>
+  <div class="content">
+    <div data-include="includes/header.html"></div>
+
+    <main>
+        <section class="hero" data-block="hero">
+            <div class="slide active" style="background-image: url('../assets/imgs/a.avif');"></div>
+            <div class="slide" style="background-image: url('../assets/img/first.jpg');" data-img="hero.image1"></div>
+            <div class="slide" style="background-image: url('../assets/img/second.jpg');" data-img="hero.image2"></div>
+            <div class="slide" style="background-image: url('../assets/img/third.jpg');" data-img="hero.image3"></div>
+            <div class="slide" style="background-image: url('../assets/imgs/10.webp');" data-img="hero.image4"></div>
+
+            <div class="overlay"></div>
+            <div class="center-text"><span data-i18n="hero.greeting">Welcome to</span> <span class="color-yellow" data-i18n="hero.name">Antique Roman Palace</span></div>
+            <div class="center-text-min" data-i18n="hero.age">+16</div>
+            
+            <div class="slider-dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+                <span class="dot" data-index="4"></span>
+            </div>
+        </section>
+    </main>
+
+    <div class="container" data-block="welcome">
+        <section class="hotel-section">
+            <div class="hotel-row reverse">
+                <img src="../assets/img/kit.jpg" alt="Antique Roman Palace" class="hotel-image" data-img="welcome.image">
+                <div class="hotel-content">
+                    <h2 data-i18n="hotel.welcome.title">Welcome to Antique Roman Palace</h2>
+                    <p data-i18n="hotel.welcome.p1">     
+                        Your paradise on the Mediterranean! Sun, sea, history, and romance are waiting for you. From our classic buildings, you will enjoy breathtaking views of the Alanya coastline. Just steps away you'll find ancient ruins, vibrant streets, and famous landmarks.
+                    </p>
+                    <a href="about.html" class="hotel-btn" data-i18n="hotel.discover">Discover More</a>
+                </div>
+            </div>
+        </section>
+<section class="apartments-block" id="rooms-carousel" data-block="apartments">
+    <h2 class="block-heading" data-i18n="apartments.title">Our Apartments</h2>
+
+  <div class="carousel-wrapper">
+    <button class="carousel-arrow arrow-left">&#10094;</button>
+    <div class="carousel-track">
+            <a href="room/Standart.html" class="carousel-item">
+                <img src="../assets/img/Standart.avif" alt="Комната Стандарт">
+                <h3 data-i18n="room.standard">Standard</h3>
+            </a>
+
+            <a href="room/Comfort.html" class="carousel-item">
+                <img src="../assets/img/Standart_Plus.avif" alt="Комната у моря">
+                <h3 data-i18n="room.sea">Sea view</h3>
+            </a>
+
+            <a href="room/Economy.html" class="carousel-item">
+                <img src="../assets/img/econom.avif" alt="Эконом вариант">
+                <h3 data-i18n="room.economy">Economy</h3>
+            </a>
+      
+            <a href="room/Queen.html" class="carousel-item">
+                <img src="../assets/img/Queen.avif" alt="Queen Suite">
+                <h3 data-i18n="room.queen">Queen Suite</h3>
+            </a>
+
+            <a href="room/King.html" class="carousel-item">
+                <img src="../assets/imgs/K1.jpg" alt="King Suite">
+                <h3 data-i18n="room.king">King Suite</h3>
+            </a>
+                <a href="room/Standart.html" class="carousel-item">
+                <img src="../assets/img/Standart.avif" alt="Комната Стандарт">
+                <h3 data-i18n="room.standard">Standard</h3>
+            </a>
+    </div>
+    <button class="carousel-arrow arrow-right">&#10095;</button>
+  </div>
+
+  <div class="carousel-dots"></div>
+</section>
+
+
+        <section class="hotel-section" data-block="comfort">
+            <div class="hotel-row">
+                <img src="../assets/img/style.webp" alt="Comfort & Style" class="hotel-image" data-img="comfort.image">
+                <div class="hotel-content">
+                    <h2 data-i18n="comfort.title">Comfort & Style</h2>
+                    <p data-i18n="comfort.p">
+                        Rooms for Every Mood. Choose between standard or suite — all featuring balconies, air conditioning, and a minibar. Interiors in Roman, Ottoman, and classic styles create an atmosphere of history and art right inside your room.
+                    </p>
+                    <a href="#" class="hotel-btn" data-i18n="explore.rooms">Explore Rooms</a>
+                </div>
+            </div>
+            
+            <div class="divider">
+                <span>✦</span> <span>✦</span> <span>✦</span>
+            </div>
+
+            
+            <div class="hotel-row reverse">
+                <img src="../assets/img/comfort.jpg" alt="Taste & Entertainment" class="hotel-image" data-img="taste.image">
+                <div class="hotel-content">
+                    <h2 data-i18n="taste.title">Taste, Entertainment & Relaxation</h2>
+                    <p data-i18n="taste.p">
+                        Ultra all-inclusive: Turkish and European cuisine, a sea-view restaurant, two pools, and a private beach. Daily shows, contests, Turkish night, live music. Plus a hammam, sauna, massage, and fitness facilities — for complete relaxation.
+                    </p>
+                    <a href="#" class="hotel-btn" data-i18n="view.amenities">View Amenities</a>
+                </div>
+            </div>
+        </section>
+<div class="decoration">
+    <i class="fas fa-hotel"></i>
+    <i class="fas fa-concierge-bell"></i>
+    <i class="fas fa-swimmer"></i>
+</div>
+
+    </div>
+
+
+    <div data-include="includes/footer.html"></div>
+    </div>
+    <script src="../assets/js/loader.js"></script>
+    <script src="../assets/js/slider.js"></script>
+    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/includes.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/Main-menu.js"></script>
+    <script src="/assets/js/cms-main.js"></script>
+</body>
+</html>

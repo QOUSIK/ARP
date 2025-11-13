@@ -1,0 +1,183 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Main Page вЂ” ARP Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <!-- рџ”№ Р’РµСЂС…РЅСЏСЏ РїР°РЅРµР»СЊ -->
+  <header class="admin-header">
+    <h1>ARP Admin</h1>
+    <nav>
+      <a href="index.html" data-admin-i18n="nav.dashboard">Dashboard</a>
+      <a href="main.html" class="active" data-admin-i18n="nav.main">Main Page</a>
+      <a href="about.html" data-admin-i18n="nav.about">About Page</a>
+      <a href="rest.html" data-admin-i18n="nav.rest">Rest-Bar Page</a>
+      <a href="gallery.html" data-admin-i18n="nav.gallery">Gallery Page</a>
+      <a href="roomslist.html" data-admin-i18n="nav.rooms">Rooms Page</a>
+      <a href="room-detail.html" data-admin-i18n="nav.room_detail">Room Detail</a>
+      <a href="settings.html" data-admin-i18n="nav.settings">Settings</a>
+      <select id="adminLangSelect" style="margin-left:auto">
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+        <option value="tr">TR</option>
+        <option value="uk">UA</option>
+      </select>
+      <button id="logoutBtn" class="btn btn-logout" data-admin-i18n="auth.logout">Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 data-admin-i18n="page.main.title">Управление главной страницей</h2>
+
+      <!-- рџЊђ РЇР·С‹Рє -->
+      <div class="row">
+        <label>рџЊЌ РЇР·С‹Рє РёРЅС‚РµСЂС„РµР№СЃР°
+          <select id="lang">
+            <option value="en">English</option>
+            <option value="ru">Р СѓСЃСЃРєРёР№</option>
+            <option value="tr">TГјrkГ§e</option>
+            <option value="de">Deutsch</option>
+          </select>
+        </label>
+      </div>
+
+      <!-- рџЏ› Hero -->
+      <h3>
+        рџЏ› Р‘Р°РЅРЅРµСЂ (Hero)
+        <label class="toggle">
+          <input type="checkbox" id="visible_hero" checked> <span data-admin-i18n="toggle.show">Показать на сайте</span>
+        </label>
+      </h3>
+      <div class="grid-3">
+        <label>рџЏ  РўРµРєСЃС‚ РїСЂРёРІРµС‚СЃС‚РІРёСЏ <input id="hero_greeting"></label>
+        <label>рџЏЁ РќР°Р·РІР°РЅРёРµ РѕС‚РµР»СЏ <input id="hero_name"></label>
+        <label>рџ”ћ Р’РѕР·СЂР°СЃС‚РЅРѕРµ РѕРіСЂР°РЅРёС‡РµРЅРёРµ <input id="hero_age"></label>
+      </div>
+
+      <h4>рџ“ё РЎР»Р°Р№РґС‹ Hero</h4>
+      <div class="upload-grid">
+        <div class="upload-card">
+          <div class="upload-number">2</div>
+          <img class="upload-preview" id="p_hero1" alt="preview">
+          <input id="hero_image1"><input type="file" id="f_hero1">
+        </div>
+        <div class="upload-card">
+          <div class="upload-number">3</div>
+          <img class="upload-preview" id="p_hero2" alt="preview">
+          <input id="hero_image2"><input type="file" id="f_hero2">
+        </div>
+        <div class="upload-card">
+          <div class="upload-number">4</div>
+          <img class="upload-preview" id="p_hero3" alt="preview">
+          <input id="hero_image3"><input type="file" id="f_hero3">
+        </div>
+        <div class="upload-card">
+          <div class="upload-number">5</div>
+          <img class="upload-preview" id="p_hero4" alt="preview">
+          <input id="hero_image4"><input type="file" id="f_hero4">
+        </div>
+        <div class="upload-card">
+          <div class="upload-number">1</div>
+          <img class="upload-preview" id="p_hero5" alt="preview">
+          <input id="hero_image5"><input type="file" id="f_hero5">
+        </div>
+      </div>
+
+      <!-- рџЊ… Welcome -->
+      <h3>
+        рџЊ… Р Р°Р·РґРµР» вЂњWelcome to Antique Roman PalaceвЂќ
+        <label class="toggle">
+          <input type="checkbox" id="visible_welcome" checked> <span data-admin-i18n="toggle.show">Показать на сайте</span>
+        </label>
+      </h3>
+      <div class="grid-3">
+        <label>рџ“° Р—Р°РіРѕР»РѕРІРѕРє <input id="welcome_title"></label>
+        <label>рџ”— РўРµРєСЃС‚ РєРЅРѕРїРєРё <input id="hotel_discover"></label>
+      </div>
+      <label>рџ“њ РћСЃРЅРѕРІРЅРѕР№ С‚РµРєСЃС‚ РїСЂРёРІРµС‚СЃС‚РІРёСЏ
+        <textarea id="welcome_p1" rows="4"></textarea>
+      </label>
+      <div class="upload-group">
+        <h4>рџ“· РљР°СЂС‚РёРЅРєР° Welcome</h4>
+        <div class="upload-card">
+          <img class="upload-preview" id="p_welcome" alt="preview">
+          <input id="welcome_image"><input type="file" id="f_welcome">
+        </div>
+      </div>
+
+      <!-- рџ›ЏпёЏ Comfort -->
+      <h3>
+        рџ›ЏпёЏ Р Р°Р·РґРµР» вЂњComfort & StyleвЂќ
+        <label class="toggle">
+          <input type="checkbox" id="visible_comfort" checked> <span data-admin-i18n="toggle.show">Показать на сайте</span>
+        </label>
+      </h3>
+      <div class="grid-3">
+        <label>рџ–‹пёЏ Р—Р°РіРѕР»РѕРІРѕРє Р±Р»РѕРєР° <input id="comfort_title"></label>
+        <label>рџ”— РўРµРєСЃС‚ РєРЅРѕРїРєРё <input id="explore_rooms"></label>
+      </div>
+      <label>рџ“ќ РћРїРёСЃР°РЅРёРµ Р±Р»РѕРєР°
+        <textarea id="comfort_p" rows="4"></textarea>
+      </label>
+      <div class="upload-group">
+        <h4>рџ“· РљР°СЂС‚РёРЅРєР° Comfort</h4>
+        <div class="upload-card">
+          <img class="upload-preview" id="p_comfort" alt="preview">
+          <input id="comfort_image"><input type="file" id="f_comfort">
+        </div>
+      </div>
+
+      <!-- рџЌЅпёЏ Taste -->
+      <h3>
+        рџЌЅпёЏ Р Р°Р·РґРµР» вЂњTaste & EntertainmentвЂќ
+        <label class="toggle">
+          <input type="checkbox" id="visible_taste" checked> <span data-admin-i18n="toggle.show">Показать на сайте</span>
+        </label>
+      </h3>
+      <div class="grid-3">
+        <label>рџ–‹пёЏ Р—Р°РіРѕР»РѕРІРѕРє Р±Р»РѕРєР° <input id="taste_title"></label>
+        <label>рџ”— РўРµРєСЃС‚ РєРЅРѕРїРєРё <input id="view_amenities"></label>
+      </div>
+      <label>рџ“ќ РћРїРёСЃР°РЅРёРµ Р±Р»РѕРєР°
+        <textarea id="taste_p" rows="4"></textarea>
+      </label>
+      <div class="upload-group">
+        <h4>рџ“· РљР°СЂС‚РёРЅРєР° Taste</h4>
+        <div class="upload-card">
+          <img class="upload-preview" id="p_taste" alt="preview">
+          <input id="taste_image"><input type="file" id="f_taste">
+        </div>
+      </div>
+
+      <!-- рџЏпёЏ Apartments -->
+      <h3>
+        рџЏпёЏ Р Р°Р·РґРµР» вЂњOur ApartmentsвЂќ
+        <label class="toggle">
+          <input type="checkbox" id="visible_apartments" checked> <span data-admin-i18n="toggle.show">Показать на сайте</span>
+        </label>
+      </h3>
+      <div class="row">
+        <label>рџ–‹пёЏ Р—Р°РіРѕР»РѕРІРѕРє Р±Р»РѕРєР° <input id="apartments_title"></label>
+      </div>
+
+      <!-- вљ™пёЏ РЈРїСЂР°РІР»РµРЅРёРµ -->
+      <div class="actions">
+        <button id="loadBtn" class="btn" data-admin-i18n="action.load">🔄 Загрузить</button>
+        <button id="saveBtn" class="btn btn-primary" data-admin-i18n="action.save">💾 Сохранить</button>
+        <button id="exportBtn" class="btn btn-accent" data-admin-i18n="action.export">📤 Экспорт JSON</button>
+        <button id="previewBtn" class="btn btn-secondary" data-admin-i18n="action.preview">👁️ Предпросмотр</button>
+      </div>
+      <p id="status" class="status"></p>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/admin-i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
+

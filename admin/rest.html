@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Rest-Bar Page - ARP Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <h1>ARP Admin</h1>
+    <nav>
+      <a href="index.html" data-admin-i18n="nav.dashboard">Dashboard</a>
+      <a href="main.html" data-admin-i18n="nav.main">Main Page</a>
+      <a href="about.html" data-admin-i18n="nav.about">About Page</a>
+      <a href="rest.html" class="active" data-admin-i18n="nav.rest">Rest-Bar Page</a>
+      <a href="gallery.html" data-admin-i18n="nav.gallery">Gallery Page</a>
+      <a href="roomslist.html" data-admin-i18n="nav.rooms">Rooms Page</a>
+      <a href="room-detail.html" data-admin-i18n="nav.room_detail">Room Detail</a>
+      <a href="settings.html" data-admin-i18n="nav.settings">Settings</a>
+      <a href="contact.html" data-admin-i18n="nav.contact">Contact Page</a>
+      <select id="adminLangSelect" style="margin-left:auto">
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+        <option value="tr">TR</option>
+        <option value="uk">UA</option>
+      </select>
+      <button id="logoutBtn" class="btn btn-logout" data-admin-i18n="auth.logout">Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 data-admin-i18n="page.rest.title">Управление страницей Rest-Bar</h2>
+
+      <div class="row">
+        <label><span data-admin-i18n="form.lang">Язык контента</span>
+          <select id="lang">
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="tr">Türkçe</option>
+            <option value="de">Deutsch</option>
+          </select>
+        </label>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="rest.section.hero">Hero</span>
+        <label class="toggle">
+          <input type="checkbox" id="visible_rest_hero" checked> <span data-admin-i18n="toggle.show"></span>
+        </label>
+      </h3>
+      <div class="grid-3">
+        <label><span data-admin-i18n="rest.hero.title_label">Title</span> <input id="rest_hero_title"></label>
+        <label><span data-admin-i18n="rest.hero.subtitle_label">Subtitle</span> <input id="rest_hero_subtitle"></label>
+      </div>
+      <div class="upload-group">
+        <h4 data-admin-i18n="rest.hero.image_heading">Hero Image</h4>
+        <div class="upload-card">
+          <img class="upload-preview" id="p_rest_hero" alt="preview">
+          <input id="rest_hero_image"><input type="file" id="f_rest_hero">
+        </div>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="rest.section.main">Main Restaurant</span>
+        <label class="toggle">
+          <input type="checkbox" id="visible_rest_main" checked> <span data-admin-i18n="toggle.show"></span>
+        </label>
+      </h3>
+      <div class="upload-card">
+        <img class="upload-preview" id="p_rest_main" alt="preview">
+        <input id="rest_image_main"><input type="file" id="f_rest_main">
+      </div>
+      <div class="grid-3">
+        <label><span data-admin-i18n="rest.main.title_label">Title</span> <input id="r_main_title"></label>
+        <label><span data-admin-i18n="rest.main.desc_label">Description</span> <textarea id="r_main_desc" rows="3"></textarea></label>
+        <label><span data-admin-i18n="rest.main.hours_label">Opening hours</span> <input id="r_main_hours"></label>
+        <label><span data-admin-i18n="rest.main.breakfast_label">Breakfast</span> <input id="r_main_breakfast"></label>
+        <label><span data-admin-i18n="rest.main.lunch_label">Lunch</span> <input id="r_main_lunch"></label>
+        <label><span data-admin-i18n="rest.main.dinner_label">Dinner</span> <input id="r_main_dinner"></label>
+        <label><span data-admin-i18n="rest.main.f1_label">Feature 1</span> <input id="r_main_f1"></label>
+        <label><span data-admin-i18n="rest.main.f2_label">Feature 2</span> <input id="r_main_f2"></label>
+        <label><span data-admin-i18n="rest.main.f3_label">Feature 3</span> <input id="r_main_f3"></label>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="rest.section.harem">HAREM Restaurant</span>
+        <label class="toggle">
+          <input type="checkbox" id="visible_rest_harem" checked> <span data-admin-i18n="toggle.show"></span>
+        </label>
+      </h3>
+      <div class="upload-card">
+        <img class="upload-preview" id="p_rest_harem" alt="preview">
+        <input id="rest_image_harem"><input type="file" id="f_rest_harem">
+      </div>
+      <div class="grid-3">
+        <label><span data-admin-i18n="rest.harem.title_label">Title</span> <input id="r_harem_title"></label>
+        <label><span data-admin-i18n="rest.harem.desc_label">Description</span> <textarea id="r_harem_desc" rows="3"></textarea></label>
+        <label><span data-admin-i18n="rest.harem.note_label">Note</span> <input id="r_harem_note"></label>
+        <label><span data-admin-i18n="rest.harem.f1_label">Feature 1</span> <input id="r_harem_f1"></label>
+        <label><span data-admin-i18n="rest.harem.f2_label">Feature 2</span> <input id="r_harem_f2"></label>
+        <label><span data-admin-i18n="rest.harem.f3_label">Feature 3</span> <input id="r_harem_f3"></label>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="rest.section.agora">Agora Bar</span>
+        <label class="toggle">
+          <input type="checkbox" id="visible_rest_agora" checked> <span data-admin-i18n="toggle.show"></span>
+        </label>
+      </h3>
+      <div class="upload-card">
+        <img class="upload-preview" id="p_rest_agora" alt="preview">
+        <input id="rest_image_agora"><input type="file" id="f_rest_agora">
+      </div>
+      <div class="grid-3">
+        <label><span data-admin-i18n="rest.agora.title_label">Title</span> <input id="r_agora_title"></label>
+        <label><span data-admin-i18n="rest.agora.desc_label">Description</span> <textarea id="r_agora_desc" rows="3"></textarea></label>
+        <label><span data-admin-i18n="rest.agora.drink_label">Drinks</span> <input id="r_agora_drink"></label>
+        <label><span data-admin-i18n="rest.agora.snacks_label">Snacks</span> <input id="r_agora_snacks"></label>
+        <label><span data-admin-i18n="rest.agora.f1_label">Feature 1</span> <input id="r_agora_f1"></label>
+        <label><span data-admin-i18n="rest.agora.f2_label">Feature 2</span> <input id="r_agora_f2"></label>
+        <label><span data-admin-i18n="rest.agora.f3_label">Feature 3</span> <input id="r_agora_f3"></label>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="rest.section.american">American Bar</span>
+        <label class="toggle">
+          <input type="checkbox" id="visible_rest_american" checked> <span data-admin-i18n="toggle.show"></span>
+        </label>
+      </h3>
+      <div class="upload-card">
+        <img class="upload-preview" id="p_rest_american" alt="preview">
+        <input id="rest_image_american"><input type="file" id="f_rest_american">
+      </div>
+      <div class="grid-3">
+        <label><span data-admin-i18n="rest.american.title_label">Title</span> <input id="r_american_title"></label>
+        <label><span data-admin-i18n="rest.american.desc_label">Description</span> <textarea id="r_american_desc" rows="3"></textarea></label>
+        <label><span data-admin-i18n="rest.american.note_label">Note</span> <input id="r_american_note"></label>
+        <label><span data-admin-i18n="rest.american.f1_label">Feature 1</span> <input id="r_american_f1"></label>
+        <label><span data-admin-i18n="rest.american.f2_label">Feature 2</span> <input id="r_american_f2"></label>
+        <label><span data-admin-i18n="rest.american.f3_label">Feature 3</span> <input id="r_american_f3"></label>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="rest.section.beach">Beach Bar</span>
+        <label class="toggle">
+          <input type="checkbox" id="visible_rest_beach" checked> <span data-admin-i18n="toggle.show"></span>
+        </label>
+      </h3>
+      <div class="upload-card">
+        <img class="upload-preview" id="p_rest_beach" alt="preview">
+        <input id="rest_image_beach"><input type="file" id="f_rest_beach">
+      </div>
+      <div class="grid-3">
+        <label><span data-admin-i18n="rest.beach.title_label">Title</span> <input id="r_beach_title"></label>
+        <label><span data-admin-i18n="rest.beach.desc_label">Description</span> <textarea id="r_beach_desc" rows="3"></textarea></label>
+        <label><span data-admin-i18n="rest.beach.open_label">Open</span> <input id="r_beach_open"></label>
+        <label><span data-admin-i18n="rest.beach.note_label">Note</span> <input id="r_beach_note"></label>
+        <label><span data-admin-i18n="rest.beach.f1_label">Feature 1</span> <input id="r_beach_f1"></label>
+        <label><span data-admin-i18n="rest.beach.f2_label">Feature 2</span> <input id="r_beach_f2"></label>
+        <label><span data-admin-i18n="rest.beach.f3_label">Feature 3</span> <input id="r_beach_f3"></label>
+      </div>
+
+      <div class="actions">
+        <button id="loadBtn" class="btn" data-admin-i18n="action.load">Загрузить</button>
+        <button id="saveBtn" class="btn btn-primary" data-admin-i18n="action.save">Сохранить</button>
+        <button id="exportBtn" class="btn btn-accent" data-admin-i18n="action.export">Экспорт JSON</button>
+        <button id="previewBtn" class="btn btn-secondary" data-admin-i18n="action.preview">Предпросмотр</button>
+      </div>
+      <p id="status" class="status"></p>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/admin-i18n.js"></script>
+  <script src="js/rest.js"></script>
+</body>
+</html>

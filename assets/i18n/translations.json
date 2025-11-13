@@ -1,0 +1,177 @@
+{
+  "en": {
+    "nav.home": "Home",
+    "nav.about": "About",
+    "nav.gastronomy": "Gastronomy",
+    "nav.gallery": "Photo Gallery",
+    "nav.rooms": "Rooms",
+    "nav.contact": "Contact Us",
+    "reservation.button": "Reservation",
+
+    "hero.greeting": "Welcome to",
+    "hero.name": "Antique Roman Palace",
+    "hero.age": "+16",
+
+    "hotel.welcome.title": "Welcome to Antique Roman Palace",
+    "hotel.welcome.p1": "Your paradise on the Mediterranean! Sun, sea, history, and romance are waiting for you. From our classic buildings, you will enjoy breathtaking views of the Alanya coastline. Just steps away you'll find ancient ruins, vibrant streets, and famous landmarks.",
+    "hotel.discover": "Discover More",
+
+    "apartments.title": "Our Apartments",
+    "room.standard": "Standard",
+    "room.sea": "Sea view",
+    "room.economy": "Economy",
+    "room.queen": "Queen Suite",
+    "room.king": "King Suite",
+
+    "comfort.title": "Comfort & Style",
+    "comfort.p": "Rooms for Every Mood. Choose between standard or suite — all featuring balconies, air conditioning, and a minibar. Interiors in Roman, Ottoman, and classic styles create an atmosphere of history and art right inside your room.",
+    "explore.rooms": "Explore Rooms",
+
+    "taste.title": "Taste, Entertainment & Relaxation",
+    "taste.p": "Ultra all-inclusive: Turkish and European cuisine, a sea-view restaurant, two pools, and a private beach. Daily shows, contests, Turkish night, live music. Plus a hammam, sauna, massage, and fitness facilities — for complete relaxation.",
+    "view.amenities": "View Amenities",
+
+    "footer.motto": "Ars longa, vita brevis",
+    "footer.about.summary": "Antique Roman Palace invites you to experience timeless elegance and luxury by the sea. Enjoy a journey through history with modern comfort.",
+    "footer.headers.hotels": "Our Hotels",
+    "footer.headers.rooms": "Rooms",
+    "footer.headers.terms": "Terms of Usage",
+    "footer.contact.title": "Contact Us",
+    "footer.phone": "+90 (0242) 514 05 06",
+    "footer.address": "Oba, Atatürk Cd. No:31, 07460 Alanya/Antalya",
+    "footer.email": "info@antiqueromanpalace.com",
+    "footer.bottom": "© 2025 Antique Roman Palace — All Rights Reserved"
+  },
+
+  "ru": {
+    "nav.home": "Главная",
+    "nav.about": "О нас",
+    "nav.gastronomy": "Гастрономия",
+    "nav.gallery": "Фотогалерея",
+    "nav.rooms": "Номера",
+    "nav.contact": "Контакты",
+    "reservation.button": "Бронирование",
+
+    "hero.greeting": "Добро пожаловать в",
+    "hero.name": "Античный Римский Дворец",
+    "hero.age": "+16",
+
+    "hotel.welcome.title": "Добро пожаловать в Античный Римский Дворец",
+    "hotel.welcome.p1": "Ваш рай на побережье Средиземного моря! Солнце, море, история и романтика ждут вас. Насладитесь захватывающими видами береговой линии Аланьи. В двух шагах находятся древние руины, оживлённые улицы и известные достопримечательности.",
+    "hotel.discover": "Узнать больше",
+
+    "apartments.title": "Наши апартаменты",
+    "room.standard": "Стандарт",
+    "room.sea": "С видом на море",
+    "room.economy": "Эконом",
+    "room.queen": "Queen Suite",
+    "room.king": "King Suite",
+
+    "comfort.title": "Комфорт и стиль",
+    "comfort.p": "Номера на любой вкус. Выберите стандарт или люкс — все с балконами, кондиционером и мини-баром. Интерьеры в римском, османском и классическом стилях создают атмосферу истории и искусства прямо в комнате.",
+    "explore.rooms": "Просмотреть номера",
+
+    "taste.title": "Вкус, развлечения и отдых",
+    "taste.p": "Ultra all-inclusive: турецкая и европейская кухни, ресторан с видом на море, два бассейна и частный пляж. Ежедневные шоу, конкурсы, турецкая ночь, живая музыка. Плюс хаммам, сауна, массаж и тренажёрный зал — для полного релакса.",
+    "view.amenities": "Посмотреть удобства",
+
+    "footer.motto": "Ars longa, vita brevis",
+    "footer.about.summary": "Античный Римский Дворец приглашает вас окунуться в вечную элегантность и роскошь у моря.",
+    "footer.headers.hotels": "Наши отели",
+    "footer.headers.rooms": "Номера",
+    "footer.headers.terms": "Условия использования",
+    "footer.contact.title": "Свяжитесь с нами",
+    "footer.phone": "+90 (0242) 514 05 06",
+    "footer.address": "Oba, Atatürk Cd. No:31, 07460 Alanya/Antalya",
+    "footer.email": "info@antiqueromanpalace.com",
+    "footer.bottom": "© 2025 Antique Roman Palace — Все права защищены"
+  },
+
+  "tr": {
+    "nav.home": "Ana Sayfa",
+    "nav.about": "Hakkında",
+    "nav.gastronomy": "Gastronomi",
+    "nav.gallery": "Foto Galeri",
+    "nav.rooms": "Odalar",
+    "nav.contact": "İletişim",
+    "reservation.button": "Rezervasyon",
+
+    "hero.greeting": "Hoş geldiniz",
+    "hero.name": "Antik Roma Sarayı",
+    "hero.age": "+16",
+
+    "hotel.welcome.title": "Antik Roma Sarayı'na Hoş Geldiniz",
+    "hotel.welcome.p1": "Akdeniz'de cennetinizi keşfedin! Güneş, deniz, tarih ve romantizm sizi bekliyor. Klasik binalarımızdan Alanya kıyısının muhteşem manzarasını izleyebilirsiniz. Birkaç adım ötede antik kalıntılar, canlı sokaklar ve ünlü simge yapılar bulunur.",
+    "hotel.discover": "Daha Fazla Keşfet",
+
+    "apartments.title": "Dairelerimiz",
+    "room.standard": "Standart",
+    "room.sea": "Deniz manzaralı",
+    "room.economy": "Ekonomik",
+    "room.queen": "Queen Suite",
+    "room.king": "King Suite",
+
+    "comfort.title": "Konfor & Stil",
+    "comfort.p": "Her ruh haline uygun odalar. Standart veya süit arasında seçim yapın — hepsi balkon, klima ve minibar içerir. Roman, Osmanlı ve klasik stil iç mekanlar, odanızda tarihin ve sanatın atmosferini yaratır.",
+    "explore.rooms": "Odaları Keşfet",
+
+    "taste.title": "Lezzet, Eğlence & Dinlenme",
+    "taste.p": "Ultra her şey dahil: Türk ve Avrupa mutfağı, deniz manzaralı restoran, iki havuz ve özel plaj. Günlük gösteriler, yarışmalar, Türk gecesi, canlı müzik. Ayrıca hamam, sauna, masaj ve spor salonu — tam bir dinlenme deneyimi için.",
+    "view.amenities": "Olanakları Görüntüle",
+
+    "footer.motto": "Ars longa, vita brevis",
+    "footer.about.summary": "Antik Roma Sarayı sizi denizde zamansız bir zerafet ve lüks deneyimi yaşamaya davet ediyor.",
+    "footer.headers.hotels": "Otellerimiz",
+    "footer.headers.rooms": "Odalar",
+    "footer.headers.terms": "Kullanım Şartları",
+    "footer.contact.title": "İletişim",
+    "footer.phone": "+90 (0242) 514 05 06",
+    "footer.address": "Oba, Atatürk Cd. No:31, 07460 Alanya/Antalya",
+    "footer.email": "info@antiqueromanpalace.com",
+    "footer.bottom": "© 2025 Antique Roman Palace — Tüm Hakları Saklıdır"
+  },
+
+  "de": {
+    "nav.home": "Startseite",
+    "nav.about": "Über uns",
+    "nav.gastronomy": "Gastronomie",
+    "nav.gallery": "Fotogalerie",
+    "nav.rooms": "Zimmer",
+    "nav.contact": "Kontakt",
+    "reservation.button": "Reservierung",
+
+    "hero.greeting": "Willkommen",
+    "hero.name": "Antikes Römisches Palast",
+    "hero.age": "+16",
+
+    "hotel.welcome.title": "Willkommen im Antique Roman Palace",
+    "hotel.welcome.p1": "Ihr Paradies am Mittelmeer! Sonne, Meer, Geschichte und Romantik erwarten Sie. Genießen Sie atemberaubende Ausblicke auf die Küste von Alanya. Nur wenige Schritte entfernt finden Sie antike Ruinen, belebte Straßen und berühmte Sehenswürdigkeiten.",
+    "hotel.discover": "Mehr erfahren",
+
+    "apartments.title": "Unsere Apartments",
+    "room.standard": "Standard",
+    "room.sea": "Meerblick",
+    "room.economy": "Economy",
+    "room.queen": "Queen Suite",
+    "room.king": "King Suite",
+
+    "comfort.title": "Komfort & Stil",
+    "comfort.p": "Zimmer für jede Stimmung. Wählen Sie zwischen Standard oder Suite — alle mit Balkon, Klimaanlage und Minibar. Innenräume im römischen, osmanischen und klassischen Stil schaffen eine Atmosphäre von Geschichte und Kunst.",
+    "explore.rooms": "Zimmer ansehen",
+
+    "taste.title": "Geschmack, Unterhaltung & Entspannung",
+    "taste.p": "Ultra All-Inclusive: Türkische und europäische Küche, ein Restaurant mit Meerblick, zwei Pools und ein Privatsandstrand. Tägliche Shows, Wettbewerbe, Türkische Nacht, Live-Musik. Außerdem Hamam, Sauna, Massage und Fitness — für vollständige Entspannung.",
+    "view.amenities": "Ausstattung ansehen",
+
+    "footer.motto": "Ars longa, vita brevis",
+    "footer.about.summary": "Antique Roman Palace lädt Sie ein, zeitlose Eleganz und Luxus am Meer zu erleben.",
+    "footer.headers.hotels": "Unsere Hotels",
+    "footer.headers.rooms": "Zimmer",
+    "footer.headers.terms": "Nutzungsbedingungen",
+    "footer.contact.title": "Kontakt",
+    "footer.phone": "+90 (0242) 514 05 06",
+    "footer.address": "Oba, Atatürk Cd. No:31, 07460 Alanya/Antalya",
+    "footer.email": "info@antiqueromanpalace.com",
+    "footer.bottom": "© 2025 Antique Roman Palace — Alle Rechte vorbehalten"
+  }
+}

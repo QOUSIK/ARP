@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/Global.css">
+    <link rel="stylesheet" href="../../assets/css/gallery.css">
+    <link rel="stylesheet" href="../../assets/css/header.css">
+    <link rel="stylesheet" href="../../assets/css/footer.css">
+</head>
+<style>
+
+            .about-hero {
+background: linear-gradient(
+    rgba(109, 26, 44, 0.85),   /* #6d1a2c — тёмный бордо */
+    rgba(60, 10, 22, 0.9)     /* ещё темнее для глубины */
+  ),
+  url('../../assets/img/4block.jpg');
+background-size: cover;
+background-position: center;
+
+
+            background-size: cover;
+            background-position: center;
+            padding: 200px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+</style>
+<body>
+    <div data-include="includes/header.html"></div>
+
+        <section class="about-hero" data-block="gallery.hero">
+        <h1 data-i18n="gallery.hero.title"> Gallery</h1>
+        <p data-i18n="gallery.hero.subtitle">Where ancient Roman elegance meets modern luxury on the shore of the Mediterranean Sea</p>
+    </section>
+    <div class="container">
+
+        
+        <div class="gallery-categories">
+            <button class="category-btn active" data-category="all" data-i18n="gallery.category.all">All</button>
+            <button class="category-btn" data-category="hotel" data-i18n="gallery.category.hotel">Hotel</button>
+            <button class="category-btn" data-category="rooms" data-i18n="gallery.category.rooms">Rooms & Suites</button>
+            <button class="category-btn" data-category="restaurants" data-i18n="gallery.category.restaurants">Restaurants & Bars</button>
+            <button class="category-btn" data-category="pool" data-i18n="gallery.category.pool">Pool & Beach</button>
+            <button class="category-btn" data-category="spa" data-i18n="gallery.category.spa">Spa & Wellness</button>
+            <button class="category-btn" data-category="events" data-i18n="gallery.category.events">Events</button>
+        </div>
+        
+        <div class="gallery-grid">
+            <!-- Hotel -->
+            <div class="gallery-item visible" data-category="hotel">
+                <img src="../../assets/imgs/1.webp" alt="Hotel views" data-i18n-alt="gallery.alt.hotel">
+            </div>
+            <div class="gallery-item visible" data-category="hotel">	
+                <img src="../../assets/imgs/2.webp" alt="Hotel views" data-i18n-alt="gallery.alt.hotel">
+            </div>
+            <div class="gallery-item visible" data-category="hotel">
+                <img src="../../assets/imgs/4.webp" alt="Hotel views">
+            </div>
+            <div class="gallery-item visible" data-category="hotel">
+                <img src="../../assets/imgs/5.webp" alt="Hotel views">
+            </div>
+            <div class="gallery-item visible" data-category="hotel">
+                <img src="../../assets/imgs/6.webp" alt="Hotel views">
+            </div>
+            <div class="gallery-item visible" data-category="hotel">
+                <img src="../../assets/imgs/8.webp" alt="Hotel views">
+            </div>
+            <div class="gallery-item visible" data-category="hotel">
+                <img src="../../assets/imgs/9.webp" alt="Hotel views">
+            </div>
+            <div class="gallery-item visible" data-category="hotel">
+                <img src="../../assets/imgs/10.webp" alt="Hotel views">
+            </div>
+            <div class="gallery-item visible" data-category="hotel">
+                <img src="../../assets/imgs/11.webp" alt="Hotel views">
+            </div>
+            <div class="gallery-item visible" data-category="hotel">
+                <img src="../../assets/imgs/12.webp" alt="Hotel views">
+            </div>
+            <div class="gallery-item visible" data-category="hotel">
+                <img src="../../assets/imgs/13.webp" alt="Hotel views">
+            </div>
+
+            <!-- Rooms & Suites -->
+            <div class="gallery-item visible" data-category="rooms">
+                <img src="../../assets/imgs/oda1.webp" alt="Room">
+            </div>
+            <div class="gallery-item visible" data-category="rooms">
+                <img src="../../assets/imgs/oda2.webp" alt="Room">
+            </div>
+            <div class="gallery-item visible" data-category="rooms">
+                <img src="../../assets/imgs/oda3.webp" alt="Room">
+            </div>
+            <div class="gallery-item visible" data-category="rooms">
+                <img src="../../assets/imgs/oda4.webp" alt="Room">
+            </div>
+            <div class="gallery-item visible" data-category="rooms">
+                <img src="../../assets/imgs/oda5.webp" alt="Room">
+            </div>
+            <div class="gallery-item visible" data-category="rooms">
+                <img src="../../assets/imgs/oda6.webp" alt="Room">
+            </div>
+            <div class="gallery-item visible" data-category="rooms">
+                <img src="../../assets/imgs/oda7.webp" alt="Room">
+            </div>
+            <div class="gallery-item visible" data-category="rooms">
+                <img src="../../assets/imgs/oda8.webp" alt="Room">
+            </div>
+            <div class="gallery-item visible" data-category="rooms">
+                <img src="../../assets/imgs/oda9.webp" alt="Room">
+            </div>
+            <div class="gallery-item visible" data-category="rooms">
+                <img src="../../assets/imgs/oda10.webp" alt="Room">
+            </div>
+            <div class="gallery-item visible" data-category="rooms">
+                <img src="../../assets/imgs/oda11.webp" alt="Room">
+            </div>
+            <div class="gallery-item visible" data-category="rooms">
+                <img src="../../assets/imgs/oda12.webp" alt="Room">
+            </div>
+            <div class="gallery-item visible" data-category="rooms">
+                <img src="../../assets/imgs/oda13.webp" alt="Room">
+            </div>
+            
+            <!-- Restaurants & Bars -->
+            <div class="gallery-item visible" data-category="restaurants">
+                <img src="../../assets/imgs/rest1.webp" alt="Main Restaurant">
+            </div>
+            <div class="gallery-item visible" data-category="restaurants">
+                <img src="../../assets/imgs/bar1.webp" alt="Main Restaurant">
+            </div>
+            <div class="gallery-item visible" data-category="restaurants">
+                <img src="../../assets/imgs/rest2.webp" alt="Main Restaurant">
+            </div>
+            <div class="gallery-item visible" data-category="restaurants">
+                <img src="../../assets/imgs/rest3.webp" alt="Main Restaurant">
+            </div>
+            <div class="gallery-item visible" data-category="restaurants">
+                <img src="../../assets/imgs/bar2.webp" alt="Main Restaurant">
+            </div>
+            <div class="gallery-item visible" data-category="restaurants">
+                <img src="../../assets/imgs/rest4.webp" alt="Main Restaurant">
+            </div>
+            <div class="gallery-item visible" data-category="restaurants">
+                <img src="../../assets/imgs/bar3.webp" alt="Main Restaurant">
+            </div>
+            <div class="gallery-item visible" data-category="restaurants">
+                <img src="../../assets/imgs/rest5.webp" alt="Main Restaurant">
+            </div>
+            <div class="gallery-item visible" data-category="restaurants">
+                <img src="../../assets/imgs/bar4.webp" alt="Main Restaurant">
+            </div>
+            <div class="gallery-item visible" data-category="restaurants">
+                <img src="../../assets/imgs/rest6.webp" alt="Main Restaurant">
+            </div>
+            <!-- Pool & Beach -->
+            <div class="gallery-item visible" data-category="pool">
+                <img src="../../assets/imgs/b1.webp" alt="Infinity Pool">
+            </div>
+            <div class="gallery-item visible" data-category="pool">
+                <img src="../../assets/imgs/b2.webp" alt="Infinity Pool">
+            </div>
+            <div class="gallery-item visible" data-category="pool">
+                <img src="../../assets/imgs/pool1.webp" alt="Infinity Pool">
+            </div>
+
+            <!-- Spa & Wellness -->
+            <div class="gallery-item visible" data-category="spa">
+                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Spa Center">
+            </div>
+            
+            <div class="gallery-item visible" data-category="spa">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wellness Area">
+            </div>
+            
+            <div class="gallery-item visible" data-category="spa">
+                <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Massage Room">
+            </div>
+	       <div class="gallery-item visible" data-category="spa">
+                <img src="../../assets/imgs/spa.jpg" alt="Massage Room">
+            </div>
+            
+            <!-- Events -->
+            <div class="gallery-item visible" data-category="events">
+                <img src="../../assets/imgs/show.jpg" alt="Wedding Venue">
+            </div>
+            <div class="gallery-item visible" data-category="events">
+                <img src="../../assets/imgs/show1.jpg" alt="Wedding Venue">
+            </div>
+            <div class="gallery-item visible" data-category="events">
+                <img src="../../assets/imgs/show2.jpg" alt="Wedding Venue">
+            </div>
+        </div>
+        
+        <div class="decoration">
+            <i class="fas fa-camera"></i> 
+            <i class="fas fa-images"></i> 
+            <i class="fas fa-hotel"></i>
+        </div>
+    </div>
+    <!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-img" src="" alt="">
+    <span class="lightbox-close">&times;</span>
+    <span class="lightbox-prev">&#10094;</span>
+    <span class="lightbox-next">&#10095;</span>
+    <img class="lightbox-img" src="" alt="">
+</div>
+
+    <div data-include="includes/footer.html"></div>
+    <script src="../../assets/js/i18n.js"></script>
+    <script src="../../assets/js/includes.js"></script>
+    <script src="../../assets/js/header.js"></script>
+    <script src="/assets/js/cms-main.js"></script>
+    <script src="../../assets/js/gallery.js"></script>
+</body>
+</html>

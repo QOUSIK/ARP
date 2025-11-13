@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Gallery Page - ARP Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <header class="admin-header">
+    <h1>ARP Admin</h1>
+    <nav>
+      <a href="index.html" data-admin-i18n="nav.dashboard">Dashboard</a>
+      <a href="main.html" data-admin-i18n="nav.main">Main Page</a>
+      <a href="about.html" data-admin-i18n="nav.about">About Page</a>
+      <a href="rest.html" data-admin-i18n="nav.rest">Rest-Bar Page</a>
+      <a href="gallery.html" class="active" data-admin-i18n="nav.gallery">Gallery Page</a>
+      <a href="roomslist.html" data-admin-i18n="nav.rooms">Rooms Page</a>
+      <a href="room-detail.html" data-admin-i18n="nav.room_detail">Room Detail</a>
+      <a href="settings.html" data-admin-i18n="nav.settings">Settings</a>
+      <a href="contact.html" data-admin-i18n="nav.contact">Contact Page</a>
+      <select id="adminLangSelect" style="margin-left:auto">
+        <option value="ru">RU</option>
+        <option value="en">EN</option>
+        <option value="tr">TR</option>
+        <option value="uk">UA</option>
+      </select>
+      <button id="logoutBtn" class="btn btn-logout" data-admin-i18n="auth.logout">Logout</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 data-admin-i18n="page.gallery.title">Управление страницей Галерея</h2>
+
+      <div class="row">
+        <label><span data-admin-i18n="form.lang">Язык контента</span>
+          <select id="lang">
+            <option value="en">English</option>
+            <option value="ru">Русский</option>
+            <option value="tr">Türkçe</option>
+            <option value="de">Deutsch</option>
+          </select>
+        </label>
+      </div>
+
+      <h3>
+        <span data-admin-i18n="gallery.section.hero">Hero</span>
+        <label class="toggle">
+          <input type="checkbox" id="visible_gallery_hero" checked> <span data-admin-i18n="toggle.show"></span>
+        </label>
+      </h3>
+      <div class="grid-3">
+        <label><span data-admin-i18n="gallery.hero.title_label">Title</span> <input id="g_hero_title"></label>
+        <label><span data-admin-i18n="gallery.hero.subtitle_label">Subtitle</span> <input id="g_hero_subtitle"></label>
+      </div>
+      <div class="upload-group">
+        <h4 data-admin-i18n="gallery.hero.image_heading">Hero Image</h4>
+        <div class="upload-card">
+          <img class="upload-preview" id="p_gallery_hero" alt="preview">
+          <input id="g_hero_image"><input type="file" id="f_g_hero">
+        </div>
+      </div>
+
+      <h3 data-admin-i18n="gallery.section.categories">Категории</h3>
+      <div class="grid-3">
+        <label data-admin-i18n="gallery.cat.all">All <input id="gc_all"></label>
+        <label data-admin-i18n="gallery.cat.hotel">Hotel <input id="gc_hotel"></label>
+        <label data-admin-i18n="gallery.cat.rooms">Rooms <input id="gc_rooms"></label>
+        <label data-admin-i18n="gallery.cat.restaurants">Restaurants <input id="gc_restaurants"></label>
+        <label data-admin-i18n="gallery.cat.pool">Pool <input id="gc_pool"></label>
+        <label data-admin-i18n="gallery.cat.spa">Spa <input id="gc_spa"></label>
+        <label data-admin-i18n="gallery.cat.events">Events <input id="gc_events"></label>
+      </div>
+
+      <h3 data-admin-i18n="gallery.links.heading">Загрузка ссылок для категорий</h3>
+      <p class="muted" data-admin-i18n="gallery.links.hint">Вставляйте по одной ссылке на строку. Можно загружать файлы — URL добавятся автоматически.</p>
+
+      <h4>
+        Hotel
+        <label class="toggle"><input type="checkbox" id="visible_gallery_hotel" checked> <span data-admin-i18n="toggle.show"></span></label>
+      </h4>
+      <div class="upload-card">
+        <textarea id="gi_hotel" rows="4" data-admin-i18n-ph="gallery.links.placeholder" placeholder="/uploads/gallery/...&#10;/...&#10;..."></textarea>
+        <input type="file" id="f_g_hotel" multiple accept="image/*">
+        <div class="actions" style="justify-content:flex-start; margin:8px 0 0;">
+          <button class="btn" id="clr_g_hotel" data-admin-i18n="action.clear">Очистить</button>
+          <button class="btn btn-logout" id="del_g_hotel" data-admin-i18n="action.delete_selected">Удалить выделенные</button>
+        </div>
+      </div>
+      <div class="thumb-grid" id="th_g_hotel"></div>
+
+      <h4>
+        Rooms
+        <label class="toggle"><input type="checkbox" id="visible_gallery_rooms" checked> <span data-admin-i18n="toggle.show"></span></label>
+      </h4>
+      <div class="upload-card">
+        <textarea id="gi_rooms" rows="4" data-admin-i18n-ph="gallery.links.placeholder"></textarea>
+        <input type="file" id="f_g_rooms" multiple accept="image/*">
+        <div class="actions" style="justify-content:flex-start; margin:8px 0 0;">
+          <button class="btn" id="clr_g_rooms" data-admin-i18n="action.clear">Очистить</button>
+          <button class="btn btn-logout" id="del_g_rooms" data-admin-i18n="action.delete_selected">Удалить выделенные</button>
+        </div>
+      </div>
+      <div class="thumb-grid" id="th_g_rooms"></div>
+
+      <h4>
+        Restaurants
+        <label class="toggle"><input type="checkbox" id="visible_gallery_restaurants" checked> <span data-admin-i18n="toggle.show"></span></label>
+      </h4>
+      <div class="upload-card">
+        <textarea id="gi_restaurants" rows="4" data-admin-i18n-ph="gallery.links.placeholder"></textarea>
+        <input type="file" id="f_g_restaurants" multiple accept="image/*">
+        <div class="actions" style="justify-content:flex-start; margin:8px 0 0;">
+          <button class="btn" id="clr_g_restaurants" data-admin-i18n="action.clear">Очистить</button>
+          <button class="btn btn-logout" id="del_g_restaurants" data-admin-i18n="action.delete_selected">Удалить выделенные</button>
+        </div>
+      </div>
+      <div class="thumb-grid" id="th_g_restaurants"></div>
+
+      <h4>
+        Pool
+        <label class="toggle"><input type="checkbox" id="visible_gallery_pool" checked> <span data-admin-i18n="toggle.show"></span></label>
+      </h4>
+      <div class="upload-card">
+        <textarea id="gi_pool" rows="4" data-admin-i18n-ph="gallery.links.placeholder"></textarea>
+        <input type="file" id="f_g_pool" multiple accept="image/*">
+        <div class="actions" style="justify-content:flex-start; margin:8px 0 0;">
+          <button class="btn" id="clr_g_pool" data-admin-i18n="action.clear">Очистить</button>
+          <button class="btn btn-logout" id="del_g_pool" data-admin-i18n="action.delete_selected">Удалить выделенные</button>
+        </div>
+      </div>
+      <div class="thumb-grid" id="th_g_pool"></div>
+
+      <h4>
+        Spa
+        <label class="toggle"><input type="checkbox" id="visible_gallery_spa" checked> <span data-admin-i18n="toggle.show"></span></label>
+      </h4>
+      <div class="upload-card">
+        <textarea id="gi_spa" rows="4" data-admin-i18n-ph="gallery.links.placeholder"></textarea>
+        <input type="file" id="f_g_spa" multiple accept="image/*">
+        <div class="actions" style="justify-content:flex-start; margin:8px 0 0;">
+          <button class="btn" id="clr_g_spa" data-admin-i18n="action.clear">Очистить</button>
+          <button class="btn btn-logout" id="del_g_spa" data-admin-i18n="action.delete_selected">Удалить выделенные</button>
+        </div>
+      </div>
+      <div class="thumb-grid" id="th_g_spa"></div>
+
+      <h4>
+        Events
+        <label class="toggle"><input type="checkbox" id="visible_gallery_events" checked> <span data-admin-i18n="toggle.show"></span></label>
+      </h4>
+      <div class="upload-card">
+        <textarea id="gi_events" rows="4" data-admin-i18n-ph="gallery.links.placeholder"></textarea>
+        <input type="file" id="f_g_events" multiple accept="image/*">
+        <div class="actions" style="justify-content:flex-start; margin:8px 0 0;">
+          <button class="btn" id="clr_g_events" data-admin-i18n="action.clear">Очистить</button>
+          <button class="btn btn-logout" id="del_g_events" data-admin-i18n="action.delete_selected">Удалить выделенные</button>
+        </div>
+      </div>
+      <div class="thumb-grid" id="th_g_events"></div>
+
+      <div class="actions">
+        <button id="loadBtn" class="btn" data-admin-i18n="action.load">Загрузить</button>
+        <button id="saveBtn" class="btn btn-primary" data-admin-i18n="action.save">Сохранить</button>
+        <button id="exportBtn" class="btn btn-accent" data-admin-i18n="action.export">Экспорт JSON</button>
+        <button id="previewBtn" class="btn btn-secondary" data-admin-i18n="action.preview">Предпросмотр</button>
+      </div>
+      <p id="status" class="status"></p>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/admin-i18n.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+* { box-sizing: border-box; }
+body { font-family: system-ui, Arial, sans-serif; margin:0; background:#f6f7fb; color:#222; }
+.topbar { background:#111; color:#fff; padding:12px 16px; display:flex; align-items:center; gap:16px; }
+.topbar nav a { color:#ddd; margin-right:12px; text-decoration:none; }
+.topbar nav a.active { color:#fff; font-weight:600; }
+.topbar nav button { margin-left:auto; padding:8px 12px; }
+
+.container { max-width: 960px; margin: 24px auto; padding: 0 16px; }
+.container.narrow { max-width: 420px; }
+.card { background:#fff; border-radius:12px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); padding:16px; }
+.card h2 { margin-top:0; }
+
+.row { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-bottom:12px; }
+label { display:flex; flex-direction:column; gap:6px; font-size:14px; }
+input, textarea, select, button { padding:10px; border:1px solid #ddd; border-radius:10px; font-size:14px; }
+button { cursor:pointer; }
+button:hover { opacity:.9; }
+.muted { color:#666; font-size:13px; }

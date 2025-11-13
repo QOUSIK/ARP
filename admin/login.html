@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-admin-i18n="login.title">Login — ARP Admin</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <main class="container narrow">
+    <section class="card">
+      <h2 data-admin-i18n="login.title">Admin Login</h2>
+      <form id="loginForm">
+        <label data-admin-i18n="login.email">Email
+          <input type="email" name="email" required data-admin-i18n-ph="login.email">
+        </label>
+        <label data-admin-i18n="login.password">Password
+          <input type="password" name="password" required data-admin-i18n-ph="login.password">
+        </label>
+        <button type="submit" class="btn btn-primary" data-admin-i18n="login.submit">Login</button>
+        <p id="msg" class="muted"></p>
+      </form>
+    </section>
+  </main>
+  <script src="js/api.js"></script>
+  <script src="js/admin-i18n.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

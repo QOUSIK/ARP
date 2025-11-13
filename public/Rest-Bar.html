@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Restaurants and Bars</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/Global.css">
+    <link rel="stylesheet" href="../assets/css/Main-Rest-bar.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+</head>
+<style>
+
+    
+            .about-hero {
+background: linear-gradient(
+    rgba(109, 26, 44, 0.85),   /* #6d1a2c — тёмный бордо */
+    rgba(60, 10, 22, 0.9)     /* ещё темнее для глубины */
+  ),
+  url('../assets/imgs/rest5.webp');
+background-size: cover;
+background-position: center;
+
+
+            background-size: cover;
+            background-position: center;
+            padding: 200px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+</style>
+<body>
+    <div data-include="includes/header.html"></div>
+     <section class="about-hero" data-block="rest.hero">
+<h1 data-i18n="rest.hero.title">Restaurants & Bars</h1>
+<p data-i18n="rest.hero.subtitle">Experience refined flavors where Roman elegance blends with Mediterranean charm</p>
+    </section>
+    <div class="cont">
+        <div class="restaurant-grid">
+            <!-- Main Restaurant -->
+            <div class="restaurant-card" data-block="rest.main">
+                <div class="card-image">
+                    <img src="../assets/imgs/rest1.webp" data-img="rest.image.main" alt="Main Restaurant">
+                </div>
+                <div class="card-header">
+                    <h2 data-i18n="restaurant.main.title">Main Restaurant</h2>
+                </div>
+                <div class="card-body">
+                    <p class="description" data-i18n="restaurant.main.description">The restaurant is decorated in Ottoman style. Enjoy a buffet and sea view.</p>
+                    
+                    <div class="hours">
+                        <h3><i class="fas fa-clock icon"></i><span data-i18n="restaurant.main.hours">Opening Hours</span></h3>
+                        <ul>
+                            <li><span data-i18n="restaurant.main.breakfast">Breakfast</span>: <span class="time">07:00–10:00</span></li>
+                            <li><span data-i18n="restaurant.main.lunch">Lunch</span>: <span class="time">12:30–14:00</span></li>
+                            <li><span data-i18n="restaurant.main.dinner">Dinner</span>: <span class="time">19:00–21:00</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="features">
+                        <div class="feature" data-i18n="restaurant.main.feature1">Ottoman Style</div>
+                        <div class="feature" data-i18n="restaurant.main.feature2">Buffet</div>
+                        <div class="feature" data-i18n="restaurant.main.feature3">Sea View</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- HAREM Restaurant -->
+            <div class="restaurant-card" data-block="rest.harem">
+                <div class="card-image">
+                    <img src="../assets/imgs/rest2.webp" data-img="rest.image.harem" alt="HAREM Restaurant">
+                </div>
+                <div class="card-header">
+                    <h2 data-i18n="restaurant.harem.title">«HAREM» Restaurant</h2>
+                </div>
+                <div class="card-body">
+                    <p class="description" data-i18n="restaurant.harem.description">A'LA CARTE restaurant with Ottoman and Italian cuisine. Advance reservation required.</p>
+                    
+                    <div class="hours">
+                        <h3><i class="fas fa-clock icon"></i><span data-i18n="restaurant.main.hours">Opening Hours</span></h3>
+                        <ul>
+                            <li><span data-i18n="restaurant.main.dinner">Dinner</span>: <span class="time">19:00–21:00</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="note">
+                        <i class="fas fa-info-circle"></i> <span data-i18n="restaurant.harem.note">Advance reservation required</span>
+                    </div>
+                    
+                    <div class="features">
+                        <div class="feature" data-i18n="restaurant.harem.feature1">Ottoman Cuisine</div>
+                        <div class="feature" data-i18n="restaurant.harem.feature2">Italian Cuisine</div>
+                        <div class="feature" data-i18n="restaurant.harem.feature3">A'LA CARTE</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Agora Bar -->
+            <div class="restaurant-card" data-block="rest.agora">
+                <div class="card-image">
+                    <img src="../assets/imgs/bar4.webp" data-img="rest.image.agora" alt="Agora Bar">
+                </div>
+                <div class="card-header">
+                    <h2 data-i18n="restaurant.agora.title">Agora Bar</h2>
+                </div>
+                <div class="card-body">
+                    <p class="description" data-i18n="restaurant.agora.description">Cocktails, drinks and light snacks, decorated with plants and sculptures.</p>
+                    
+                    <div class="hours">
+                        <h3><i class="fas fa-clock icon"></i><span data-i18n="restaurant.main.hours">Opening Hours</span></h3>
+                        <ul>
+                            <li><span data-i18n="restaurant.agora.drinkService">Drink Service</span>: <span class="time">24 hours</span></li>
+                            <li><span data-i18n="restaurant.agora.snacks">Snacks</span>: <span class="time">11:00–18:00</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="features">
+                        <div class="feature" data-i18n="restaurant.agora.feature1">By the Pool</div>
+                        <div class="feature" data-i18n="restaurant.agora.feature2">Cocktails</div>
+                        <div class="feature" data-i18n="restaurant.agora.feature3">Sculptures</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- American Bar -->
+            <div class="restaurant-card" data-block="rest.american">
+                <div class="card-image">
+                    <img src="../assets/imgs/americanbar.jpg" data-img="rest.image.american" alt="American Bar">
+                </div>
+                <div class="card-header">
+                    <h2 data-i18n="restaurant.american.title">American Bar</h2>
+                </div>
+                <div class="card-body">
+                    <p class="description" data-i18n="restaurant.american.description">Cocktails, drinks and light snacks, served indoors among elegant décor, lush plants, and artistic sculptures</p>
+                    
+                    <div class="hours">
+                        <h3><i class="fas fa-clock icon"></i><span data-i18n="restaurant.main.hours">Opening Hours</span></h3>
+                        <ul>
+                            <li><span data-i18n="restaurant.agora.drinkService">Drink Service</span>: <span class="time">24 hours</span></li>
+                            <li><span data-i18n="restaurant.agora.snacks">Snacks</span>: <span class="time">11:00–18:00</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="note">
+                        <i class="fas fa-cocktail"></i> <span data-i18n="restaurant.american.note">Open exclusively on cozy cold or rainy days</span>
+                    </div>
+                    
+                    <div class="features">
+                        <div class="feature" data-i18n="restaurant.american.feature1">Classic Bar</div>
+                        <div class="feature" data-i18n="restaurant.american.feature2">Signature Cocktails</div>
+                        <div class="feature" data-i18n="restaurant.american.feature3">Retro Vibes</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beach Bar -->
+            <div class="restaurant-card" data-block="rest.beach">
+                <div class="card-image">
+                    <img src="../assets/imgs/beachbar.jpg" data-img="rest.image.beach" alt="Beach Bar">
+                </div>
+                <div class="card-header">
+                    <h2 data-i18n="restaurant.beach.title">Beach Bar</h2>
+                </div>
+                <div class="card-body">
+                    <p class="description" data-i18n="restaurant.beach.description">Beach bar with free drinks and sunbeds in front of the hotel.</p>
+                    
+                    <div class="hours">
+                        <h3><i class="fas fa-clock icon"></i><span data-i18n="restaurant.main.hours">Opening Hours</span></h3>
+                        <ul>
+                            <li><span data-i18n="restaurant.beach.open">Open</span>: <span class="time">10:00–19:00</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="note">
+                        <i class="fas fa-cocktail"></i> <span data-i18n="restaurant.beach.note">Free drinks for hotel guests</span>
+                    </div>
+                    
+                    <div class="features">
+                        <div class="feature" data-i18n="restaurant.beach.feature1">On the Beach</div>
+                        <div class="feature" data-i18n="restaurant.beach.feature2">Free Drinks</div>
+                        <div class="feature" data-i18n="restaurant.beach.feature3">Sunbeds</div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+        
+        <div class="decoration">
+            <i class="fas fa-utensils"></i> 
+            <i class="fas fa-cocktail"></i> 
+            <i class="fas fa-umbrella-beach"></i>
+        </div>
+    </div>
+
+    
+        <div data-include="includes/footer.html"></div>
+    <script src="../assets/js/i18n.js"></script>
+    <script src="../assets/js/includes.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/cms-main.js"></script>
+    <script src="../assets/js/anim-rest-bar.js"></script>
+</body>
+</html>

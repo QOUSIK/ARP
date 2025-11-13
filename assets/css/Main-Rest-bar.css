@@ -1,0 +1,411 @@
+        .cont {
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: #b8860b;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #5D4037;
+            font-style: italic;
+            margin-top: 15px;
+            animation: fadeIn 1.5s ease-out 0.5s both;
+        }
+        
+        .restaurant-grid {
+            display: grid;
+            /* use fixed-ish column max sizes so grid can be centered when a row has fewer items */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 350px));
+            gap: 30px;
+            margin-bottom: 50px;
+            justify-content: center;
+        }
+        
+        .restaurant-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+            position: relative;
+        }
+        .restaurant-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+        
+        .restaurant-card:nth-child(1) { animation-delay: 0.2s; }
+        .restaurant-card:nth-child(2) { animation-delay: 0.4s; }
+        .restaurant-card:nth-child(3) { animation-delay: 0.6s; }
+        .restaurant-card:nth-child(4) { animation-delay: 0.8s; }
+        
+        .restaurant-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-image {
+            height: 220px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .restaurant-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+        
+        .card-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.3));
+        }
+        
+        .card-header {
+            padding: 25px 25px 15px;
+            background: linear-gradient(145deg, #8c1d3a, #a52d4a);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+        }
+        
+        .restaurant-card:hover .card-header::before {
+            animation: shine 1.5s ease;
+        }
+        
+        .card-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.9rem;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+    color: #d4af37;
+    margin: 0 0 0;
+        }
+        
+        .card-body {
+            padding: 25px;
+            position: relative;
+        }
+        
+        .description {
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            animation: fadeIn 0.8s ease 0.5s both;
+        }
+        
+        .hours {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .hours:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hours h3 {
+            color: #9d2b48;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .hours ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+        
+        .hours li {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #ddd;
+            animation: slideInRight 0.5s ease both;
+        }
+        
+        .hours li:nth-child(1) { animation-delay: 0.1s; }
+        .hours li:nth-child(2) { animation-delay: 0.2s; }
+        .hours li:nth-child(3) { animation-delay: 0.3s; }
+        
+        .hours li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .time {
+            font-weight: bold;
+            color: #7d2c47;
+            position: relative;
+        }
+        
+        .time::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #7d2c47;
+            transition: width 0.3s ease;
+        }
+        
+        .hours li:hover .time::after {
+            width: 100%;
+        }
+        
+        .note {
+            margin-top: 20px;
+            font-style: italic;
+            color: #777;
+            padding: 15px;
+            background: #fff9e6;
+            border-radius: 8px;
+            border-left: 4px solid #FFD700;
+            animation: pulse 2s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            color: #d4af37;
+            transition: transform 0.3s ease;
+        }
+        
+        .hours:hover .icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .feature {
+            background: linear-gradient(135deg, #b8860b, #d4af37);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            animation: featureAppear 0.5s ease both;
+        }
+        
+        .feature:nth-child(1) { animation-delay: 0.4s; }
+        .feature:nth-child(2) { animation-delay: 0.5s; }
+        .feature:nth-child(3) { animation-delay: 0.6s; }
+        
+        .feature:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .decoration {
+            text-align: center;
+            margin: 40px 0;
+            color: #8f223e;
+            font-size: 2rem;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .decoration i {
+            margin: 0 15px;
+            text-shadow: 0 0 10px rgba(139, 69, 19, 0.3);
+            color: #8f223e;
+        }
+        
+        .decoration i:nth-child(1) { animation: bounce 2s ease infinite; }
+        .decoration i:nth-child(2) { animation: bounce 2s ease 0.2s infinite; }
+        .decoration i:nth-child(3) { animation: bounce 2s ease 0.4s infinite; }
+        
+        /* Анимации */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes cardAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes featureAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 217, 0, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 217, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 217, 0, 0); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Адаптивность */
+        /* Desktop: force centered wrapping so rows with fewer items are centered */
+        @media (min-width: 1024px) {
+            .restaurant-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+                margin-bottom: 50px;
+            }
+
+            .restaurant-card {
+                flex: 0 0 350px;
+                max-width: 350px;
+            }
+        }
+        @media (max-width: 768px) {
+            .restaurant-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Дополнительные эффекты для карточек */
+        .restaurant-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.05), rgba(210, 105, 30, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+            border-radius: 20px;
+        }
+        
+        .restaurant-card:hover::before {
+            opacity: 1;
+        }
+                /* Hero Section */
+
+
+        .about-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #ffb90e;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .about-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out 0.3s both;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            color: white;
+        }
