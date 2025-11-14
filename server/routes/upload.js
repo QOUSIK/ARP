@@ -1,18 +1,14 @@
 const express = require("express");
 const multer = require("multer");
-const { v2: cloudinary } = require("cloudinary");
+const cloudinary = require("cloudinary").v2;
 const requireAuth = require("../middleware/auth");
 const path = require("path");
 const fs = require("fs");
 
 const router = express.Router();
 
-// Cloudinary config (read from ENV on Render)
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+// Cloudinary reads CLOUDINARY_URL automatically; enforce https URLs
+cloudinary.config({ secure: true });
 
 // Store incoming files in RAM (safest for serverless/ephemeral FS)
 const storage = multer.memoryStorage();
@@ -114,4 +110,3 @@ router.delete("/", requireAuth, express.json(), async (req, res) => {
 });
 
 module.exports = router;
-
