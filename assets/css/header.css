@@ -517,7 +517,55 @@
     }
     
     /* Уменьшаем отступы вокруг селектора */
-    .language-selector {
+        .language-selector {
         margin-right: 10px;
+    }
+}
+
+/* Compact mobile layout: prevent overlaps in header */
+@media (max-width: 600px) {
+    /* Use grid so left burger, center logo, right language do not overlap */
+    .row-align-items-center {
+        display: grid;
+        grid-template-columns: 32px 1fr auto;
+        align-items: center;
+        gap: 10px;
+        justify-content: initial;
+        position: relative;
+    }
+
+    .burger {
+        display: flex;
+        position: static;
+        transform: none;
+        width: 28px;
+        height: 20px;
+        margin-left: 0;
+        --xshift: 6px;
+        --yshift: 6px;
+    }
+
+    .logo-wrap { order: 0; }
+    .logo-wrap img { height: 48px; }
+
+    .language-selector {
+        position: static;
+        margin: 0;
+        justify-self: end;
+    }
+    .language-selector::before { display: none; }
+    .language-dropdown {
+        min-width: auto;
+        padding: 6px 26px 6px 10px;
+        font-size: 12px;
+        background-position: right 8px center;
+    }
+
+    /* Drop the navigation just below the header when opened */
+    .navigation {
+        left: 50%;
+        top: calc(100% + 8px);
+        transform: translateX(-50%) scaleY(0);
+        width: 100%;
     }
 }
