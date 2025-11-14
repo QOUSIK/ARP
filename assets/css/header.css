@@ -545,6 +545,8 @@
     /* keep positioned context for flag ::before */
     .language-selector { position: relative !important; transform: none !important; margin-left: 8px; }
     .language-dropdown { font-size: 14px; padding: 8px 26px 8px 38px; }
+    /* avoid duplicate flag: hide pseudo element on desktop widths */
+    .language-selector::before { display: none !important; }
     .reservation-btn { font-size: 14px; padding: 10px 18px; margin-left: 10px; }
 }
 
@@ -558,6 +560,8 @@
     .logo-wrap img { height: 68px; }
     /* keep positioned context so the flag pseudo-element doesn't escape */
     .language-selector { position: relative !important; transform: none !important; }
+    /* avoid duplicate flag on desktop widths */
+    .language-selector::before { display: none !important; }
     .language-dropdown { font-size: 14px; padding: 8px 26px 8px 38px; }
     .reservation-btn { font-size: 14px; padding: 10px 20px; }
     .burger { display: none !important; }
