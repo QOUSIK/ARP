@@ -564,6 +564,9 @@
         justify-self: end;
         grid-column: 3;
         grid-row: 1;
+        align-self: center;
+        top: auto; right: auto; left: auto; bottom: auto;
+        transform: none;
     }
     .language-selector::before { display: none; }
     .language-dropdown {
@@ -581,5 +584,10 @@
         transform: none;
         width: 100%;
         margin: 0 auto;
+    }
+    .navigation.active {
+        left: 0;
+        right: 0;
+        transform: none;
     }
 }
