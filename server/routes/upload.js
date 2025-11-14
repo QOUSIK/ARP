@@ -39,9 +39,7 @@ router.post("/", requireAuth, upload.single("file"), async (req, res) => {
 
     const result = await cloudinary.uploader.upload(base64, {
       folder: `arp-hotel/${slot}`,
-      resource_type: "image",
-      // Canonical transformation - avoids Invalid Signature
-      transformation: "f_auto,q_auto"
+      resource_type: "image"
     });
 
     res.json({ ok: true, url: result.secure_url });
