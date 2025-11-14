@@ -1,9 +1,9 @@
-п»ї<!doctype html>
+<!doctype html>
 <html lang="ru">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Room Detail - ARP Admin</title>
+  <title>Room Detail - ARP Admin</title>`n    <link rel="shortcut icon" href="/assets/icons/favicon.ico">
   <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
@@ -20,9 +20,9 @@
       <a href="settings.html" data-admin-i18n="nav.settings">Settings</a>
       <a href="contact.html" data-admin-i18n="nav.contact">Contact Page</a>
       <select id="adminLangSelect" style="margin-left:auto">
-        <option value="ru">Р СѓСЃСЃРєРёР№</option>
+        <option value="ru">Русский</option>
         <option value="en">EN</option>
-        <option value="tr">TГјrkГ§e</option>
+        <option value="tr">Turkce</option>
         <option value="uk">UA</option>
       </select>
       <button id="logoutBtn" class="btn btn-logout" data-admin-i18n="auth.logout">Logout</button>
@@ -30,17 +30,17 @@
   </header>
   <main class="container">
     <section class="card">
-      <h2 data-admin-i18n="page.room_detail.title">РЈРїСЂР°РІР»РµРЅРёРµ: Р”РµС‚Р°Р»Рё РЅРѕРјРµСЂР°</h2>
+      <h2 data-admin-i18n="page.room_detail.title">Управление: Детали номера</h2>
       <div class="row">
-        <label><span data-admin-i18n="form.lang">РЇР·С‹Рє РєРѕРЅС‚РµРЅС‚Р°</span>
+        <label><span data-admin-i18n="form.lang">Язык контента</span>
           <select id="lang">
             <option value="en">English</option>
-            <option value="ru">Р СѓСЃСЃРєРёР№</option>
-            <option value="tr">TГјrkГ§e</option>
+            <option value="ru">Русский</option>
+            <option value="tr">Turkce</option>
             <option value="de">Deutsch</option>
           </select>
         </label>
-        <label><span data-admin-i18n="roomdetail.slug.label">РўРёРї РЅРѕРјРµСЂР°</span>
+        <label><span data-admin-i18n="roomdetail.slug.label">Тип номера</span>
           <select id="slug">
             <option value="economy">Economy</option>
             <option value="standart">Standart</option>
@@ -97,10 +97,10 @@
       </h3>
 
       <div class="actions">
-        <button id="loadBtn" class="btn" data-admin-i18n="action.load">Р—Р°РіСЂСѓР·РёС‚СЊ</button>
-        <button id="saveBtn" class="btn btn-primary" data-admin-i18n="action.save">РЎРѕС…СЂР°РЅРёС‚СЊ</button>
-        <button id="exportBtn" class="btn btn-accent" data-admin-i18n="action.export">Р­РєСЃРїРѕСЂС‚ JSON</button>
-        <button id="previewBtn" class="btn btn-secondary" data-admin-i18n="action.preview">РџСЂРµРґРїСЂРѕСЃРјРѕС‚СЂ</button>
+        <button id="loadBtn" class="btn" data-admin-i18n="action.load">Загрузить</button>
+        <button id="saveBtn" class="btn btn-primary" data-admin-i18n="action.save">Сохранить</button>
+        <button id="exportBtn" class="btn btn-accent" data-admin-i18n="action.export">Экспорт JSON</button>
+        <button id="previewBtn" class="btn btn-secondary" data-admin-i18n="action.preview">Предпросмотр</button>
       </div>
       <p id="status" class="status"></p>
     </section>
@@ -110,6 +110,7 @@
   <script src="js/room-detail.js"></script>
 </body>
 </html>
+
 
 
 
