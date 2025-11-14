@@ -39,6 +39,8 @@
 .language-dropdown { background: #F7F1E1; border: 2px solid rgba(139,69,19,0.3); border-radius: 10px; padding: 10px 34px 10px 14px; font-size: 15px; font-weight: 600; color: #5D4037; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238B4513' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; }
 
 .reservation-btn { background: linear-gradient(145deg, #8c1d3a, #a52d4a); color: #fff; padding: 12px 22px; border-radius: 10px; font-weight: 600; border: none; }
+/* gap between language selector and reservation button */
+.reservation-btn { margin-left: 12px; }
 
 .burger { display: none; flex-direction: column; justify-content: space-between; width: 32px; height: 22px; cursor: pointer; margin-left: 10px; }
 .burger span { display: block; height: 3px; background: #891837; border-radius: 3px; transition: transform .25s ease, opacity .2s ease; }
@@ -60,26 +62,24 @@
   .navigation ul { gap: 22px; }
   .navigation li a { font-size: 16px; }
   .logo-wrap img { height: 64px; }
-  .burger { display: none !important; }
 }
 
-/* --- Tablet/Mobile (<992px): burger + dropdown --- */
-@media (max-width: 991px){
+/* --- Burger overlay up to 1200px --- */
+@media (max-width: 1200px){
   .burger { display: flex; }
   .navigation { display: flex; flex-direction: column; align-items: center; position: absolute; top: 100%; left: 0; right: 0; width: 100%; background: #F6F1E1; border: 1px solid rgba(139,69,19,0.2); border-radius: 0 0 16px 16px; box-shadow: 0 8px 32px rgba(139,69,19,0.15); padding: 18px 0; opacity: 0; transform: scaleY(0); transform-origin: top center; transition: all .25s ease; z-index: 999; }
   .navigation.active { opacity: 1; transform: scaleY(1); }
   .navigation ul { flex-direction: column; gap: 18px; }
-  .reservation-btn { display: none; }
   .language-selector { margin-left: 0; }
 }
 
-/* --- Small phones (<600px): 3-column header bar --- */
-@media (max-width: 600px){
+/* --- Grid header bar for <=1000px: burger left, logo center, language right --- */
+@media (max-width: 1000px){
   .header-area { width: 95%; padding: 10px 14px; }
   .header-area .container { display: grid; grid-template-columns: 32px 1fr auto; align-items: center; gap: 10px; }
   .burger { grid-column: 1; }
   .logo-wrap { grid-column: 2; justify-self: center; }
   .logo-wrap img { height: 48px; }
   .language-selector { grid-column: 3; justify-self: end; }
+  .reservation-btn { display: none; }
 }
-
