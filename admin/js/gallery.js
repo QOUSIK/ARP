@@ -196,8 +196,8 @@ function renderThumbsFor(textareaId, gridId){
       list.splice(idx, 1);
       t.value = arrayToNl(list);
       grid.removeChild(wrap);
-      // attempt to delete physical file if it's under /uploads/
-      if (url.startsWith('/uploads/')){
+      // attempt to delete physical file (support local /uploads and Cloudinary URLs)
+      if (url.startsWith('/uploads/') || /^https?:/i.test(url)){
         try { await API.api(`/upload?url=${encodeURIComponent(url)}`, { method: 'DELETE' }); } catch {}
       }
     });
@@ -286,7 +286,7 @@ function clearList(textareaId){
 async function deleteAllFilesIn(textareaId){
   const t = document.getElementById(textareaId);
   if (!t) return;
-  const urls = nlToArray(t.value).filter(u => u.startsWith('/uploads/'));
+  const urls = nlToArray(t.value).filter(u => u.startsWith('/uploads/') || /^https?:/i.test(u));
   for (const u of urls){
     try { await API.api(`/upload?url=${encodeURIComponent(u)}`, { method: 'DELETE' }); } catch {}
   }

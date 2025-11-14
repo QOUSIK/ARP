@@ -2,26 +2,28 @@ const express = require("express");
 const multer = require("multer");
 const { v2: cloudinary } = require("cloudinary");
 const requireAuth = require("../middleware/auth");
+const path = require("path");
+const fs = require("fs");
 
 const router = express.Router();
 
-// Cloudinary config (берётся из ENV Render)
+// Cloudinary config (read from ENV on Render)
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Принимаем файл в RAM (Render не хранит диск → всё равно стирается)
+// Store incoming files in RAM (safest for serverless/ephemeral FS)
 const storage = multer.memoryStorage();
 
-// Ограничения файла
+// Multer
 const upload = multer({
   storage,
   limits: { fileSize: 10 * 1024 * 1024 }, // 10 MB
 });
 
-// Разрешённые "slots"
+// Allowed logical folders (slots)
 const ALLOWED_SLOTS = new Set([
   "hero", "welcome", "comfort", "taste", "apartments",
   "gallery", "rooms", "rest", "about", "contact",
@@ -43,19 +45,13 @@ router.post("/", requireAuth, upload.single("file"), async (req, res) => {
     const slot = sanitizeSlot(req.query.slot);
     const base64 = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
 
-    // Загружаем в Cloudinary → в папку сайта
     const result = await cloudinary.uploader.upload(base64, {
       folder: `arp-hotel/${slot}`,
       resource_type: "image",
-      transformation: [
-        { quality: "auto", fetch_format: "auto" } // Оптимизация
-      ]
+      transformation: [ { quality: "auto", fetch_format: "auto" } ]
     });
 
-    res.json({
-      ok: true,
-      url: result.secure_url  // ← CDN URL
-    });
+    res.json({ ok: true, url: result.secure_url });
   } catch (err) {
     console.error("Cloudinary upload error:", err);
     res.status(500).json({ ok: false, error: "Upload failed" });
@@ -65,24 +61,52 @@ router.post("/", requireAuth, upload.single("file"), async (req, res) => {
 // ========================= DELETE =========================
 router.delete("/", requireAuth, express.json(), async (req, res) => {
   try {
-    const url = req.query.url || req.body.url;
+    const url = (req.query.url || (req.body && req.body.url) || "").toString();
 
     if (!url) {
       return res.status(400).json({ ok: false, error: "Missing URL" });
     }
 
-    // Извлекаем public_id из Cloudinary URL
-    // Пример:
-    // https://res.cloudinary.com/.../arp-hotel/gallery/filename_xxx.jpg
-    const parts = url.split("/");
-    const filename = parts.pop().split(".")[0]; // без расширения
-    const folder = parts.slice(parts.indexOf("arp-hotel")).join("/");
+    // 1) Backward compatibility: local files under /uploads/
+    if (url.startsWith("/uploads/")) {
+      try {
+        const UPLOAD_DIR = path.join(__dirname, "..", "..", "public", "uploads");
+        const abs = path.join(UPLOAD_DIR, url.replace("/uploads/", ""));
+        if (abs.startsWith(UPLOAD_DIR)) {
+          try { fs.unlinkSync(abs); } catch (e) { if (e.code !== 'ENOENT') throw e; }
+        }
+      } catch (e) {
+        console.warn("Local delete warning:", e.message);
+      }
+      return res.json({ ok: true, deleted: url, local: true });
+    }
 
-    const publicId = `${folder}/${filename}`;
+    // 2) Cloudinary URL – derive public_id and delete
+    let publicId;
+    try {
+      const parts = url.split('/');
+      const start = parts.indexOf('arp-hotel');
+      if (start !== -1) {
+        const filename = (parts[parts.length - 1] || '').split('.')[0];
+        const folder = parts.slice(start, parts.length - 1).join('/');
+        publicId = `${folder}/${filename}`;
+      } else {
+        const afterUpload = (url.split('/upload/')[1] || '').split('?')[0];
+        const segs = afterUpload.split('/');
+        let i = 0;
+        while (i < segs.length && !/^v\d+$/i.test(segs[i]) && segs[i].indexOf('.') === -1) i++;
+        if (/^v\d+$/i.test(segs[i])) i++;
+        const rest = segs.slice(i).join('/');
+        publicId = rest.replace(/\.[a-z0-9]+$/i, '');
+      }
+    } catch (e) {
+      console.warn('Failed to parse public_id from URL:', url, e.message);
+    }
+
+    if (!publicId) return res.status(400).json({ ok: false, error: 'Invalid Cloudinary URL' });
 
     await cloudinary.uploader.destroy(publicId);
-
-    return res.json({ ok: true, deleted: url });
+    return res.json({ ok: true, deleted: url, public_id: publicId });
   } catch (err) {
     console.error("Cloudinary delete error:", err);
     res.status(500).json({ ok: false, error: err.message });
@@ -90,3 +114,4 @@ router.delete("/", requireAuth, express.json(), async (req, res) => {
 });
 
 module.exports = router;
+
