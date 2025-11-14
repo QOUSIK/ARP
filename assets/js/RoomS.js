@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+function __arpInitRoomPage(){
   let index = 0;
   let autoTimer;
 
@@ -84,4 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.animationPlayState = 'running'; observer.unobserve(entry.target); } });
   }, observerOptions);
   document.querySelectorAll('.info-item, .feature').forEach(item => { item.style.animationPlayState = 'paused'; observer.observe(item); });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', __arpInitRoomPage);
+} else {
+  __arpInitRoomPage();
+}

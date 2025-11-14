@@ -26,6 +26,28 @@
     padding: 0 20px;
 }
 
+/* Bridge range (1367px–1450px): override mobile overlay styles */
+@media (min-width: 1367px) and (max-width: 1450px) {
+    .header-area { width: 92%; padding: 12px 22px; }
+    .row-align-items-center { justify-content: space-between; }
+    .navigation {
+        display: flex !important;
+        position: static !important;
+        transform: none !important;
+        width: auto !important;
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        opacity: 1 !important;
+    }
+    .navigation ul { flex-direction: row !important; gap: 24px; align-items: center; }
+    .navigation li a { font-size: 17px; }
+    .burger { display: none !important; }
+    .logo-wrap img { height: 68px; }
+    .language-selector { position: relative !important; transform: none !important; }
+}
+
 /* Убедитесь, что header не затрагивается */
 .header-area .container {
     width: 100% !important;
@@ -538,7 +560,7 @@
         padding: 0 !important; 
         opacity: 1 !important; 
     }
-    .navigation ul { gap: 22px; }
+    .navigation ul { gap: 22px; flex-direction: row !important; align-items: center; }
     .navigation li a { font-size: 16px; }
     .burger { display: none !important; }
     .logo-wrap img { height: 64px; }
