@@ -1,4 +1,17 @@
 (function () {
+  function normalizeUploadUrl(u){
+    try{
+      const s = String(u || "");
+      const m = s.match(/^\/?api\/upload\?url=(.+)$/i);
+      if (m && m[1]){ try { return decodeURIComponent(m[1]); } catch { return m[1]; } }
+      const originPref = (location.origin + "/api/upload?url=");
+      if (s.startsWith(originPref)){
+        const tail = s.substring(originPref.length);
+        try { return decodeURIComponent(tail); } catch { return tail; }
+      }
+      return s;
+    }catch{ return u; }
+  }
   const htmlLang = (document.documentElement.getAttribute("lang") || "en").toLowerCase();
   const params = new URLSearchParams(window.location.search);
   const paramLang = (params.get("lang") || "").toLowerCase();
@@ -84,7 +97,7 @@
     // Изображения
     document.querySelectorAll("[data-img]").forEach(el => {
       const key = el.getAttribute("data-img");
-      const url = data[key];
+      const url = normalizeUploadUrl(data[key]);
       if (!url) return;
       if (el.tagName === "IMG") el.src = url;
       else el.style.backgroundImage = `url('${url}')`;
@@ -110,7 +123,7 @@
       document.head.appendChild(styleEl);
     }
     let css = '';
-    const hImg = data['about.hero.image'];
+    const hImg = normalizeUploadUrl(data['about.hero.image']);
     if (hImg) {
       css += `.about-hero{background: linear-gradient(rgba(60,10,22,0.9), rgba(60,10,22,0.9)), url('${hImg}') !important; background-size: cover !important; background-position: center !important;}`;
     }
@@ -151,7 +164,7 @@
       document.head.appendChild(styleEl);
     }
     let css = '';
-    const hImg = data['rest.hero.image'];
+    const hImg = normalizeUploadUrl(data['rest.hero.image']);
     if (hImg) {
       css += `.about-hero{background: linear-gradient(rgba(109,26,44,0.85), rgba(60,10,22,0.9)), url('${hImg}') !important; background-size: cover !important; background-position: center !important;}`;
     }
@@ -179,7 +192,7 @@
     const styleId = 'roomsListDynamicStyles';
     let styleEl = document.getElementById(styleId);
     if (!styleEl){ styleEl = document.createElement('style'); styleEl.id = styleId; document.head.appendChild(styleEl); }
-    const heroImg = data['rooms.hero.image'];
+    const heroImg = normalizeUploadUrl(data['rooms.hero.image']);
     let css = '';
     if (heroImg) css += `.about-hero{background: linear-gradient(rgba(109,26,44,0.85), rgba(60,10,22,0.9)), url('${heroImg}') !important; background-size: cover !important; background-position: center !important;}`;
     styleEl.textContent = css;
@@ -221,7 +234,7 @@
     const styleId = 'contactDynamicStyles';
     let styleEl = document.getElementById(styleId);
     if (!styleEl){ styleEl = document.createElement('style'); styleEl.id = styleId; document.head.appendChild(styleEl); }
-    const hero = data['contact.hero.image'];
+    const hero = normalizeUploadUrl(data['contact.hero.image']);
     let css = '';
     if (hero) css += `.about-hero{background: linear-gradient(rgba(109,26,44,0.85), rgba(60,10,22,0.9)), url('${hero}') !important; background-size: cover !important; background-position: center !important;}`;
     styleEl.textContent = css;
@@ -250,7 +263,7 @@
     const styleId = 'roomDetailDynamicStyles';
     let styleEl = document.getElementById(styleId);
     if (!styleEl){ styleEl = document.createElement('style'); styleEl.id = styleId; document.head.appendChild(styleEl); }
-    const heroImg = data[`room.${slug}.hero.image`];
+    const heroImg = normalizeUploadUrl(data[`room.${slug}.hero.image`]);
     let css = '';
     if (heroImg) css += `.about-hero{background: linear-gradient(rgba(109,26,44,0.85), rgba(60,10,22,0.9)), url('${heroImg}') !important; background-size: cover !important; background-position: center !important;}`;
     styleEl.textContent = css;
@@ -314,7 +327,7 @@
     const styleId = 'galleryDynamicStyles';
     let styleEl = document.getElementById(styleId);
     if (!styleEl){ styleEl = document.createElement('style'); styleEl.id = styleId; document.head.appendChild(styleEl); }
-    const gHero = data['gallery.hero.image'];
+    const gHero = normalizeUploadUrl(data['gallery.hero.image']);
     let css = '';
     if (gHero) css += `.about-hero{background: linear-gradient(rgba(109,26,44,0.85), rgba(60,10,22,0.9)), url('${gHero}') !important; background-size: cover !important; background-position: center !important;}`;
     styleEl.textContent = css;
@@ -354,7 +367,7 @@
         item.className = 'gallery-item visible';
         item.setAttribute('data-category', c);
         const img = document.createElement('img');
-        img.src = url;
+        img.src = normalizeUploadUrl(url);
         img.alt = c;
         item.appendChild(img);
         grid.appendChild(item);

@@ -55,7 +55,7 @@ function setThumb(imgId, url){
   if (!img) return;
   if (url && url.trim()) {
     img.style.display = 'block';
-    img.src = url;
+    img.src = API.normalizeUploadUrl(url);
     img.onerror = () => { img.style.display = 'none'; };
   } else {
     img.removeAttribute('src');
@@ -131,23 +131,23 @@ async function save() {
       "hero.greeting": $("hero_greeting").value,
       "hero.name": $("hero_name").value,
       "hero.age": $("hero_age").value,
-      "hero.image1": $("hero_image1").value,
-      "hero.image2": $("hero_image2").value,
-      "hero.image3": $("hero_image3").value,
-      "hero.image4": $("hero_image4").value,
-      "hero.image5": $("hero_image5").value,
+      "hero.image1": API.normalizeUploadUrl($("hero_image1").value),
+      "hero.image2": API.normalizeUploadUrl($("hero_image2").value),
+      "hero.image3": API.normalizeUploadUrl($("hero_image3").value),
+      "hero.image4": API.normalizeUploadUrl($("hero_image4").value),
+      "hero.image5": API.normalizeUploadUrl($("hero_image5").value),
       "hotel.welcome.title": $("welcome_title").value,
       "hotel.welcome.p1": $("welcome_p1").value,
       "hotel.discover": $("hotel_discover").value,
-      "welcome.image": $("welcome_image").value,
+      "welcome.image": API.normalizeUploadUrl($("welcome_image").value),
       "comfort.title": $("comfort_title").value,
       "comfort.p": $("comfort_p").value,
       "explore.rooms": $("explore_rooms").value,
-      "comfort.image": $("comfort_image").value,
+      "comfort.image": API.normalizeUploadUrl($("comfort_image").value),
       "taste.title": $("taste_title").value,
       "taste.p": $("taste_p").value,
       "view.amenities": $("view_amenities").value,
-      "taste.image": $("taste_image").value,
+      "taste.image": API.normalizeUploadUrl($("taste_image").value),
       "apartments.title": $("apartments_title").value
     };
 
@@ -265,23 +265,23 @@ document.getElementById("previewBtn").addEventListener("click", async () => {
     "hero.greeting": $("hero_greeting").value,
     "hero.name": $("hero_name").value,
     "hero.age": $("hero_age").value,
-    "hero.image1": $("hero_image1").value,
-    "hero.image2": $("hero_image2").value,
-    "hero.image3": $("hero_image3").value,
-    "hero.image4": $("hero_image4").value,
-    "hero.image5": $("hero_image5").value,
+    "hero.image1": API.normalizeUploadUrl($("hero_image1").value),
+    "hero.image2": API.normalizeUploadUrl($("hero_image2").value),
+    "hero.image3": API.normalizeUploadUrl($("hero_image3").value),
+    "hero.image4": API.normalizeUploadUrl($("hero_image4").value),
+    "hero.image5": API.normalizeUploadUrl($("hero_image5").value),
     "hotel.welcome.title": $("welcome_title").value,
     "hotel.welcome.p1": $("welcome_p1").value,
     "hotel.discover": $("hotel_discover").value,
-    "welcome.image": $("welcome_image").value,
+    "welcome.image": API.normalizeUploadUrl($("welcome_image").value),
     "comfort.title": $("comfort_title").value,
     "comfort.p": $("comfort_p").value,
     "explore.rooms": $("explore_rooms").value,
-    "comfort.image": $("comfort_image").value,
+    "comfort.image": API.normalizeUploadUrl($("comfort_image").value),
     "taste.title": $("taste_title").value,
     "taste.p": $("taste_p").value,
     "view.amenities": $("view_amenities").value,
-    "taste.image": $("taste_image").value,
+    "taste.image": API.normalizeUploadUrl($("taste_image").value),
     "apartments.title": $("apartments_title").value
   };
   // + видимость секций

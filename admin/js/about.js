@@ -67,7 +67,7 @@ function setThumb(id, url){
   if (!img) return;
   if (url && url.trim()){
     img.style.display = 'block';
-    img.src = url;
+    img.src = API.normalizeUploadUrl(url);
     img.onerror = () => { img.style.display = 'none'; };
   } else {
     img.removeAttribute('src');
@@ -150,7 +150,8 @@ async function save() {
       const key = fields[id];
       const el = document.getElementById(id);
       if (!el) continue;
-      const val = (el.value || '').toString();
+      let val = (el.value || '').toString();
+      if (/\.image$/.test(key)) val = API.normalizeUploadUrl(val);
       if (val.trim()) payload[key] = val;
     }
     // visibility
@@ -219,7 +220,8 @@ document.getElementById('previewBtn').addEventListener('click', async () => {
     const key = fields[id];
     const el = document.getElementById(id);
     if (!el) continue;
-    const val = (el.value || '').toString();
+    let val = (el.value || '').toString();
+    if (/\.image$/.test(key)) val = API.normalizeUploadUrl(val);
     if (val.trim()) draft[key] = val;
   }
   sectionKeys.forEach(k => {

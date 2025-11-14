@@ -47,7 +47,7 @@ function arrayToNl(arr){
 function setThumbHero(url){
   const img = document.getElementById('p_gallery_hero');
   if (!img) return;
-  if (url && url.trim()) { img.style.display='block'; img.src=url; img.onerror=()=>{img.style.display='none';}; }
+  if (url && url.trim()) { img.style.display='block'; img.src=API.normalizeUploadUrl(url); img.onerror=()=>{img.style.display='none';}; }
   else { img.removeAttribute('src'); img.style.display='none'; }
 }
 
@@ -106,7 +106,8 @@ async function save(){
       if (!el) continue;
       let val = (el.value || '').toString();
       // lists -> store as JSON array
-      if (id.startsWith('gi_')) val = JSON.stringify(nlToArray(val));
+      if (id.startsWith('gi_')) val = JSON.stringify(nlToArray(val).map(API.normalizeUploadUrl));
+      if (id === 'g_hero_image') val = API.normalizeUploadUrl(val);
       if (val.trim()) payload[fields[id]] = val;
     }
     sectionKeys.forEach(k => {
@@ -130,7 +131,8 @@ async function exportJson(){
       if (!el) continue;
       let val = (el.value || '').toString().trim();
       if (!val) continue;
-      if (id.startsWith('gi_')) val = JSON.stringify(nlToArray(val));
+      if (id.startsWith('gi_')) val = JSON.stringify(nlToArray(val).map(API.normalizeUploadUrl));
+      if (id === 'g_hero_image') val = API.normalizeUploadUrl(val);
       data[fields[id]] = val;
     }
     sectionKeys.forEach(k => {
@@ -182,7 +184,7 @@ function renderThumbsFor(textareaId, gridId){
     const wrap = document.createElement('div');
     wrap.className = 'thumb';
     const img = document.createElement('img');
-    img.src = url;
+    img.src = API.normalizeUploadUrl(url);
     wrap.appendChild(img);
     const btn = document.createElement('button');
     btn.className = 'remove';

@@ -44,7 +44,7 @@ const fields = {
 
 const sectionKeys = ['hero','info','form','map'];
 
-function setThumb(id, url){ const img = document.getElementById(id); if (!img) return; if (url && url.trim()){ img.style.display='block'; img.src=url; img.onerror=()=>{img.style.display='none';}; } else { img.removeAttribute('src'); img.style.display='none'; } }
+function setThumb(id, url){ const img = document.getElementById(id); if (!img) return; if (url && url.trim()){ img.style.display='block'; img.src=API.normalizeUploadUrl(url); img.onerror=()=>{img.style.display='none';}; } else { img.removeAttribute('src'); img.style.display='none'; } }
 function updateThumb(){ setThumb('p_contact_hero', document.getElementById('contact_hero_image')?.value); }
 
 function hasContent(obj){
@@ -78,7 +78,7 @@ async function save(){
   const lang = langSel.value;
   try{
     const payload = {};
-    for (const id in fields){ const el=document.getElementById(id); if(!el) continue; const v=(el.value||'').toString(); if(v.trim()) payload[fields[id]] = v; }
+    for (const id in fields){ const el=document.getElementById(id); if(!el) continue; let v=(el.value||'').toString(); if (/\.image$/.test(fields[id])) v = API.normalizeUploadUrl(v); if(v.trim()) payload[fields[id]] = v; }
     sectionKeys.forEach(k => { const cb=document.getElementById(`visible_contact_${k}`); if (cb) payload[`visible.contact.${k}`] = cb.checked ? 'true' : 'false'; });
     await API.api(`/translations/contact/${lang}`, { method:'PATCH', body: JSON.stringify(payload) });
     st.textContent = '✅ Saved.';
@@ -90,7 +90,7 @@ async function exportJson(){
   st.textContent = 'Exporting...';
   try{
     const lang = langSel.value; const data = {};
-    for (const id in fields){ const el=document.getElementById(id); if(!el) continue; const v=(el.value||'').toString().trim(); if(v) data[fields[id]] = v; }
+    for (const id in fields){ const el=document.getElementById(id); if(!el) continue; let v=(el.value||'').toString().trim(); if (/\.image$/.test(fields[id])) v = API.normalizeUploadUrl(v); if(v) data[fields[id]] = v; }
     sectionKeys.forEach(k => { const cb=document.getElementById(`visible_contact_${k}`); if (cb) data[`visible.contact.${k}`] = cb.checked ? 'true' : 'false'; });
     const res = await API.api(`/translations/export/${lang}`, { method:'POST', body: JSON.stringify(data) });
     st.textContent = '✅ Exported: ' + (res.path || '');
@@ -125,7 +125,7 @@ document.getElementById('exportBtn').addEventListener('click', exportJson);
 langSel.addEventListener('change', load);
 document.getElementById('previewBtn').addEventListener('click', () => {
   const lang = langSel.value; const url = `${location.origin}/Contact-Us.html?preview=true&draft=1&lang=${encodeURIComponent(lang)}`;
-  const draft = {}; for(const id in fields){ const el=document.getElementById(id); if(!el) continue; const v=(el.value||'').toString(); if(v.trim()) draft[fields[id]]=v; }
+  const draft = {}; for(const id in fields){ const el=document.getElementById(id); if(!el) continue; let v=(el.value||'').toString(); if (/\.image$/.test(fields[id])) v = API.normalizeUploadUrl(v); if(v.trim()) draft[fields[id]]=v; }
   sectionKeys.forEach(k=>{ const cb=document.getElementById(`visible_contact_${k}`); if (cb) draft[`visible.contact.${k}`]=cb.checked?'true':'false'; });
   try{ localStorage.setItem(`arp_preview_draft_${lang}`, JSON.stringify(draft)); }catch{}
   window.open(url,'_blank'); st.textContent='Открыт предпросмотр без сохранения.';

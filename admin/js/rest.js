@@ -71,7 +71,7 @@ function setThumb(id, url){
   if (!img) return;
   if (url && url.trim()){
     img.style.display = 'block';
-    img.src = url;
+    img.src = API.normalizeUploadUrl(url);
     img.onerror = () => { img.style.display = 'none'; };
   } else {
     img.removeAttribute('src');
@@ -163,7 +163,8 @@ async function save(){
     for (const id in fields){
       const el = document.getElementById(id);
       if (!el) continue;
-      const v = (el.value || '').toString();
+      let v = (el.value || '').toString();
+      if (/\.image$/.test(fields[id])) v = API.normalizeUploadUrl(v);
       if (v.trim()) payload[fields[id]] = v;
     }
     sectionKeys.forEach(k => {
@@ -187,7 +188,8 @@ async function exportJson(){
     for (const id in fields){
       const el = document.getElementById(id);
       if (!el) continue;
-      const v = (el.value || '').toString().trim();
+      let v = (el.value || '').toString().trim();
+      if (/\.image$/.test(fields[id])) v = API.normalizeUploadUrl(v);
       if (v) data[fields[id]] = v;
     }
     sectionKeys.forEach(k => {
@@ -237,7 +239,8 @@ document.getElementById('previewBtn').addEventListener('click', () => {
   for (const id in fields){
     const el = document.getElementById(id);
     if (!el) continue;
-    const v = (el.value || '').toString();
+    let v = (el.value || '').toString();
+    if (/\.image$/.test(fields[id])) v = API.normalizeUploadUrl(v);
     if (v.trim()) draft[fields[id]] = v;
   }
   sectionKeys.forEach(k => {

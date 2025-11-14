@@ -27,7 +27,7 @@ const visKeys = {
   'v_features': s => `visible.room.${s}.features`
 };
 
-function setThumb(url){ const img = document.getElementById('p_hero'); if (!img) return; if (url && url.trim()){ img.style.display='block'; img.src=url; img.onerror=()=>{img.style.display='none';}; } else { img.removeAttribute('src'); img.style.display='none'; } }
+function setThumb(url){ const img = document.getElementById('p_hero'); if (!img) return; if (url && url.trim()){ img.style.display='block'; img.src=API.normalizeUploadUrl(url); img.onerror=()=>{img.style.display='none';}; } else { img.removeAttribute('src'); img.style.display='none'; } }
 function nlToArray(text){ return (text || '').split(/\r?\n/).map(s=>s.trim()).filter(Boolean); }
 function arrayToNl(arr){ return (arr || []).join('\n'); }
 
@@ -68,7 +68,8 @@ async function save(){
     const payloadRooms = {};
     for (const id in fields){
       const el=document.getElementById(id); if(!el) continue; let val=(el.value||'').toString(); if (!val.trim()) continue;
-      if (id==='slides') val = JSON.stringify(nlToArray(val));
+      if (id==='hero_image') val = API.normalizeUploadUrl(val);
+      if (id==='slides') val = JSON.stringify(nlToArray(val).map(API.normalizeUploadUrl));
       const key = fields[id](slug);
       if (key.startsWith('room.')) payloadDetail[key] = val; else payloadRooms[key] = val;
     }
@@ -88,7 +89,7 @@ slugSel.addEventListener('change', load);
 
 document.getElementById('previewBtn').addEventListener('click', () => {
   const lang = langSel.value; const slug=slugSel.value; const url = `${location.origin}/room/${slug.charAt(0).toUpperCase()+slug.slice(1)}.html?preview=true&draft=1&lang=${encodeURIComponent(lang)}`;
-  const draft = {}; for (const id in fields){ const el=document.getElementById(id); if(!el) continue; let val=(el.value||'').toString(); if(!val.trim()) continue; if (id==='slides') val = JSON.stringify(nlToArray(val)); draft[fields[id](slug)] = val; }
+  const draft = {}; for (const id in fields){ const el=document.getElementById(id); if(!el) continue; let val=(el.value||'').toString(); if(!val.trim()) continue; if (id==='hero_image') val = API.normalizeUploadUrl(val); if (id==='slides') val = JSON.stringify(nlToArray(val).map(API.normalizeUploadUrl)); draft[fields[id](slug)] = val; }
   for (const id in visKeys){ const cb=document.getElementById(id); if (cb) draft[visKeys[id](slug)] = cb.checked ? 'true' : 'false'; }
   try{ localStorage.setItem(`arp_preview_draft_${lang}`, JSON.stringify(draft)); }catch{}
   window.open(url,'_blank'); st.textContent='Открыт предпросмотр без сохранения.';
