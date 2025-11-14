@@ -1,133 +1,523 @@
-/* Сброс */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #F7F1E1;
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            min-height: 200vh; /* Для демонстрации скролла */
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Контейнер */
+.container {
+    width: 85% !important;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.header-area {
-    position: fixed;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 85%;
-    background: #F7F1E1;
-    padding: 15px 25px;
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(139,69,19,0.15);
-    z-index: 1000;
-    border: 1px solid rgba(139,69,19,0.1);
-    backdrop-filter: blur(10px);
+/* Убедитесь, что header не затрагивается */
+.header-area .container {
+    width: 100% !important;
+    max-width: 100% !important;
 }
+            
+        /* --- Header --- */
+        .header-area {
+            position: fixed;
+            left: 50%;
+            top: 10px;
+            transform: translateX(-50%);
+            width: 85%;
+            padding: 15px 30px;
+            border-radius: 16px;
+            background: #F7F1E1;
+            box-shadow: 0 8px 32px rgba(139, 69, 19, 0.15);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 69, 19, 0.1);
+        }
 
-.header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+        .header-area.scrolled {
+            top: 10px;
+            padding: 12px 25px;
+            background: #F7F1E1;
+            box-shadow: 0 4px 20px rgba(139, 69, 19, 0.2);
+        }
 
-/* ЛОГО */
-.logo-wrap img {
-    height: 75px;
-    transition: 0.3s ease;
-}
-.logo-wrap:hover img {
-    transform: scale(1.05);
-}
+        /* Flex */
+        .row-align-items-center {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-/* НАВИГАЦИЯ */
-.navigation ul {
-    display: flex;
-    list-style: none;
-    gap: 35px;
-}
-.navigation a {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    color: #5D4037;
-    position: relative;
-    padding: 6px 0;
-}
-.navigation a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg,#8B4513,#D2691E);
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    transition: width .3s ease;
-}
-.navigation li:hover a::after {
-    width: 100%;
-}
+        /* Логотип */
+        .logo-wrap {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
 
-/* БУРГЕР */
+        .logo-wrap:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+        }
+
+        .logo-wrap img {
+            display: block;
+            height: 75px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-wrap:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Навигация */
+        .navigation {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navigation ul {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .navigation li a {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 18px;
+            position: relative;
+            color: #5D4037;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+        }
+
+        .navigation li a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, #8B4513, #D2691E);
+            transition: width 0.3s ease;
+        }
+
+        .navigation li:hover a::after,
+        .navigation li.active a::after {
+            width: 100%;
+        }
+
+        .navigation li:hover a {
+            color: #c6a452;
+            transform: translateY(-1px);
+        }
+
+        .navigation li.active a {
+            color: #b4964e;
+            font-weight: 700;
+        }
+
+        /* Селектор языка */
+        .language-selector {
+            position: relative;
+            margin-right: 20px;
+            z-index: 1001;
+        }
+
+        .language-dropdown {
+            background: #F7F1E1;
+            border: 2px solid rgba(139, 69, 19, 0.3);
+            border-radius: 10px;
+            padding: 10px 15px 10px 45px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #5D4037;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238B4513' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-position: right 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px;
+            padding-right: 40px;
+            min-width: 100px;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+        }
+
+        .language-dropdown:hover {
+            background: #F7F1E1;
+            border-color: rgba(139, 69, 19, 0.6);
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .language-dropdown:focus {
+            outline: none;
+            border-color: #8B4513;
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.2);
+        }
+
+        .language-dropdown option {
+            background: #F7F1E1;
+            color: #5D4037;
+            padding: 10px;
+            font-weight: 500;
+            border-radius: 15px;
+        }
+
+        /* Флаги для опций */
+        .language-dropdown option[value="en"] {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="20" height="10"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(%23s)"><path d="M0,0 v30 h60 v-30 z" fill="%2300247d"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="%23fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="%23cf142b" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="%23fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="%23cf142b" stroke-width="6"/></g></svg>');
+            background-repeat: no-repeat;
+            background-position: 8px center;
+            padding-left: 35px;
+            border-radius: 15px;
+        }
+
+        .language-dropdown option[value="ru"] {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="20" height="10"><path d="M0,0 h60 v10 h-60 z" fill="%23fff"/><path d="M0,10 h60 v10 h-60 z" fill="%230036a7"/><path d="M0,20 h60 v10 h-60 z" fill="%23d52b1e"/></svg>');
+            background-repeat: no-repeat;
+            background-position: 8px center;
+            padding-left: 35px;
+        }
+
+        .language-dropdown option[value="tr"] {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="20" height="10"><path d="M0,0 h60 v30 h-60 z" fill="%23e30a17"/><circle cx="30" cy="15" r="8" fill="%23fff"/><circle cx="33" cy="15" r="7" fill="%23e30a17"/><path d="M36,15 l-6,3.5 l0,-7 z" fill="%23fff"/></svg>');
+            background-repeat: no-repeat;
+            background-position: 8px center;
+            padding-left: 35px;
+        }
+
+        .language-dropdown option[value="de"] {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="20" height="10"><path d="M0,0 h60 v10 h-60 z" fill="%23000"/><path d="M0,10 h60 v10 h-60 z" fill="%23dd0000"/><path d="M0,20 h60 v10 h-60 z" fill="%23ffce00"/></svg>');
+            background-repeat: no-repeat;
+            background-position: 8px center;
+            padding-left: 35px;
+        }
+
+        /* Флаг для выбранного значения */
+        .language-selector::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 15px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .language-selector[data-lang="en"]::before {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="20" height="10"><clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(%23s)"><path d="M0,0 v30 h60 v-30 z" fill="%2300247d"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="%23fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="%23cf142b" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="%23fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="%23cf142b" stroke-width="6"/></g></svg>');
+        }
+
+        .language-selector[data-lang="ru"]::before {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="20" height="10"><path d="M0,0 h60 v10 h-60 z" fill="%23fff"/><path d="M0,10 h60 v10 h-60 z" fill="%230036a7"/><path d="M0,20 h60 v10 h-60 z" fill="%23d52b1e"/></svg>');
+        }
+
+        .language-selector[data-lang="tr"]::before {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="20" height="10"><path d="M0,0 h60 v30 h-60 z" fill="%23e30a17"/><circle cx="30" cy="15" r="8" fill="%23fff"/><circle cx="33" cy="15" r="7" fill="%23e30a17"/><path d="M36,15 l-6,3.5 l0,-7 z" fill="%23fff"/></svg>');
+        }
+
+        .language-selector[data-lang="de"]::before {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="20" height="10"><path d="M0,0 h60 v10 h-60 z" fill="%23000"/><path d="M0,10 h60 v10 h-60 z" fill="%23dd0000"/><path d="M0,20 h60 v10 h-60 z" fill="%23ffce00"/></svg>');
+        }
+
+        /* Кнопка Reservation */
+        .reservation-btn {
+            background: linear-gradient(145deg, #8c1d3a, #a52d4a);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reservation-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .reservation-btn:hover::before {
+            left: 100%;
+        }
+
+        .reservation-btn:hover {
+            background: linear-gradient(145deg, #8c1d3a, #a52d4a);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+        }
+
+        /* --- Бургер --- */
+/* --- Бургер --- */
 .burger {
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 32px;
-    height: 22px;
+    width: 35px; /* Увеличили с 28px */
+    height: 25px; /* Увеличили с 20px */
     cursor: pointer;
-}
-.burger span {
-    height: 3px;
-    background: #891837;
-    border-radius: 3px;
-    transition: .3s ease;
-}
-.burger.active span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-}
-.burger.active span:nth-child(2) {
-    opacity: 0;
-}
-.burger.active span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+    margin-left: 15px;
+    /* tuneable animation shifts */
+    --xshift: 8px;
+    --yshift: 8px;
 }
 
-/* Выпадающее МЕНЮ для мобилок */
-@media (max-width: 1100px) {
+.burger span {
+    display: block;
+    height: 4px; /* Увеличили с 3px */
+    background: #891837;
+    border-radius: 3px;
+    transform-origin: center;
+    will-change: transform, opacity;
+    transition: transform 0.25s cubic-bezier(.4,0,.2,1), opacity 0.2s ease, background-color 0.2s ease;
+}
+
+/* Анимация бургера - УНИВЕРСАЛЬНАЯ */
+.burger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(var(--xshift), var(--yshift));
+}
+
+.burger.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0.6);
+}
+
+.burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(var(--xshift), calc(-1 * var(--yshift)));
+}
+
+        /* Адаптив для планшетов */
+/* === ИСПРАВЛЕНИЯ ДЛЯ ХЕДЕРА === */
+
+/* --- Основное: ограничим ширину и поведение при ~1255px --- */
+/* === Адаптив под 1100px === */
+@media (max-width: 1450px) {
+    /* --- Общие корректировки --- */
+    .header-area {
+        width: 95%;
+        padding: 14px 22px;
+    }
+
+    /* Центрируем логотип */
+    .row-align-items-center {
+        justify-content: center;
+        position: relative;
+    }
+
+    .logo-wrap {
+        order: 2;
+        padding: 8px 14px;
+    }
+
+    .logo-wrap img {
+        height: 75px;
+    }
+
+    /* --- Бургер --- */
     .burger {
         display: flex;
-    }
-    .navigation {
         position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #F7F1E1;
-        border-radius: 0 0 16px 16px;
-        box-shadow: 0 8px 32px rgba(139,69,19,0.15);
-        padding: 20px 0;
-        transform: scaleY(0);
-        transform-origin: top;
-        opacity: 0;
-        transition: .3s ease;
-        text-align: center;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        order: 1;
+        width: 35px; 
+        height: 25px;
+        --xshift: 7px;
+        --yshift: 7px;
     }
-    .navigation ul {
-        flex-direction: column;
-        gap: 18px;
+    
+    .burger span {
+        height: 3px;
     }
-    .navigation.active {
-        transform: scaleY(1);
-        opacity: 1;
+    
+    .burger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(var(--xshift), var(--yshift));
     }
+    
+    .burger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(var(--xshift), calc(-1 * var(--yshift)));
+    }
+
+    /* Селектор языка — справа */
+    .language-selector {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        order: 3;
+    }
+
+    /* --- Прячем обычную навигацию И кнопку --- */
+    .navigation {
+        display: none;
+    }
+
     .reservation-btn {
         display: none;
     }
+    
+    /* --- ДОБАВЛЯЕМ СТИЛИ ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ ПРИ 1100px --- */
+    .navigation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) scaleY(0);
+        transform-origin: top center;
+        width: 90%;
+        background: rgb(246 241 225);
+        border: 1px solid rgba(139, 69, 19, 0.2);
+        border-radius: 0 0 16px 16px;
+        box-shadow: 0 8px 32px rgba(139, 69, 19, 0.15);
+        padding: 25px 0;
+        opacity: 0;
+        transition: all 0.3s ease;
+        z-index: 999;
+        backdrop-filter: blur(10px);
+    }
+
+    .navigation.active {
+        transform: translateX(-50%) scaleY(1);
+        opacity: 1;
+    }
+
+    .navigation ul {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
 
-/* Мелкие экраны */
-@media (max-width: 600px) {
+/* --- Мобильный режим (768px и ниже) --- */
+@media (max-width: 768px) {
     .logo-wrap img {
-        height: 55px;
+        height: 65px;
     }
+
+    .language-selector {
+        width: auto; /* Allow parent to shrink */
+        max-width: 100%;
+        margin-right: 10px; /* Adjust margin if needed */
+    }
+
+    .burger {
+        width: 30px;
+        height: 20px;
+        --xshift: 6px;
+        --yshift: 6px;
+    }
+    
+    .burger span {
+        height: 2.5px;
+    }
+    
+    .burger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(var(--xshift), var(--yshift));
+    }
+    
+    .burger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(var(--xshift), calc(-1 * var(--yshift)));
+    }
+}
+
+/* --- Для очень маленьких (≤420px) --- */
+@media (max-width: 420px) {
+    .logo-wrap img {
+        height: 50px;
+    }
+
+    .language-selector {
+        right: 50px;
+    }
+}
+        /* Демо контент */
+        .demo-content {
+            padding-top: 150px;
+            text-align: center;
+            color: #5D4037;
+        }
+
+        .demo-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #8B4513;
+        }
+
+        .demo-content p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+/* Уменьшение селектора языка при 1000px */
+@media (max-width: 1000px) {
     .language-dropdown {
-        font-size: 14px;
-        padding: 6px 25px;
+        min-width: 80px; /* Сильно уменьшаем ширину */
+        padding: 8px 30px 8px 30px; /* Уменьшаем padding */
+        font-size: 14px; /* Уменьшаем шрифт */
+        background-position: right 8px center; /* Сдвигаем стрелку */
+        text-align: center; /* Центрируем текст */
+    }
+    
+    /* Убираем флаги для опций в компактном режиме */
+    .language-dropdown option {
+        padding-left: 10px; /* Убираем отступ для флагов */
+        background-image: none !important; /* Скрываем флаги */
+    }
+    
+    /* Скрываем флаг в выбранном значении */
+    .language-selector::before {
+        display: none; /* Прячем флаг */
+    }
+    
+    /* Уменьшаем отступы вокруг селектора */
+    .language-selector {
+        margin-right: 10px;
     }
 }
