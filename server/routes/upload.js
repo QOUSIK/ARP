@@ -7,19 +7,17 @@ const fs = require("fs");
 
 const router = express.Router();
 
-// Cloudinary reads CLOUDINARY_URL automatically; enforce https URLs
+// Cloudinary uses CLOUDINARY_URL automatically
 cloudinary.config({ secure: true });
 
-// Store incoming files in RAM — perfect for Render serverless FS
+// Store incoming files in RAM
 const storage = multer.memoryStorage();
-
-// Multer for uploads
 const upload = multer({
   storage,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10 MB
+  limits: { fileSize: 10 * 1024 * 1024 }
 });
 
-// Allowed logical folders for uploads
+// Allowed category folders
 const ALLOWED_SLOTS = new Set([
   "hero", "welcome", "comfort", "taste", "apartments",
   "gallery", "rooms", "rest", "about", "contact",
@@ -34,9 +32,7 @@ function sanitizeSlot(raw) {
 // ========================= UPLOAD =========================
 router.post("/", requireAuth, upload.single("file"), async (req, res) => {
   try {
-    if (!req.file) {
-      return res.status(400).json({ ok: false, error: "No file uploaded" });
-    }
+    if (!req.file) return res.status(400).json({ ok: false, error: "No file" });
 
     const slot = sanitizeSlot(req.query.slot);
     const base64 = `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`;
@@ -44,10 +40,8 @@ router.post("/", requireAuth, upload.single("file"), async (req, res) => {
     const result = await cloudinary.uploader.upload(base64, {
       folder: `arp-hotel/${slot}`,
       resource_type: "image",
-
-      // Correct canonical order!
-      // Cloudinary requires transformation params sorted alphabetically
-      transformation: "q_auto,f_auto"
+      // Canonical transformation - avoids Invalid Signature
+      transformation: "f_auto,q_auto"
     });
 
     res.json({ ok: true, url: result.secure_url });
@@ -60,57 +54,32 @@ router.post("/", requireAuth, upload.single("file"), async (req, res) => {
 // ========================= DELETE =========================
 router.delete("/", requireAuth, express.json(), async (req, res) => {
   try {
-    const url = (req.query.url || (req.body && req.body.url) || "").toString();
+    const url = (req.query.url || req.body?.url || "").toString();
+    if (!url) return res.status(400).json({ ok: false, error: "Missing URL" });
 
-    if (!url) {
-      return res.status(400).json({ ok: false, error: "Missing URL" });
-    }
-
-    // 1) Legacy local delete support (/uploads/)
+    // Local backward compatibility
     if (url.startsWith("/uploads/")) {
-      try {
-        const UPLOAD_DIR = path.join(__dirname, "..", "..", "public", "uploads");
-        const abs = path.join(UPLOAD_DIR, url.replace("/uploads/", ""));
-        if (abs.startsWith(UPLOAD_DIR)) {
-          try { fs.unlinkSync(abs); } catch (e) { if (e.code !== "ENOENT") throw e; }
-        }
-      } catch (e) {
-        console.warn("Local delete warning:", e.message);
-      }
-
+      const UPLOAD_DIR = path.join(__dirname, "..", "..", "public", "uploads");
+      const abs = path.join(UPLOAD_DIR, url.replace("/uploads/", ""));
+      try { fs.unlinkSync(abs); } catch {}
       return res.json({ ok: true, deleted: url, local: true });
     }
 
-    // 2) Cloudinary URL delete
+    // Cloudinary public_id
     let publicId;
-    try {
-      const parts = url.split("/");
-      const start = parts.indexOf("arp-hotel"); // our folder prefix
-
-      if (start !== -1) {
-        // Direct folder match: ... /arp-hotel/gallery/filename.jpg
-        const filename = (parts[parts.length - 1] || "").split(".")[0];
-        const folder = parts.slice(start, parts.length - 1).join("/");
-        publicId = `${folder}/${filename}`;
-      } else {
-        // Generic Cloudinary URL parsing (fallback)
-        const afterUpload = (url.split("/upload/")[1] || "").split("?")[0];
-        const segs = afterUpload.split("/");
-        let i = 0;
-        while (i < segs.length && !/^v\d+$/i.test(segs[i]) && segs[i].indexOf(".") === -1) i++;
-        if (/^v\d+$/i.test(segs[i])) i++;
-        const rest = segs.slice(i).join("/");
-        publicId = rest.replace(/\.[a-z0-9]+$/i, "");
-      }
-    } catch (e) {
-      console.warn("Failed to parse public_id:", url, e.message);
+    const parts = url.split("/");
+    const start = parts.indexOf("arp-hotel");
+    if (start !== -1) {
+      const filename = parts.at(-1).split(".")[0];
+      const folder = parts.slice(start, -1).join("/");
+      publicId = `${folder}/${filename}`;
     }
 
     if (!publicId) return res.status(400).json({ ok: false, error: "Invalid Cloudinary URL" });
 
     await cloudinary.uploader.destroy(publicId);
 
-    return res.json({ ok: true, deleted: url, public_id: publicId });
+    res.json({ ok: true, deleted: url, public_id: publicId });
   } catch (err) {
     console.error("Cloudinary delete error:", err);
     res.status(500).json({ ok: false, error: err.message });
