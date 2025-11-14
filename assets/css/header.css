@@ -71,6 +71,13 @@
   .navigation.active { opacity: 1; transform: scaleY(1); }
   .navigation ul { flex-direction: column; gap: 18px; }
   .language-selector { margin-left: 0; }
+  /* three‑column bar: burger | logo | language */
+  .header-area .container { display: grid; grid-template-columns: 32px 1fr auto; align-items: center; gap: 10px; }
+  .burger { grid-column: 1; }
+  .logo-wrap { grid-column: 2; justify-self: center; }
+  .logo-wrap img { height: 56px; }
+  .language-selector { grid-column: 3; justify-self: end; }
+  .reservation-btn { display: none; }
 }
 
 /* --- Grid header bar for <=1000px: burger left, logo center, language right --- */
