@@ -35,10 +35,12 @@ body {
         /* Сетка комнат */
         .rooms-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            /* fixed-ish column max width so the last row can center like on Gastronomy */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 350px));
             gap: 35px;
             margin-top: 40px;
             margin-bottom: 15px;
+            justify-content: center; /* center the final row when not full */
         }
 
         /* Карточка комнаты */
@@ -299,7 +301,8 @@ body {
         /* Адаптивность */
         @media (max-width: 1200px) {
             .rooms-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, minmax(260px, 340px));
+                justify-content: center;
             }
         }
 

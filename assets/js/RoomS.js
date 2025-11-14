@@ -4,8 +4,25 @@
         const slideContainer = document.querySelector('.slide-container');
         const prev = document.getElementById('prev');
         const next = document.getElementById('next');
-        const indicators = document.querySelectorAll('.indicator');
+        const indicatorsWrap = document.querySelector('.slide-indicators');
+        let indicators = document.querySelectorAll('.indicator');
         let index = 0;
+
+        // Ensure indicators count matches slides count
+        function buildIndicators(){
+            if (!indicatorsWrap) return;
+            indicatorsWrap.innerHTML = '';
+            for (let i = 0; i < slides.length; i++){
+                const dot = document.createElement('div');
+                dot.className = 'indicator' + (i === index ? ' active' : '');
+                dot.dataset.index = String(i);
+                indicatorsWrap.appendChild(dot);
+            }
+            indicators = indicatorsWrap.querySelectorAll('.indicator');
+            indicators.forEach((indicatorEl, i) => {
+                indicatorEl.addEventListener('click', () => { index = i; updateSlides(); });
+            });
+        }
         let autoTimer;
         
         function updateSlides() {
@@ -13,8 +30,11 @@
             slides[index].classList.add('active');
             slideContainer.style.transform = `translateX(-${index * 100}%)`;
             
-            indicators.forEach(indicator => indicator.classList.remove('active'));
-            indicators[index].classList.add('active');
+            if (indicators && indicators.length){
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+                const safeIndex = Math.max(0, Math.min(index, slides.length - 1));
+                if (indicators[safeIndex]) indicators[safeIndex].classList.add('active');
+            }
         }
         
         prev.addEventListener('click', () => {
@@ -27,12 +47,8 @@
             updateSlides();
         });
         
-        indicators.forEach((indicator, i) => {
-            indicator.addEventListener('click', () => {
-                index = i;
-                updateSlides();
-            });
-        });
+        // Build indicators to match slides
+        buildIndicators();
         
         // Auto-slide every 5 seconds with pause on hover/focus
         function startAuto(){
@@ -47,7 +63,7 @@
         }
         startAuto();
 
-        const hoverables = [slideContainer, prev, next, document.querySelector('.slide-indicators')];
+        const hoverables = [slideContainer, prev, next, indicatorsWrap];
         hoverables.forEach(el => {
             if (!el) return;
             el.addEventListener('mouseenter', stopAuto);

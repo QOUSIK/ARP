@@ -547,6 +547,20 @@
     .reservation-btn { font-size: 14px; padding: 10px 18px; margin-left: 10px; }
 }
 
+/* Wide-condensed (1367px–1650px): keep horizontal layout and reduce spacing */
+@media (min-width: 1367px) and (max-width: 1650px) {
+    .header-area { width: 90%; padding: 12px 22px; }
+    .row-align-items-center { justify-content: space-between; }
+    .navigation { display: flex !important; position: static !important; transform: none !important; }
+    .navigation ul { gap: 26px; }
+    .navigation li a { font-size: 17px; }
+    .logo-wrap img { height: 68px; }
+    .language-selector { position: static !important; transform: none !important; }
+    .language-dropdown { font-size: 14px; padding: 8px 26px 8px 38px; }
+    .reservation-btn { font-size: 14px; padding: 10px 20px; }
+    .burger { display: none !important; }
+}
+
 /* Compact mobile layout: prevent overlaps in header */
 @media (max-width: 600px) {
     .header-area {
