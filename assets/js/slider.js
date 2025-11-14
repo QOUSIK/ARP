@@ -96,8 +96,19 @@ document.addEventListener("DOMContentLoaded", () => {
     function stopAutoMove() {
       clearInterval(autoMove);
     }
-    track.addEventListener('mouseenter', stopAutoMove);
-    track.addEventListener('mouseleave', startAutoMove);
+    // Pause autoplay when user interacts (hover or focus)
+    const hoverables = [track, prevArrow, nextArrow, dotsArea];
+    hoverables.forEach(el => {
+      if (!el) return;
+      el.addEventListener('mouseenter', stopAutoMove);
+      el.addEventListener('mouseleave', startAutoMove);
+      // keyboard focus
+      el.addEventListener('focusin', stopAutoMove);
+      el.addEventListener('focusout', startAutoMove);
+      // touch interaction (mobile)
+      el.addEventListener('touchstart', stopAutoMove, { passive: true });
+      el.addEventListener('touchend', startAutoMove, { passive: true });
+    });
 
     // анимация появления
     const observer = new IntersectionObserver((entries, observer) => {

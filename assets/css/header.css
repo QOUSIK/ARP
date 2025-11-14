@@ -522,6 +522,31 @@
     }
 }
 
+/* Laptop layout (1000px–1366px): keep full menu, tighten spacing */
+@media (min-width: 1000px) and (max-width: 1366px) {
+    .header-area { width: 92%; padding: 12px 20px; }
+    .row-align-items-center { justify-content: space-between; }
+    /* Ensure classic horizontal menu (override earlier mobile-ish block) */
+    .navigation { 
+        display: flex !important; 
+        position: static !important; 
+        transform: none !important; 
+        width: auto !important; 
+        background: transparent !important; 
+        border: 0 !important; 
+        box-shadow: none !important; 
+        padding: 0 !important; 
+        opacity: 1 !important; 
+    }
+    .navigation ul { gap: 22px; }
+    .navigation li a { font-size: 16px; }
+    .burger { display: none !important; }
+    .logo-wrap img { height: 64px; }
+    .language-selector { position: static !important; transform: none !important; margin-left: 8px; }
+    .language-dropdown { font-size: 14px; padding: 8px 26px 8px 38px; }
+    .reservation-btn { font-size: 14px; padding: 10px 18px; margin-left: 10px; }
+}
+
 /* Compact mobile layout: prevent overlaps in header */
 @media (max-width: 600px) {
     .header-area {

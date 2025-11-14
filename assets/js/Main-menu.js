@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     /* ================= HERO SLIDER ================= */
+    const hero = document.querySelector('.hero');
     const heroSlides = document.querySelectorAll('.hero .slide');
     const heroDots = document.querySelectorAll('.slider-dots .dot');
     let currentHeroSlide = 0;
+    let heroTimer;
 
     if (heroSlides.length > 0) {
 
@@ -18,15 +20,32 @@ document.addEventListener("DOMContentLoaded", () => {
             currentHeroSlide = (currentHeroSlide + 1) % heroSlides.length;
             showHeroSlide(currentHeroSlide);
         }
-
-        setInterval(nextHeroSlide, 5000);
+        function startHeroAuto(){
+            stopHeroAuto();
+            heroTimer = setInterval(nextHeroSlide, 5000);
+        }
+        function stopHeroAuto(){
+            if (heroTimer) clearInterval(heroTimer);
+        }
+        // Start autoplay
+        startHeroAuto();
 
         heroDots.forEach(dot => {
             dot.addEventListener('click', function () {
                 currentHeroSlide = parseInt(this.getAttribute('data-index'));
                 showHeroSlide(currentHeroSlide);
             });
+            // pause on focus (keyboard users)
+            dot.addEventListener('focus', stopHeroAuto);
+            dot.addEventListener('blur', startHeroAuto);
         });
+        // pause on hover over hero area
+        if (hero){
+            hero.addEventListener('mouseenter', stopHeroAuto);
+            hero.addEventListener('mouseleave', startHeroAuto);
+            hero.addEventListener('touchstart', stopHeroAuto, { passive:true });
+            hero.addEventListener('touchend', startHeroAuto, { passive:true });
+        }
     }
 
     /* ================= SCROLL ANIMATION ================= */

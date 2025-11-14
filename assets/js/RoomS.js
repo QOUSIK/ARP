@@ -6,6 +6,7 @@
         const next = document.getElementById('next');
         const indicators = document.querySelectorAll('.indicator');
         let index = 0;
+        let autoTimer;
         
         function updateSlides() {
             slides.forEach(slide => slide.classList.remove('active'));
@@ -33,11 +34,29 @@
             });
         });
         
-        // Auto-slide every 5 seconds
-        setInterval(() => {
-            index = (index + 1) % slides.length;
-            updateSlides();
-        }, 5000);
+        // Auto-slide every 5 seconds with pause on hover/focus
+        function startAuto(){
+            stopAuto();
+            autoTimer = setInterval(() => {
+                index = (index + 1) % slides.length;
+                updateSlides();
+            }, 5000);
+        }
+        function stopAuto(){
+            if (autoTimer) clearInterval(autoTimer);
+        }
+        startAuto();
+
+        const hoverables = [slideContainer, prev, next, document.querySelector('.slide-indicators')];
+        hoverables.forEach(el => {
+            if (!el) return;
+            el.addEventListener('mouseenter', stopAuto);
+            el.addEventListener('mouseleave', startAuto);
+            el.addEventListener('focusin', stopAuto);
+            el.addEventListener('focusout', startAuto);
+            el.addEventListener('touchstart', stopAuto, { passive: true });
+            el.addEventListener('touchend', startAuto, { passive: true });
+        });
         
         // Lightbox functionality
         const lightbox = document.getElementById('lightbox');

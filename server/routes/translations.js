@@ -242,6 +242,18 @@ router.get("/roomdetail/:slug/:lang", (req, res) => {
   const lang = getLang(req);
   const defaults = roomDetailDefaults(slug);
   const keys = roomDetailKeys(slug);
+  // Overlay language-specific defaults from assets/i18n/<lang>.json, if present
+  try {
+    const jsonPath = path.join(I18N_DIR, `${lang}.json`);
+    const raw = fs.readFileSync(jsonPath, "utf-8");
+    const base = JSON.parse(raw);
+    keys.forEach((k) => {
+      if (Object.prototype.hasOwnProperty.call(base, k)) {
+        const v = base[k];
+        if (v != null && String(v).trim() !== "") defaults[k] = v;
+      }
+    });
+  } catch (_) {}
   const placeholders = keys.map(_ => "?").join(",");
   db.all(
     `SELECT key, value FROM translations WHERE lang=? AND key IN (${placeholders})`,
