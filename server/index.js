@@ -6,6 +6,9 @@ const path = require("path");
 const rateLimit = require("express-rate-limit");
 const crypto = require("crypto");
 
+// Initialize database schema and seed defaults (rooms, content, translations)
+require("./models/init.db.js");
+
 const authRoutes = require("./routes/auth");
 const roomRoutes = require("./routes/rooms");
 const contentRoutes = require("./routes/content");
