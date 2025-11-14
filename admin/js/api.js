@@ -1,23 +1,7 @@
 const API_BASE = location.origin.replace(/\/admin.*/,'') + "/api";
 
-// Normalize stored/uploaded image URLs
-// Converts "/api/upload?url=%2Fuploads%2F..." -> "/uploads/..."
-function normalizeUploadUrl(u){
-  try{
-    const s = String(u || "");
-    const m = s.match(/^\/?api\/upload\?url=(.+)$/i);
-    if (m && m[1]){
-      try { return decodeURIComponent(m[1]); } catch { return m[1]; }
-    }
-    // also handle absolute origin variants
-    const originPref = (location.origin + "/api/upload?url=");
-    if (s.startsWith(originPref)){
-      const tail = s.substring(originPref.length);
-      try { return decodeURIComponent(tail); } catch { return tail; }
-    }
-    return s;
-  }catch{ return u; }
-}
+// Normalize uploaded image URLs (identity for Cloudinary secure_url)
+function normalizeUploadUrl(u){ return (u == null) ? "" : String(u); }
 
 async function api(path, opts={}) {
   const headers = Object.assign({ "Content-Type":"application/json", "X-Requested-With":"fetch" }, opts.headers || {});

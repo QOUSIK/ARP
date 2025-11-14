@@ -1,17 +1,5 @@
 (function () {
-  function normalizeUploadUrl(u){
-    try{
-      const s = String(u || "");
-      const m = s.match(/^\/?api\/upload\?url=(.+)$/i);
-      if (m && m[1]){ try { return decodeURIComponent(m[1]); } catch { return m[1]; } }
-      const originPref = (location.origin + "/api/upload?url=");
-      if (s.startsWith(originPref)){
-        const tail = s.substring(originPref.length);
-        try { return decodeURIComponent(tail); } catch { return tail; }
-      }
-      return s;
-    }catch{ return u; }
-  }
+  function normalizeUploadUrl(u){ return (u == null) ? "" : String(u); }
   const htmlLang = (document.documentElement.getAttribute("lang") || "en").toLowerCase();
   const params = new URLSearchParams(window.location.search);
   const paramLang = (params.get("lang") || "").toLowerCase();
