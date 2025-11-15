@@ -35,26 +35,25 @@ a {
 /* --- Header --- */
 .header-area {
     position: fixed;
-    left: 50%;
-    top: 10px;
-    transform: translateX(-50%);
-    width: 85%;
-    padding: 15px 30px;
-    border-radius: 16px;
-    background: #F7F1E1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 20px 0;
+    background: rgba(247, 241, 225, 0.9);
     box-shadow: 0 8px 32px rgba(139, 69, 19, 0.15);
     z-index: 1000;
     transition: all 0.4s ease;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(139, 69, 19, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(139, 69, 19, 0.1);
 }
 
 .header-area.scrolled {
-    top: 10px;
-    padding: 12px 25px;
+    padding: 12px 0;
     background: #F7F1E1;
     box-shadow: 0 4px 20px rgba(139, 69, 19, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 /* Flex */
@@ -73,11 +72,14 @@ a {
     padding: 8px 16px;
     border-radius: 12px;
     transition: all 0.3s ease;
+    background: transparent;
+    backdrop-filter: none;
 }
 
 .logo-wrap:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
+    box-shadow: none;
+    background: transparent;
 }
 
 .logo-wrap img {
@@ -152,7 +154,7 @@ a {
 }
 
 .language-dropdown {
-    background: #F7F1E1;
+    background: rgba(247, 241, 225, 0.8);
     border: 2px solid rgba(139, 69, 19, 0.3);
     border-radius: 10px;
     padding: 10px 15px 10px 45px;
@@ -171,10 +173,11 @@ a {
     text-align: left;
     font-family: 'Inter', sans-serif;
     position: relative;
+    backdrop-filter: blur(5px);
 }
 
 .language-dropdown:hover {
-    background: #F7F1E1;
+    background: rgba(247, 241, 225, 0.9);
     border-color: rgba(139, 69, 19, 0.6);
     box-shadow: 0 4px 15px rgba(139, 69, 19, 0.15);
     transform: translateY(-1px);
@@ -206,7 +209,7 @@ a {
     height: 24px;
     border-radius: 8px;
     border: 2px solid rgba(139, 69, 19, 0.3);
-    background: #F7F1E1;
+    background: rgba(247, 241, 225, 0.8);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -215,11 +218,12 @@ a {
     cursor: pointer;
     padding: 0;
     transition: all 0.2s ease;
+    backdrop-filter: blur(5px);
 }
 
 .lang-flag.active {
     border-color: #8B4513;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.9);
     box-shadow: 0 0 0 2px rgba(139, 69, 19, 0.15);
 }
 
@@ -297,6 +301,7 @@ a {
     box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(5px);
 }
 
 .reservation-btn::before {
@@ -356,13 +361,12 @@ a {
     transform: rotate(-45deg) translate(var(--xshift), calc(-1 * var(--yshift)));
 }
 
-/* ========== ИСПРАВЛЕННЫЕ МЕДИА-ЗАПРОСЫ ========== */
+/* ========== МЕДИА-ЗАПРОСЫ ========== */
 
-/* Планшетный режим (1100px и меньше) */
-@media (max-width: 1100px) {
+/* Планшетный режим (1270px и меньше) */
+@media (max-width: 1270px) {
     .header-area {
-        width: 95%;
-        padding: 14px 20px;
+        padding: 15px 0;
     }
 
     /* Показываем бургер */
@@ -371,8 +375,7 @@ a {
         order: 1;
     }
 
-    /* Прячем обычную навигацию и кнопку */
-    .navigation:not(.mobile-nav),
+    /* Прячем кнопку Reservation в шапке */
     .reservation-btn {
         display: none;
     }
@@ -396,13 +399,15 @@ a {
         justify-self: end;
     }
 
-    /* Мобильная навигация */
-    .mobile-nav {
+    /* Мобильная навигация (та же .navigation) */
+    .navigation {
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        background: #F7F1E1;
+        background: rgba(247, 241, 225, 0.95);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
         border-radius: 0 0 16px 16px;
         box-shadow: 0 8px 32px rgba(139, 69, 19, 0.15);
         padding: 20px 0;
@@ -411,36 +416,30 @@ a {
         visibility: hidden;
         transition: all 0.3s ease;
         z-index: 999;
+        border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+        justify-content: center;
     }
 
-    .mobile-nav.active {
+    .navigation.active {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
     }
 
-    .mobile-nav ul {
+    .navigation ul {
         flex-direction: column;
         gap: 15px;
         text-align: center;
     }
 
-    .mobile-nav li a {
+    .navigation li a {
         font-size: 16px;
         padding: 10px 20px;
         display: block;
     }
-
-    /* Показываем кнопку в мобильном меню */
-    .mobile-nav .reservation-btn {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 10px 20px;
-        font-size: 14px;
-    }
 }
 
-/* Переключение на флаги вместо селектора на маленьких экранах */
+/* Переключение на флаги/упрощение на маленьких экранах */
 @media (max-width: 768px) {
     .logo-wrap img {
         height: 60px;
@@ -456,13 +455,16 @@ a {
     .burger span {
         height: 3px;
     }
+
+    .language-dropdown {
+        background: rgba(247, 241, 225, 0.9);
+    }
 }
 
 /* Очень маленькие экраны */
 @media (max-width: 480px) {
     .header-area {
-        width: 98%;
-        padding: 12px 15px;
+        padding: 12px 0;
     }
 
     .logo-wrap img {
@@ -483,7 +485,7 @@ a {
     }
 }
 
-/* Демо контент */
+/* Демо контент (если нужен отступ под фиксированный header) */
 .demo-content {
     padding-top: 150px;
     text-align: center;
@@ -502,4 +504,9 @@ a {
     max-width: 600px;
     margin: 0 auto 30px;
     line-height: 1.6;
+}
+
+.s {
+  width: 500px;
+  height: 500px;
 }

@@ -92,16 +92,16 @@ function updateLanguageTextForMobileFlags(){
     const isCompactMode = window.innerWidth <= 1000;
     if (isCompactMode) {
         // Mobile: show flags instead of ENG/RU/TR/DE
-        languageSelect.querySelector('option[value=\"en\"]').textContent = '🇬🇧';
-        languageSelect.querySelector('option[value=\"ru\"]').textContent = '🇷🇺';
-        languageSelect.querySelector('option[value=\"tr\"]').textContent = '🇹🇷';
-        languageSelect.querySelector('option[value=\"de\"]').textContent = '🇩🇪';
+        languageSelect.querySelector('option[value="en"]').textContent = '🇬🇧';
+        languageSelect.querySelector('option[value="ru"]').textContent = '🇷🇺';
+        languageSelect.querySelector('option[value="tr"]').textContent = '🇹🇷';
+        languageSelect.querySelector('option[value="de"]').textContent = '🇩🇪';
     } else {
         // Desktop: full language names
-        languageSelect.querySelector('option[value=\"en\"]').textContent = 'English';
-        languageSelect.querySelector('option[value=\"ru\"]').textContent = 'Русский';
-        languageSelect.querySelector('option[value=\"tr\"]').textContent = 'Türkçe';
-        languageSelect.querySelector('option[value=\"de\"]').textContent = 'Deutsch';
+        languageSelect.querySelector('option[value="en"]').textContent = 'English';
+        languageSelect.querySelector('option[value="ru"]').textContent = 'Русский';
+        languageSelect.querySelector('option[value="tr"]').textContent = 'Türkçe';
+        languageSelect.querySelector('option[value="de"]').textContent = 'Deutsch';
     }
 }
 
@@ -118,3 +118,4 @@ if (document.readyState === 'loading'){
     arpWireLangCompact();
 }
 document.addEventListener('includesLoaded', arpWireLangCompact);
+
