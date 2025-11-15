@@ -534,13 +534,11 @@
             color: #8f223e;
             font-size: 2rem;
             opacity: 0.8;
-            animation: float 3s ease-in-out infinite;
         }
         
         .decoration i {
             margin: 0 15px;
             text-shadow: 0 0 10px rgba(139, 69, 19, 0.3);
-            color: #8f223e;
         }
         
         .decoration i:nth-child(1) { animation: bounce 2s ease infinite; }

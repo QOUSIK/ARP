@@ -174,7 +174,11 @@ function roomDetailDefaults(slug){
     },
     standart: {
       [`room.standart.hero.image`]: "/assets/imgs/oda5.webp",
-      [`room.standart.slides`]: JSON.stringify(["/assets/imgs/oda5.webp"]),
+      [`room.standart.slides`]: JSON.stringify([
+        "/assets/imgs/oda5.webp",
+        "/assets/imgs/oda6.webp",
+        "/assets/imgs/oda7.webp"
+      ]),
       [`room.standart.area`]: "20-22 m²",
       [`room.standart.flooring`]: "Carpet",
       [`room.standart.view`]: "Sea or garden view",

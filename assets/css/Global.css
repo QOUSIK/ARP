@@ -127,18 +127,21 @@ h2 {
 
 /* Common Decorative Elements */
 .decoration {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+    text-align: center;
     margin: 40px 0;
-    color: var(--color-secondary);
+    color: #8f223e;
     font-size: 2rem;
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
 .decoration i {
-    font-size: inherit;
+    margin: 0 15px;
+    text-shadow: 0 0 10px rgba(139, 69, 19, 0.3);
 }
+
+.decoration i:nth-child(1) { animation: bounce 2s ease infinite; }
+.decoration i:nth-child(2) { animation: bounce 2s ease 0.2s infinite; }
+.decoration i:nth-child(3) { animation: bounce 2s ease 0.4s infinite; }
 
 /* Common Animation Keyframes */
 @keyframes fadeIn {
@@ -149,6 +152,15 @@ h2 {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
     }
 }
 

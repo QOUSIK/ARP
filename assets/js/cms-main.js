@@ -258,7 +258,10 @@
 
     // Slider images
     const slides = parseList(data[`room.${slug}.slides`]);
-    if (slides && slides.length){
+    // If CMS data provides more than one slide, rebuild from it.
+    // For a single or empty slide list, keep the static HTML slider
+    // (useful when DB still has old 1-image data but page markup has several images).
+    if (slides && slides.length > 1){
       const cont = document.querySelector('.slide-container');
       const ind = document.querySelector('.slide-indicators');
       if (cont){
