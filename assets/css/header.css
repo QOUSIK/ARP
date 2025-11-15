@@ -510,3 +510,10 @@ a {
   width: 500px;
   height: 500px;
 }
+
+/* Сдвигаем логотип чуть правее на больших экранах */
+@media (min-width: 1271px) {
+    .logo-wrap {
+        margin-left: 40px;
+    }
+}
