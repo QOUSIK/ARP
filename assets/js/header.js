@@ -45,10 +45,10 @@ function arpWireHeader(){
         languageSelect.addEventListener("change", function(){
             const selectedLang = this.value;
             languageSelector.setAttribute("data-lang", selectedLang);
-            try { localStorage.setItem('arp_lang', selectedLang); } catch {}
+            try { localStorage.setItem("arp_lang", selectedLang); } catch {}
         });
         // Initialize from storage
-        const savedLang = (localStorage.getItem('arp_lang') || 'en');
+        const savedLang = (localStorage.getItem("arp_lang") || "en");
         languageSelect.value = savedLang;
         languageSelector.setAttribute("data-lang", savedLang);
         languageSelect._wired = true;
@@ -86,10 +86,29 @@ function updateLanguageTextForMobile() {
 }
 
 // Вызываем при загрузке и изменении размера
+function updateLanguageTextForMobileFlags(){
+    const languageSelect = document.getElementById('languageSelect');
+    if (!languageSelect) return;
+    const isCompactMode = window.innerWidth <= 1000;
+    if (isCompactMode) {
+        // Mobile: show flags instead of ENG/RU/TR/DE
+        languageSelect.querySelector('option[value=\"en\"]').textContent = '🇬🇧';
+        languageSelect.querySelector('option[value=\"ru\"]').textContent = '🇷🇺';
+        languageSelect.querySelector('option[value=\"tr\"]').textContent = '🇹🇷';
+        languageSelect.querySelector('option[value=\"de\"]').textContent = '🇩🇪';
+    } else {
+        // Desktop: full language names
+        languageSelect.querySelector('option[value=\"en\"]').textContent = 'English';
+        languageSelect.querySelector('option[value=\"ru\"]').textContent = 'Русский';
+        languageSelect.querySelector('option[value=\"tr\"]').textContent = 'Türkçe';
+        languageSelect.querySelector('option[value=\"de\"]').textContent = 'Deutsch';
+    }
+}
+
 function arpWireLangCompact(){
-    updateLanguageTextForMobile();
+    updateLanguageTextForMobileFlags();
     if (!window._arpLangCompactWired){
-        window.addEventListener('resize', updateLanguageTextForMobile);
+        window.addEventListener('resize', updateLanguageTextForMobileFlags);
         window._arpLangCompactWired = true;
     }
 }

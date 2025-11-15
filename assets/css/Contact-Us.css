@@ -26,7 +26,7 @@ background-position: center;
 
             background-size: cover;
             background-position: center;
-            padding: 200px 20px;
+            padding: 160px 20px;
             text-align: center;
             color: white;
             position: relative;
@@ -400,16 +400,15 @@ background-position: center;
                 margin-bottom: 15px;
             }
         }
-        p {
-    color: white;
-}
- .decoration {
+
+        /* Keep decoration consistent with global style */
+        .decoration {
             text-align: center;
             margin: 40px 0;
             color: #8f223e;
             font-size: 2rem;
             opacity: 0.8;
-            animation: float 3s ease-in-out infinite;
+            animation: none;
         }
         
         .decoration i {
@@ -418,6 +417,8 @@ background-position: center;
             color: #8f223e;
         }
         
-        .decoration i:nth-child(1) { animation: bounce 2s ease infinite; }
-        .decoration i:nth-child(2) { animation: bounce 2s ease 0.2s infinite; }
-        .decoration i:nth-child(3) { animation: bounce 2s ease 0.4s infinite; }
+        .decoration i:nth-child(1),
+        .decoration i:nth-child(2),
+        .decoration i:nth-child(3) {
+            animation: none;
+        }

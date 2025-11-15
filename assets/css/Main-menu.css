@@ -1,4 +1,5 @@
-* {
+.hero,
+.hero * {
     color: #ffffff;
     text-shadow: 0 0 15px rgb(191 154 154 / 60%);
 }
