@@ -106,7 +106,10 @@ async function save(){
       if (!el) continue;
       let val = (el.value || '').toString();
       // lists -> store as JSON array
-      if (id.startsWith('gi_')) val = JSON.stringify(nlToArray(val).map(API.normalizeUploadUrl));
+      if (id.startsWith('gi_')){
+        // even if list is empty, store "[]" so that public gallery stops using old URLs
+        val = JSON.stringify(nlToArray(val).map(API.normalizeUploadUrl));
+      }
       if (id === 'g_hero_image') val = API.normalizeUploadUrl(val);
       if (val.trim()) payload[fields[id]] = val;
     }
