@@ -1,121 +1,109 @@
-function arpWireHeader(){
-    const burger = document.querySelector(".burger");
-    const navigation = document.querySelector(".navigation");
-    const header = document.querySelector(".header-area");
-    const languageSelect = document.getElementById("languageSelect");
-    const languageSelector = document.querySelector(".language-selector");
+function arpWireHeader() {
+    const header = document.querySelector('.header-area');
+    if (!header || header._arpWired) return;
+    header._arpWired = true;
 
-    // Guard: only wire once per element
-    if (burger && !burger._wired && navigation){
-        burger.addEventListener("click", (e) => {
+    const burger = header.querySelector('.burger');
+    const mobileNav = header.querySelector('.mobile-nav');
+    const closeMobileNav = header.querySelector('.close-mobile-nav');
+    const languageSelect = document.getElementById('languageSelect');
+    const languageSelectMobile = document.getElementById('languageSelectMobile');
+
+    // --- Mobile navigation toggle ---
+    if (burger && mobileNav && !burger._arpWired) {
+        const closeNav = () => {
+            burger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        burger.addEventListener('click', (e) => {
             e.stopPropagation();
-            burger.classList.toggle("active");
-            navigation.classList.toggle("active");
+            burger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+
+            if (mobileNav.classList.contains('active')) {
+                const menuItems = mobileNav.querySelectorAll('li');
+                menuItems.forEach((item, index) => {
+                    item.style.transitionDelay = `${0.1 + index * 0.05}s`;
+                });
+            }
         });
-        // Close on link click
-        navigation.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => {
-                burger.classList.remove("active");
-                navigation.classList.remove("active");
-            });
+
+        if (closeMobileNav) {
+            closeMobileNav.addEventListener('click', closeNav);
+        }
+
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeNav);
         });
-        // Close on outside click (once)
-        if (!document._arpHeaderOutsideClose){
+
+        if (!document._arpMobileNavOutsideClose) {
             document.addEventListener('click', (e) => {
-                const navActive = navigation && navigation.classList.contains('active');
-                if (navActive && !e.target.closest('.navigation') && !e.target.closest('.burger')){
-                    burger.classList.remove("active");
-                    navigation.classList.remove("active");
+                if (mobileNav.classList.contains('active') &&
+                    !e.target.closest('.mobile-nav') &&
+                    !e.target.closest('.burger')) {
+                    closeNav();
                 }
             });
-            document._arpHeaderOutsideClose = true;
+            document._arpMobileNavOutsideClose = true;
         }
-        burger._wired = true;
+
+        burger._arpWired = true;
     }
 
-    if (header && !window._arpHeaderScrollWired){
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 50) header.classList.add("scrolled");
-            else header.classList.remove("scrolled");
+    // --- Header scroll effect ---
+    if (!window._arpHeaderScrollWired) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
         });
         window._arpHeaderScrollWired = true;
     }
 
-    if (languageSelect && languageSelector && !languageSelect._wired){
-        languageSelect.addEventListener("change", function(){
+    // --- Language selectors ---
+    function setupLanguageSelector(selectElement) {
+        if (!selectElement || selectElement._arpWired) return;
+
+        selectElement.addEventListener('change', function () {
             const selectedLang = this.value;
-            languageSelector.setAttribute("data-lang", selectedLang);
-            try { localStorage.setItem("arp_lang", selectedLang); } catch {}
+
+            document.querySelectorAll('.language-selector').forEach(selector => {
+                selector.setAttribute('data-lang', selectedLang);
+            });
+
+            if (languageSelect && selectElement !== languageSelect) {
+                languageSelect.value = selectedLang;
+            }
+            if (languageSelectMobile && selectElement !== languageSelectMobile) {
+                languageSelectMobile.value = selectedLang;
+            }
+
+            try {
+                localStorage.setItem('arp_lang', selectedLang);
+            } catch (e) { }
         });
-        // Initialize from storage
-        const savedLang = (localStorage.getItem("arp_lang") || "en");
-        languageSelect.value = savedLang;
-        languageSelector.setAttribute("data-lang", savedLang);
-        languageSelect._wired = true;
+
+        selectElement._arpWired = true;
     }
+
+    setupLanguageSelector(languageSelect);
+    setupLanguageSelector(languageSelectMobile);
+
+    const savedLang = (localStorage.getItem('arp_lang') || 'en');
+    if (languageSelect) languageSelect.value = savedLang;
+    if (languageSelectMobile) languageSelectMobile.value = savedLang;
+    document.querySelectorAll('.language-selector').forEach(selector => {
+        selector.setAttribute('data-lang', savedLang);
+    });
 }
 
 // Run once DOM is ready and again after HTML includes are injected
-if (document.readyState === 'loading'){
+if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', arpWireHeader);
 } else {
     arpWireHeader();
 }
 document.addEventListener('includesLoaded', arpWireHeader);
-
-// Функция для компактного отображения языка
-function updateLanguageTextForMobile() {
-    const languageSelect = document.getElementById('languageSelect');
-    if (!languageSelect) return;
-    
-    const isCompactMode = window.innerWidth <= 1000;
-    
-    if (isCompactMode) {
-        // Сохраняем оригинальные значения
-        languageSelect.querySelector('option[value="en"]').textContent = 'ENG';
-        languageSelect.querySelector('option[value="ru"]').textContent = 'RU';
-        languageSelect.querySelector('option[value="tr"]').textContent = 'TUR';
-        languageSelect.querySelector('option[value="de"]').textContent = 'GER';
-    } else {
-        // Возвращаем полные названия
-        languageSelect.querySelector('option[value="en"]').textContent = 'English';
-        languageSelect.querySelector('option[value="ru"]').textContent = 'Русский';
-        languageSelect.querySelector('option[value="tr"]').textContent = 'Türkçe';
-        languageSelect.querySelector('option[value="de"]').textContent = 'Deutsch';
-    }
-}
-
-// Вызываем при загрузке и изменении размера
-function updateLanguageTextForMobileFlags(){
-    const languageSelect = document.getElementById('languageSelect');
-    if (!languageSelect) return;
-    const isCompactMode = window.innerWidth <= 1000;
-    if (isCompactMode) {
-        // Mobile: show flags instead of ENG/RU/TR/DE
-        languageSelect.querySelector('option[value="en"]').textContent = '🇬🇧';
-        languageSelect.querySelector('option[value="ru"]').textContent = '🇷🇺';
-        languageSelect.querySelector('option[value="tr"]').textContent = '🇹🇷';
-        languageSelect.querySelector('option[value="de"]').textContent = '🇩🇪';
-    } else {
-        // Desktop: full language names
-        languageSelect.querySelector('option[value="en"]').textContent = 'English';
-        languageSelect.querySelector('option[value="ru"]').textContent = 'Русский';
-        languageSelect.querySelector('option[value="tr"]').textContent = 'Türkçe';
-        languageSelect.querySelector('option[value="de"]').textContent = 'Deutsch';
-    }
-}
-
-function arpWireLangCompact(){
-    updateLanguageTextForMobileFlags();
-    if (!window._arpLangCompactWired){
-        window.addEventListener('resize', updateLanguageTextForMobileFlags);
-        window._arpLangCompactWired = true;
-    }
-}
-if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', arpWireLangCompact);
-} else {
-    arpWireLangCompact();
-}
-document.addEventListener('includesLoaded', arpWireLangCompact);
 
