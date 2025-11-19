@@ -121,22 +121,31 @@
         }
 .header-area .burger.active ~ .header-right .language-dropdown {
     opacity: 0;
+    display: none;
 }
 .header-area .burger.active ~ .header-right ::before {
     opacity: 0;
+    display: none;
 }
 .header-area .burger.active ~ .header-right ::before {
     opacity: 0;
+    display: none;
 }
 .header-area .burger.active ~ .logo-wrap img {
     height: 80px;
 }
 .header-area .burger.active ~ .header-right .reservation-btn {
     opacity: 0;
+    display: none;
 }
-.header-area.scrolled .burger.active ~ .logo-wrap img {
+.header-area .burger.active ~ .logo-wrap img {
     height: 80px;
     filter: brightness(0) invert(1);
+    transform: translateY(40%);
+}
+
+.header-area .burger.active ~ .logo-wrap:hover img {
+    height: 90px;
 }
         /* Правая часть - язык и кнопка */
         .header-right {
@@ -524,9 +533,6 @@ color: #ffffff;
 
         /* Планшет (768px - 1024px) */
         @media (max-width: 1024px) {
-            .logo-wrap img {
-                height: 60px;
-            }
 
             .reservation-btn {
                 padding: 10px 20px;
@@ -542,9 +548,6 @@ color: #ffffff;
 
         /* Мобильный (767px и меньше) */
         @media (max-width: 767px) {
-            .logo-wrap img {
-                height: 50px;
-            }
             .burger {
                 width: 30px;
                 height: 20px;
@@ -554,29 +557,21 @@ color: #ffffff;
                 height: 3px;
             }
 
+            
+            #languageSelect {
+    display: none;
+}
 
-            .language-dropdown {
-                padding: 8px 8px 8px 30px;
-                min-width: auto;
-            }
+            .language-selector::before {
+    display: none;
+}
 
             .language-dropdown option {
                 background: #8c1d3a;
                 color: #ffffff;
             }
-            .language-selector::before  {
-                left: 7px;
-                top: 58%;
-            }
+            
 
-            .mobile-nav {
-                padding: 100px 20px 40px;
-            }
-
-            .mobile-nav li a {
-                font-size: 20px;
-                padding: 16px 25px;
-            }
 
             .close-mobile-nav {
                 top: 25px;
@@ -601,23 +596,21 @@ color: #ffffff;
                 height: 18px;
             }
 
-            .mobile-nav {
-                padding: 90px 15px 30px;
-            }
-
-            .mobile-nav li a {
-                font-size: 18px;
-                padding: 14px 20px;
-            }
-
-            .close-mobile-nav {
-                top: 20px;
-                right: 20px;
-                width: 40px;
-                height: 40px;
-            }
-
             .close-mobile-nav span {
                 width: 20px;
             }
+            .reservation-btn{
+                opacity: 0;
+              display: none;
+            }
+            .header-area .burger.active ~ .logo-wrap img {
+    height: 60px;
         }
+        .logo-wrap {
+            transform: translate(calc(-50% - 14px), -40%);
+        }
+         .header-area.scrolled .logo-wrap img {
+            height: 68px;
+
+        }
+    }
