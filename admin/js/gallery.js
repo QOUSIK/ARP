@@ -44,6 +44,13 @@ function arrayToNl(arr){
   return (arr || []).join('\n');
 }
 
+async function deleteFile(url){
+  const u = (url || '').trim();
+  if (!u) return;
+  if (!(u.startsWith('/uploads/') || /^https?:/i.test(u))) return;
+  await API.api(`/upload?url=${encodeURIComponent(u)}`, { method: 'DELETE' });
+}
+
 function setThumbHero(url){
   const img = document.getElementById('p_gallery_hero');
   if (!img) return;
@@ -153,6 +160,9 @@ function bindUploads(){
     if (!f) return;
     f.addEventListener('change', async () => {
       if (!f.files || !f.files.length) return;
+      const isHero = targetId === 'g_hero_image';
+      const target = document.getElementById(targetId);
+      const oldUrl = isHero ? (target?.value || '').trim() : '';
       // support multiple files for lists
       st.textContent = 'Uploading...';
       try {
@@ -161,15 +171,18 @@ function bindUploads(){
           const res = await API.apiUpload(`/upload?slot=${encodeURIComponent(slot)}`, file);
           urls.push(res.url);
         }
-        const target = document.getElementById(targetId);
         if (targetId.startsWith('gi_')){
           const existing = nlToArray(target.value);
           target.value = arrayToNl(existing.concat(urls));
         } else {
           target.value = urls[0] || '';
           setThumbHero(target.value);
+          if (isHero && oldUrl && oldUrl !== target.value){
+            try { await deleteFile(oldUrl); }
+            catch(e){ st.textContent = (e && e.message) ? e.message : 'Upload ok, old file not deleted'; }
+          }
         }
-        st.textContent = 'Uploaded.';
+        if (!st.textContent || /^Uploading/.test(st.textContent)) st.textContent = 'Uploaded.';
       } catch(e) { st.textContent = e.message || 'Upload failed'; }
       renderAllThumbs();
       saveDraft();
@@ -291,10 +304,26 @@ async function deleteAllFilesIn(textareaId){
   if (!t) return;
   const urls = nlToArray(t.value).filter(u => u.startsWith('/uploads/') || /^https?:/i.test(u));
   for (const u of urls){
-    try { await API.api(`/upload?url=${encodeURIComponent(u)}`, { method: 'DELETE' }); } catch {}
+    try { await deleteFile(u); } catch {}
   }
   t.value = '';
   renderAllThumbs();
+}
+
+async function clearHeroImage(){
+  const input = document.getElementById('g_hero_image');
+  if (!input) return;
+  const current = (input.value || '').trim();
+  let msg = 'Cleared.';
+  if (current){
+    st.textContent = 'Deleting...';
+    try { await deleteFile(current); msg = 'Deleted.'; }
+    catch(e){ msg = e && e.message ? e.message : 'Delete failed'; }
+  }
+  input.value = '';
+  setThumbHero('');
+  saveDraft();
+  st.textContent = msg;
 }
 
 const mapBtns = [
@@ -311,3 +340,6 @@ mapBtns.forEach(([btnId, taId], i) => {
   if (btnId.startsWith('clr_')) btn.addEventListener('click', () => clearList(taId));
   else btn.addEventListener('click', () => deleteAllFilesIn(taId));
 });
+
+const clrHeroBtn = document.getElementById('clr_g_hero');
+if (clrHeroBtn) clrHeroBtn.addEventListener('click', clearHeroImage);
