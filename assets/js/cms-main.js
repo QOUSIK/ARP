@@ -85,10 +85,14 @@
     // Изображения
     document.querySelectorAll("[data-img]").forEach(el => {
       const key = el.getAttribute("data-img");
+      if (!Object.prototype.hasOwnProperty.call(data, key)) return;
       const url = normalizeUploadUrl(data[key]);
-      if (!url) return;
-      if (el.tagName === "IMG") el.src = url;
-      else el.style.backgroundImage = `url('${url}')`;
+      if (el.tagName === "IMG") {
+        if (url) el.src = url;
+        else el.removeAttribute("src");
+      } else {
+        el.style.backgroundImage = url ? `url('${url}')` : "none";
+      }
     });
 
     // Apply section visibility for preview
@@ -320,7 +324,11 @@
     if (!styleEl){ styleEl = document.createElement('style'); styleEl.id = styleId; document.head.appendChild(styleEl); }
     const gHero = normalizeUploadUrl(data['gallery.hero.image']);
     let css = '';
-    if (gHero) css += `.about-hero{background: linear-gradient(rgba(109,26,44,0.85), rgba(60,10,22,0.9)), url('${gHero}') !important; background-size: cover !important; background-position: center !important;}`;
+    if (gHero) {
+      css += `.about-hero{background: linear-gradient(rgba(109,26,44,0.85), rgba(60,10,22,0.9)), url('${gHero}') !important; background-size: cover !important; background-position: center !important;}`;
+    } else {
+      css += `.about-hero{background: linear-gradient(rgba(109,26,44,0.85), rgba(60,10,22,0.9)) !important; background-size: cover !important; background-position: center !important;}`;
+    }
     styleEl.textContent = css;
 
     // Visibility for hero and categories

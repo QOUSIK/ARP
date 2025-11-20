@@ -1,4 +1,4 @@
-const st = document.getElementById('status');
+﻿const st = document.getElementById('status');
 const langSel = document.getElementById('lang');
 const defaultLang = 'ru';
 
@@ -42,6 +42,14 @@ function nlToArray(text){
 }
 function arrayToNl(arr){
   return (arr || []).join('\n');
+}
+
+function cacheBust(url){
+  const base = (url || '').trim();
+  if (!base) return '';
+  const cleaned = base.replace(/([?&])v=\d+(&)?$/i, '').replace(/([?&])v=\d+/i, '$1').replace(/[?&]$/, '');
+  const sep = cleaned.includes('?') ? '&' : '?';
+  return `${cleaned}${sep}v=${Date.now()}`;
 }
 
 async function deleteFile(url){
@@ -111,14 +119,14 @@ async function save(){
     for (const id in fields){
       const el = document.getElementById(id);
       if (!el) continue;
-      let val = (el.value || '').toString();
+      let val = (el.value ?? '').toString();
       // lists -> store as JSON array
       if (id.startsWith('gi_')){
         // even if list is empty, store "[]" so that public gallery stops using old URLs
         val = JSON.stringify(nlToArray(val).map(API.normalizeUploadUrl));
       }
       if (id === 'g_hero_image') val = API.normalizeUploadUrl(val);
-      if (val.trim()) payload[fields[id]] = val;
+      payload[fields[id]] = val;
     }
     sectionKeys.forEach(k => {
       const cb = document.getElementById(`visible_gallery_${k}`);
@@ -169,7 +177,7 @@ function bindUploads(){
         const urls = [];
         for (const file of Array.from(f.files)){
           const res = await API.apiUpload(`/upload?slot=${encodeURIComponent(slot)}`, file);
-          urls.push(res.url);
+          urls.push(cacheBust(res.url));
         }
         if (targetId.startsWith('gi_')){
           const existing = nlToArray(target.value);
@@ -204,8 +212,8 @@ function renderThumbsFor(textareaId, gridId){
     wrap.appendChild(img);
     const btn = document.createElement('button');
     btn.className = 'remove';
-    btn.textContent = '×';
-    btn.title = 'Удалить';
+    btn.textContent = '✕';
+    btn.title = 'Delete';
     btn.addEventListener('click', async () => {
       // remove from list
       const list = nlToArray(t.value);
@@ -213,15 +221,12 @@ function renderThumbsFor(textareaId, gridId){
       t.value = arrayToNl(list);
       grid.removeChild(wrap);
       // attempt to delete physical file (support local /uploads and Cloudinary URLs)
-      if (url.startsWith('/uploads/') || /^https?:/i.test(url)){
-        try { await API.api(`/upload?url=${encodeURIComponent(url)}`, { method: 'DELETE' }); } catch {}
-      }
+      try { await deleteFile(url); } catch {}
     });
     wrap.appendChild(btn);
     grid.appendChild(wrap);
   });
 }
-
 function renderAllThumbs(){
   renderThumbsFor('gi_hotel','th_g_hotel');
   renderThumbsFor('gi_rooms','th_g_rooms');
@@ -343,3 +348,6 @@ mapBtns.forEach(([btnId, taId], i) => {
 
 const clrHeroBtn = document.getElementById('clr_g_hero');
 if (clrHeroBtn) clrHeroBtn.addEventListener('click', clearHeroImage);
+
+
+

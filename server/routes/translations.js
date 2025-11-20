@@ -512,7 +512,13 @@ router.get("/gallery/:lang", (req, res) => {
     (err, rows) => {
       if (err) return res.status(500).json({ error: err.message });
       const out = { ...defaults };
-      rows.forEach(r => { if (r.value && r.value.trim() !== "") out[r.key] = r.value; });
+      rows.forEach(r => {
+        // Gallery: allow empty strings to explicitly clear stored/default URLs
+        if (r.value !== undefined && r.value !== null) {
+          const val = r.value === null ? "" : String(r.value);
+          out[r.key] = val;
+        }
+      });
       res.json(out);
     }
   );
@@ -530,8 +536,9 @@ router.patch("/gallery/:lang", requireAuth, (req, res) => {
     let saved = 0, skipped = 0;
     for (const k of Object.keys(body)) {
       if (!GALLERY_KEYS.includes(k)) continue;
-      const val = String(body[k] ?? "").trim();
-      if (!val) { skipped++; continue; }
+      // Accept empty strings to wipe previous URLs
+      const raw = body[k];
+      const val = raw === undefined || raw === null ? "" : String(raw);
       stmt.run([k, lang, val, k, lang]);
       saved++;
     }

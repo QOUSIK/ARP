@@ -52,8 +52,9 @@ router.post("/", requireAuth, upload.single("file"), async (req, res) => {
 // ========================= DELETE =========================
 router.delete("/", requireAuth, express.json(), async (req, res) => {
   try {
-    const url = (req.query.url || req.body?.url || "").toString();
-    if (!url) return res.status(400).json({ ok: false, error: "Missing URL" });
+    const rawUrl = (req.query.url || req.body?.url || "").toString();
+    if (!rawUrl) return res.status(400).json({ ok: false, error: "Missing URL" });
+    const url = rawUrl.split("?")[0]; // strip cache-bust/query
 
     // Local backward compatibility
     if (url.startsWith("/uploads/")) {
