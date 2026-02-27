@@ -299,13 +299,32 @@ router.patch("/roomdetail/:slug/:lang", requireAuth, (req, res) => {
 
 function getLang(req) {
   const lang = (req.params.lang || "").toLowerCase();
-  return ["en","ru","tr","de",].includes(lang) ? lang : "en";
+  return ["en", "ru", "tr", "de", "uk"].includes(lang) ? lang : "en";
+}
+
+function overlayDefaultsFromAssets(lang, keys, defaults) {
+  try {
+    const jsonPath = path.join(I18N_DIR, `${lang}.json`);
+    const raw = fs.readFileSync(jsonPath, "utf-8");
+    const base = JSON.parse(raw);
+    keys.forEach((k) => {
+      if (Object.prototype.hasOwnProperty.call(base, k)) {
+        const v = base[k];
+        if (v != null && String(v).trim() !== "") defaults[k] = v;
+      }
+    });
+  } catch (_) {}
+  return defaults;
 }
 
 // Get translations for main page
 router.get("/main/:lang", (req, res) => {
   const lang = getLang(req);
-  const defaults = DEFAULT_TEXTS[lang] || DEFAULT_TEXTS.en;
+  const defaults = overlayDefaultsFromAssets(
+    lang,
+    MAIN_KEYS,
+    { ...(DEFAULT_TEXTS[lang] || DEFAULT_TEXTS.en) }
+  );
 
   const placeholders = MAIN_KEYS.map(_ => "?").join(",");
   db.all(
@@ -377,7 +396,11 @@ DEFAULTS_ABOUT.de = { ...DEFAULTS_ABOUT.en };
 // Get translations for about page (defaults + DB overlay)
 router.get("/about/:lang", (req, res) => {
   const lang = getLang(req);
-  const defaults = DEFAULTS_ABOUT[lang] || DEFAULTS_ABOUT.en;
+  const defaults = overlayDefaultsFromAssets(
+    lang,
+    ABOUT_KEYS,
+    { ...(DEFAULTS_ABOUT[lang] || DEFAULTS_ABOUT.en) }
+  );
   const placeholders = ABOUT_KEYS.map(_ => "?").join(",");
   db.all(
     `SELECT key, value FROM translations WHERE lang=? AND key IN (${placeholders})`,
@@ -443,7 +466,11 @@ DEFAULTS_REST.de = { ...DEFAULTS_REST.en };
 // Read Rest-Bar translations (defaults + DB overlay)
 router.get("/rest/:lang", (req, res) => {
   const lang = getLang(req);
-  const defaults = DEFAULTS_REST[lang] || DEFAULTS_REST.en;
+  const defaults = overlayDefaultsFromAssets(
+    lang,
+    REST_KEYS,
+    { ...(DEFAULTS_REST[lang] || DEFAULTS_REST.en) }
+  );
   const placeholders = REST_KEYS.map(_ => "?").join(",");
   db.all(
     `SELECT key, value FROM translations WHERE lang=? AND key IN (${placeholders})`,
@@ -504,7 +531,11 @@ DEFAULTS_GALLERY.de = { ...DEFAULTS_GALLERY.en };
 // Read Gallery translations (defaults + DB overlay)
 router.get("/gallery/:lang", (req, res) => {
   const lang = getLang(req);
-  const defaults = DEFAULTS_GALLERY[lang] || DEFAULTS_GALLERY.en;
+  const defaults = overlayDefaultsFromAssets(
+    lang,
+    GALLERY_KEYS,
+    { ...(DEFAULTS_GALLERY[lang] || DEFAULTS_GALLERY.en) }
+  );
   const placeholders = GALLERY_KEYS.map(_ => "?").join(",");
   db.all(
     `SELECT key, value FROM translations WHERE lang=? AND key IN (${placeholders})`,
@@ -576,7 +607,11 @@ DEFAULTS_ROOMS_LIST.de = { ...DEFAULTS_ROOMS_LIST.en };
 // Read Rooms overview translations (defaults + DB overlay)
 router.get("/roomslist/:lang", (req, res) => {
   const lang = getLang(req);
-  const defaults = DEFAULTS_ROOMS_LIST[lang] || DEFAULTS_ROOMS_LIST.en;
+  const defaults = overlayDefaultsFromAssets(
+    lang,
+    ROOMS_LIST_KEYS,
+    { ...(DEFAULTS_ROOMS_LIST[lang] || DEFAULTS_ROOMS_LIST.en) }
+  );
   const placeholders = ROOMS_LIST_KEYS.map(_ => "?").join(",");
   db.all(
     `SELECT key, value FROM translations WHERE lang=? AND key IN (${placeholders})`,
@@ -663,7 +698,11 @@ DEFAULTS_CONTACT.de = { ...DEFAULTS_CONTACT.en };
 // Read Contact translations (defaults + DB overlay)
 router.get("/contact/:lang", (req, res) => {
   const lang = getLang(req);
-  const defaults = DEFAULTS_CONTACT[lang] || DEFAULTS_CONTACT.en;
+  const defaults = overlayDefaultsFromAssets(
+    lang,
+    CONTACT_KEYS,
+    { ...(DEFAULTS_CONTACT[lang] || DEFAULTS_CONTACT.en) }
+  );
   const placeholders = CONTACT_KEYS.map(_ => "?").join(",");
   db.all(
     `SELECT key, value FROM translations WHERE lang=? AND key IN (${placeholders})`,

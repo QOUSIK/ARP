@@ -28,7 +28,7 @@ print(f"Scanned {len(files_scanned)} HTML files under public/")
 print(f"Found {len(keys_found)} unique data-i18n keys (including placeholders/alt).\n")
 
 # load i18n json files
-langs = ['en','ru','tr','de']
+langs = ['en','ru','tr','de','uk']
 lang_dicts = {}
 for l in langs:
     path = os.path.join(I18N_DIR, f"{l}.json")

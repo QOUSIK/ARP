@@ -3,7 +3,7 @@
 
 (function () {
   // --- Fallback translations (минимальные) ---
-  const fallbackTranslations = { en: {}, ru: {}, tr: {}, de: {} };
+  const fallbackTranslations = { en: {}, ru: {}, tr: {}, de: {}, uk: {} };
 
   const defaultLang = "en";
   const storageKey = "arp_lang";

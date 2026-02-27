@@ -5,7 +5,7 @@
   const paramLang = (params.get("lang") || "").toLowerCase();
   // keep compatibility with site i18n storage key
   const stored = (window.localStorage && (localStorage.getItem("arp_lang") || localStorage.getItem("lang"))) || htmlLang;
-  const allowed = ["en", "ru", "tr", "de"];
+  const allowed = ["en", "ru", "tr", "de", "uk"];
   const baseLang = allowed.includes(stored) ? stored : "en";
   const lang = allowed.includes(paramLang) ? paramLang : baseLang;
 
