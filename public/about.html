@@ -11,12 +11,7 @@
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            color: #ffffff;
-        }
+
         
         body {
             background: #F7F1E1;
@@ -239,18 +234,19 @@ background-position: center;
             position: relative;
         }
 
-        .story-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('../assets/img/2block.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.8;
-        }
+.story-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../assets/img/2block.jpg');
+    background-color: rgba(0, 0, 0, 0.5); /* Цвет затемнения */
+    background-blend-mode: multiply;       /* Режим смешивания */
+    background-size: cover;
+    background-position: center;
+}
 
         .story-image div {
             position: relative;

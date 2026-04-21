@@ -85,7 +85,7 @@
         }
         
         .card-header {
-            padding: 25px 25px 15px;
+            padding: 25px 25px 25px;
             background: linear-gradient(145deg, #8c1d3a, #a52d4a);
             color: white;
             text-align: center;
